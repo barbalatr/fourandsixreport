@@ -1,0 +1,35 @@
+{
+  //"descricao": "Crimes, agrupados por natureza",
+  "local":[
+    {
+      "tipo": [
+        "residencial",
+        "comercial"
+      ],
+      "alinhamento": [
+        "com recuo",
+        "sem recuo"
+      ]
+    }
+  ],
+  "crimes": [
+    {
+      "natureza": "furto_qualificado",
+      "qualificadora": [
+        "escalada",
+        "rompimento_de_obstaculo"
+      ],  
+      "mediante": [
+        "rompimento_de_cadeado",
+        "uso_de_chave_falsa"
+      ]  
+    },  
+    {
+      "natureza": "ambiental",
+      "qualificadora": [
+        "fora da area de preservacao permanete",
+        "dentro da area de preservacao permanente"
+      ]
+    }  
+  ]
+}
