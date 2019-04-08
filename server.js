@@ -9,6 +9,7 @@ app.get('/', function(request,response){
 });
 
 //listen on port
-app.listen(5000);
-
-console.log('Server is running...')
+var PORT = process.env.PORT || 5000;
+app.listen(PORT,function(){
+  console.log('Server is running...');
+});
