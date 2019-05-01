@@ -3,13 +3,8 @@ import { TextInput, Select } from "./BasicComponents";
 import { Navbar, Container, Button, Form } from "react-bootstrap";
 
 export default class Requisicao extends React.Component {
-  continuar = e => {
-    e.preventDefault();
-    this.props.nextStep();
-  };
   render() {
-    console.log(this.props);
-    const { values, handleChange } = this.props;
+    const { values, handleChange, nextStep } = this.props;
     return (
       <React.Fragment>
         <Navbar bg="light" variant="dark">
@@ -58,7 +53,7 @@ export default class Requisicao extends React.Component {
           </Form>
         </Container>
 
-        <Button onClick={this.continuar}>Continuar</Button>
+        <Button onClick={nextStep}>Continuar</Button>
       </React.Fragment>
     );
   }

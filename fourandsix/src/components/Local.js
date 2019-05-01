@@ -9,17 +9,8 @@ import {
 } from "react-bootstrap";
 
 export default class Local extends React.Component {
-  continuar = e => {
-    e.preventDefault();
-    this.props.nextStep();
-  };
-  voltar = e => {
-    e.preventDefault();
-    this.props.prevStep();
-  };
   render() {
-    console.log(this.props);
-    const { values, handleChange } = this.props;
+    const { values, handleChange, nextStep, prevStep } = this.props;
     return (
       <React.Fragment>
         <Navbar bg="light" variant="dark">
@@ -73,11 +64,11 @@ export default class Local extends React.Component {
         </Container>
 
         <ButtonToolbar>
-          <Button variant="outline-primary" onClick={this.voltar}>
+          <Button variant="outline-primary" onClick={prevStep}>
             Voltar
           </Button>
           &nbsp;
-          <Button variant="primary" onClick={this.continuar}>
+          <Button variant="primary" onClick={nextStep}>
             Continuar
           </Button>
         </ButtonToolbar>
