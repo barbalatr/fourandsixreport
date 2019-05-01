@@ -90,10 +90,10 @@ const DelegadoA = 'delegado a';
 const DelegadoB = 'delegado B';
 const Delegado = [DelegadoA, DelegadoB];
 
-const ForaApp = 'fora de app',
-const DentroApp10 = 'dentro de app largura inferior a 10 metros',
-const DentroApp1050 = 'dentro de app largura entre 10 e 50 metros',
-const App = [ForaApp, DentroApp10, DentroApp1050];
+const ForaApp = 'fora de app';
+const DentroApp10 = 'dentro de app largura inferior a 10 metros';
+const DentroApp1050 = 'dentro de app largura entre 10 e 50 metros';
+const App = [ForaApp, DentroApp10, DentroApp50];
 
 const MedianteAmbiental = [
   'destruição de vegetação nativa típica',
