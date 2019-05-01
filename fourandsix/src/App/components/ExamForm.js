@@ -5,19 +5,22 @@ import Confirmar from "./Confirmar";
 import Sucesso from "./Sucesso";
 
 export default class ExamForm extends React.Component {
-  state = {
-    step: 1,
-    boletim: "",
-    delegacia: "",
-    natureza: "",
-    endereco: "",
-    enderecoNumero: "",
-    dataAtendimento: "",
-    horaChegada: "",
-    dataLiberacao: "",
-    horaLiberacao: "",
-    fotografo: ""
-  };
+  constructor () {
+    super();
+    this.state = {
+      step: 1,
+      boletim: "",
+      delegacia: "",
+      natureza: "",
+      endereco: "",
+      enderecoNumero: "",
+      dataAtendimento: "",
+      horaChegada: "",
+      dataLiberacao: "",
+      horaLiberacao: "",
+      fotografo: ""
+    };
+  }
   // Back to previous step
   prevStep = () => {
     const { step } = this.state;
@@ -37,6 +40,17 @@ export default class ExamForm extends React.Component {
     this.setState({ [input]: event.target.value });
     console.log("state has been changed");
   };
+  submit = () => {
+    console.log('submit');
+    fetch('/', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => console.log(response));
+  }
 
   render() {
     const { step } = this.state;
@@ -85,7 +99,7 @@ export default class ExamForm extends React.Component {
       case 3:
         return (
           <Confirmar
-            nextStep={this.nextStep}
+            nextStep={this.submit}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
