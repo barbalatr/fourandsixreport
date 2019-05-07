@@ -1,5 +1,27 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+import { Form, Table } from "react-bootstrap";
+
+export function TableInput({ values }) {
+  let valuesArray = Object.entries(values);
+  return (
+    <Table striped bordered hover size="sm">
+      <thead>
+        <tr>
+          <th>Estado</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        {valuesArray.map(v => (
+          <tr>
+            <td>{v[0]}</td>
+            <td>{v[1]}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  );
+}
 
 export function TextInput({ label, value, onChange }) {
   return (

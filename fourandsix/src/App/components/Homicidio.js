@@ -9,13 +9,13 @@ import {
 } from "react-bootstrap";
 import { Fotografos, Natureza } from "../../Commons";
 
-export default class Local extends React.Component {
+export default class Homicidio extends React.Component {
   render() {
     const { values, handleChange, nextView, prevView } = this.props;
     return (
       <React.Fragment>
         <Navbar bg="light" variant="dark">
-          <h1>Local</h1>
+          <h1>Homicídio</h1>
         </Navbar>
 
         <Container>

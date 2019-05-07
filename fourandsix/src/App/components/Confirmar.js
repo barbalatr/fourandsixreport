@@ -1,16 +1,17 @@
 import React from "react";
-import { TextInput, Select } from "./BasicComponents";
+import { TextInput, Select, TableInput } from "./BasicComponents";
 import {
   Navbar,
   Container,
   Button,
   ButtonToolbar,
-  Form
+  Form,
+  Table
 } from "react-bootstrap";
 
 export default class Confirmar extends React.Component {
   render() {
-    const { values, handleChange, nextStep, prevStep } = this.props;
+    const { values, submit, prevView } = this.props;
     return (
       <React.Fragment>
         <Navbar bg="light" variant="dark">
@@ -18,54 +19,16 @@ export default class Confirmar extends React.Component {
         </Navbar>
 
         <Container>
-          <Form>
-            <TextInput
-              label="Data do Atendimento"
-              value={values.dataAtendimento}
-              onChange={handleChange("dataAtendimento")}
-            />
-
-            <Select
-              label="Delegacia"
-              value={values.delegacia}
-              onChange={handleChange("delegacia")}
-              values={[
-                "01 Caraguatatuba",
-                "02 Caraguatatuba",
-                "Ilhabela",
-                "São Sebastião",
-                "Del. Pol. Ubatuba"
-              ]}
-            />
-
-            <TextInput
-              label="Natureza"
-              value={values.natureza}
-              onChange={handleChange("natureza")}
-            />
-
-            <TextInput
-              label="Endereço"
-              value={values.endereco}
-              onChange={handleChange("endereco")}
-            />
-
-            <Select
-              label="Fotógrafo"
-              value={values.fotografo}
-              onChange={handleChange("fotografo")}
-              values={["Ana", "Fabio", "Mauro", "Paulo", "Silvia", "Ubirajara"]}
-            />
-          </Form>
+          <TableInput values={values} />
         </Container>
 
         <ButtonToolbar>
-          <Button variant="outline-primary" onClick={prevStep}>
+          <Button variant="outline-primary" onClick={prevView}>
             Voltar
           </Button>
           &nbsp;
-          <Button variant="primary" onClick={nextStep}>
-            Continuar
+          <Button variant="primary" onClick={submit}>
+            Finalizar
           </Button>
         </ButtonToolbar>
       </React.Fragment>

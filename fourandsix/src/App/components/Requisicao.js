@@ -1,10 +1,11 @@
 import React from "react";
 import { TextInput, Select } from "./BasicComponents";
 import { Navbar, Container, Button, Form } from "react-bootstrap";
+import { Natureza, Delegacia, Delegado } from "../../Commons";
 
 export default class Requisicao extends React.Component {
   render() {
-    const { values, handleChange, nextStep } = this.props;
+    const { values, handleChange, nextView } = this.props;
     return (
       <React.Fragment>
         <Navbar bg="light" variant="dark">
@@ -18,42 +19,28 @@ export default class Requisicao extends React.Component {
               value={values.boletim}
               onChange={handleChange("boletim")}
             />
-
+            <Select
+              label="Natureza"
+              value={values.natureza}
+              onChange={handleChange("natureza")}
+              values={Natureza}
+            />
             <Select
               label="Delegacia"
               value={values.delegacia}
               onChange={handleChange("delegacia")}
-              values={[
-                "01 Caraguatatuba",
-                "02 Caraguatatuba",
-                "Ilhabela",
-                "São Sebastião",
-                "Del. Pol. Ubatuba"
-              ]}
+              values={Delegacia}
             />
-
-            <TextInput
-              label="Natureza"
-              value={values.natureza}
-              onChange={handleChange("natureza")}
-            />
-
-            <TextInput
-              label="Endereço"
-              value={values.endereco}
-              onChange={handleChange("endereco")}
-            />
-
             <Select
-              label="Fotógrafo"
-              value={values.fotografo}
-              onChange={handleChange("fotografo")}
-              values={["Ana", "Fabio", "Mauro", "Paulo", "Silvia", "Ubirajara"]}
+              label="Delegado"
+              value={values.delegado}
+              onChange={handleChange("delegado")}
+              values={Delegado[values.delegacia] || []}
             />
           </Form>
         </Container>
 
-        <Button onClick={nextStep}>Continuar</Button>
+        <Button onClick={nextView}>Continuar</Button>
       </React.Fragment>
     );
   }
