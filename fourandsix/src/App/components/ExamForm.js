@@ -104,8 +104,15 @@ export default class ExamForm extends React.Component {
       headers: {
         "Content-Type": "application/json"
       }
-    }).then(response => console.log(response));
-    this.setState({ view: "Sucesso" });
+    })
+      .then(response => {
+        console.log(response);
+        this.setState({ view: "Sucesso" });
+      })
+      .catch(error => {
+        console.log("Erro", error);
+        // TODO: Show error to the user
+      });
   };
 
   render() {
