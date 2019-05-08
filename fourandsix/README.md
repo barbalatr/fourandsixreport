@@ -3,9 +3,10 @@
 ## Frontend
 
 - reset state after submit
-- add validation
+- create login
+- add form validation
+- add damage in Vistoria
 
 ## Backend
 
-- save reports in the DB
 - generate reports based on DB info

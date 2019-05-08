@@ -131,6 +131,11 @@ export const Onibus = "Ônibus";
 export const Motocicleta = "Motocicleta";
 export const TipoVeiculo = [Automovel, Onibus, Motocicleta];
 
+export const Fratura = "Fratura";
+export const Amolgamento = "Amolgamento";
+export const Atritamento = "Atritamento Metálico";
+export const TipoDanoVeiculo = [Fratura, Amolgamento, Atritamento];
+
 /*
 export const ForaApp = "fora de app";
 export const DentroApp10 = "dentro de app largura inferior a 10 metros";

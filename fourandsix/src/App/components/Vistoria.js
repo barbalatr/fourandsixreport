@@ -5,9 +5,12 @@ import {
   Container,
   Button,
   ButtonToolbar,
-  Form
+  Form,
+  Row,
+  Col,
+  Group
 } from "react-bootstrap";
-import { TipoVeiculo } from "../../Commons";
+import { TipoVeiculo, TipoDanoVeiculo } from "../../Commons";
 
 export default class Vistoria extends React.Component {
   render() {
@@ -26,17 +29,10 @@ export default class Vistoria extends React.Component {
               onChange={handleChange("tipoVeiculo")}
               values={TipoVeiculo}
             />
-
             <TextInput
               label="Placa"
               value={values.placa}
               onChange={handleChange("placa")}
-            />
-
-            <TextInput
-              label="Cidade da Placa"
-              value={values.localPlaca}
-              onChange={handleChange("localPlaca")}
             />
             <TextInput
               label="Marca"

@@ -39,7 +39,7 @@ function saveAtendimento(body) {
     .connect()
     .then(() =>
       client.query(
-        "insert into atendimento values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)",
+        "insert into atendimento values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21,$22,$23)",
         [
           "Rodrigo Barbalat Viana",
           body.requisicao,
@@ -57,10 +57,13 @@ function saveAtendimento(body) {
           body.fotografo,
           body.tipoVeiculo,
           body.placa,
-          body.localPlaca,
           body.marcaVeiculo,
           body.modeloVeiculo,
-          body.corVeiculo
+          body.corVeiculo,
+          body.preservado,
+          body.encarregado,
+          body.reEncarregado,
+          body.prefixoViatura
         ]
       )
     )

@@ -15,6 +15,10 @@ export default class ExamForm extends React.Component {
       laudo: "",
       boletim: "",
       natureza: "",
+      preservado: "",
+      encarregado: "",
+      reEncarregado: "",
+      prefixoViatura: "",
       delegacia: "",
       delegado: "",
       endereco: "",
@@ -26,7 +30,6 @@ export default class ExamForm extends React.Component {
       fotografo: "",
       tipoVeiculo: "",
       placa: "",
-      localPlaca: "",
       marcaVeiculo: "",
       modeloVeiculo: "",
       corVeiculo: ""
@@ -124,6 +127,10 @@ export default class ExamForm extends React.Component {
       laudo,
       boletim,
       natureza,
+      preservado,
+      encarregado,
+      reEncarregado,
+      prefixoViatura,
       delegacia,
       delegado,
       endereco,
@@ -135,16 +142,20 @@ export default class ExamForm extends React.Component {
       fotografo,
       tipoVeiculo,
       placa,
-      localPlaca,
       marcaVeiculo,
       modeloVeiculo,
-      corVeiculo
+      corVeiculo,
+      tipoDanoVeiculo
     } = this.state;
     const values = {
       requisicao,
       laudo,
       boletim,
       natureza,
+      preservado,
+      encarregado,
+      reEncarregado,
+      prefixoViatura,
       delegacia,
       delegado,
       endereco,
@@ -156,10 +167,10 @@ export default class ExamForm extends React.Component {
       fotografo,
       tipoVeiculo,
       placa,
-      localPlaca,
       marcaVeiculo,
       modeloVeiculo,
-      corVeiculo
+      corVeiculo,
+      tipoDanoVeiculo
     };
     // Conditionally renders views
     if (view === "Requisicao") {

@@ -35,6 +35,27 @@ export default class Requisicao extends React.Component {
               onChange={handleChange("natureza")}
               values={Natureza}
             />
+            <TextInput
+              label="Preservado"
+              value={values.preservado}
+              onChange={handleChange("preservado")}
+            />
+            <TextInput
+              label="Encarregado"
+              value={values.encarregado}
+              onChange={handleChange("encarregado")}
+            />
+            <TextInput
+              label="RE Encarregado"
+              value={values.reEncarregado}
+              onChange={handleChange("reEncarregado")}
+            />
+            <TextInput
+              label="Prefixo Viatura"
+              value={values.prefixoViatura}
+              onChange={handleChange("prefixoViatura")}
+            />
+
             <Select
               label="Delegacia"
               value={values.delegacia}
