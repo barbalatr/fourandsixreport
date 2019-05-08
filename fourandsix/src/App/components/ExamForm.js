@@ -11,6 +11,8 @@ export default class ExamForm extends React.Component {
     super();
     this.state = {
       view: "Requisicao",
+      requisicao: "",
+      laudo: "",
       boletim: "",
       natureza: "",
       delegacia: "",
@@ -118,6 +120,8 @@ export default class ExamForm extends React.Component {
   render() {
     const { view } = this.state;
     const {
+      requisicao,
+      laudo,
       boletim,
       natureza,
       delegacia,
@@ -137,6 +141,8 @@ export default class ExamForm extends React.Component {
       corVeiculo
     } = this.state;
     const values = {
+      requisicao,
+      laudo,
       boletim,
       natureza,
       delegacia,

@@ -15,6 +15,16 @@ export default class Requisicao extends React.Component {
         <Container>
           <Form>
             <TextInput
+              label="Requisição"
+              value={values.requisicao}
+              onChange={handleChange("requisicao")}
+            />
+            <TextInput
+              label="Laudo"
+              value={values.laudo}
+              onChange={handleChange("laudo")}
+            />
+            <TextInput
               label="B.O."
               value={values.boletim}
               onChange={handleChange("boletim")}
