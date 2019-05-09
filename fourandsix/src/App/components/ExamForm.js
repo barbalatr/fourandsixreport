@@ -38,7 +38,6 @@ export default class ExamForm extends React.Component {
       atritamentoVeiculo: false,
       aspectoDano: "",
       dianteiraVeiculo: false,
-
       traseiraVeiculo: false,
       flancoEsquerdo: false,
       flancoDireito: false
@@ -104,7 +103,6 @@ export default class ExamForm extends React.Component {
       view: this.next()
     });
   };
-
   // Handle change
   handleChange = input => event => {
     this.setState({ [input]: event.target.value });
@@ -116,7 +114,6 @@ export default class ExamForm extends React.Component {
   };
   handleRadio = input => event => {
     this.setState({ [input]: event.target.value });
-    console.log("Clicked on Radio");
   };
   submit = () => {
     console.log("submit");
@@ -138,6 +135,7 @@ export default class ExamForm extends React.Component {
   };
 
   render() {
+    console.log(this.state.aspectoDano);
     const { view } = this.state;
     const {
       requisicao,
@@ -232,6 +230,7 @@ export default class ExamForm extends React.Component {
           prevView={this.prevView}
           handleChange={this.handleChange}
           handleCheck={this.handleCheck}
+          handleRadio={this.handleRadio}
           values={values}
         />
       );

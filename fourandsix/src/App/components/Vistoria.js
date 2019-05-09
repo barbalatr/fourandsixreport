@@ -4,7 +4,8 @@ import {
   Select,
   DateInput,
   TimeInput,
-  CheckBoxInput
+  CheckBoxInput,
+  RadioInput
 } from "./BasicComponents";
 import {
   Navbar,
@@ -25,7 +26,8 @@ export default class Vistoria extends React.Component {
       handleChange,
       nextView,
       prevView,
-      handleCheck
+      handleCheck,
+      handleRadio
     } = this.props;
     return (
       <React.Fragment>
@@ -41,7 +43,6 @@ export default class Vistoria extends React.Component {
               onChange={handleChange("tipoVeiculo")}
               values={TipoVeiculo}
             />
-
             <TextInput
               label="Placa"
               value={values.placa}
@@ -63,7 +64,6 @@ export default class Vistoria extends React.Component {
               onChange={handleChange("corVeiculo")}
             />
             <h3>Danos </h3>
-
             <CheckBoxInput
               label="Amolgamento"
               value={values.amolgamentoVeiculo}
@@ -80,13 +80,18 @@ export default class Vistoria extends React.Component {
               onChange={handleCheck("fraturaVeiculo")}
             />
 
-            <Select
-              label="Aspecto do Dano"
-              value={values.aspectoDano}
-              onChange={handleChange("aspectoDano")}
-              values={AspectoDano}
+            <RadioInput
+              label="Recentes"
+              value="Recentes"
+              checked={values.aspectoDano === "Recentes"}
+              onChange={handleRadio("aspectoDano")}
             />
-
+            <RadioInput
+              label="Não Recentes"
+              value="Não Recentes"
+              checked={values.aspectoDano === "Não Recentes"}
+              onChange={handleRadio("aspectoDano")}
+            />
             <h3>Localização</h3>
             <CheckBoxInput
               label="Dianteira"

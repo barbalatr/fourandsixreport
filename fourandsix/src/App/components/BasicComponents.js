@@ -83,3 +83,14 @@ export function CheckBoxInput({ label, value, onChange }) {
     />
   );
 }
+export function RadioInput({ label, value, onChange, checked }) {
+  return (
+    <Form.Check
+      type="radio"
+      label={label}
+      onChange={onChange}
+      checked={checked}
+      value={value}
+    />
+  );
+}
