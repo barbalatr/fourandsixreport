@@ -5,7 +5,7 @@
 - reset state after submit
 - create login
 - add form validation
-- add damage in Vistoria
+- add aspecto em vistoria
 
 ## Backend
 

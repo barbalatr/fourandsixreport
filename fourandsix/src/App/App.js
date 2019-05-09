@@ -4,7 +4,7 @@ import ExamForm from "./components/ExamForm";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <ExamForm />
     </div>
   );

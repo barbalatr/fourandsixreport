@@ -32,7 +32,16 @@ export default class ExamForm extends React.Component {
       placa: "",
       marcaVeiculo: "",
       modeloVeiculo: "",
-      corVeiculo: ""
+      corVeiculo: "",
+      amolgamentoVeiculo: false,
+      fraturaVeiculo: false,
+      atritamentoVeiculo: false,
+      aspectoDano: "",
+      dianteiraVeiculo: false,
+
+      traseiraVeiculo: false,
+      flancoEsquerdo: false,
+      flancoDireito: false
     };
   }
   // Return previous view
@@ -101,6 +110,14 @@ export default class ExamForm extends React.Component {
     this.setState({ [input]: event.target.value });
     console.log("state has been changed");
   };
+  handleCheck = input => event => {
+    this.setState({ [input]: event.target.checked });
+    console.log("state has been changed");
+  };
+  handleRadio = input => event => {
+    this.setState({ [input]: event.target.value });
+    console.log("Clicked on Radio");
+  };
   submit = () => {
     console.log("submit");
     fetch("/", {
@@ -145,7 +162,14 @@ export default class ExamForm extends React.Component {
       marcaVeiculo,
       modeloVeiculo,
       corVeiculo,
-      tipoDanoVeiculo
+      amolgamentoVeiculo,
+      fraturaVeiculo,
+      atritamentoVeiculo,
+      aspectoDano,
+      dianteiraVeiculo,
+      traseiraVeiculo,
+      flancoEsquerdo,
+      flancoDireito
     } = this.state;
     const values = {
       requisicao,
@@ -170,8 +194,16 @@ export default class ExamForm extends React.Component {
       marcaVeiculo,
       modeloVeiculo,
       corVeiculo,
-      tipoDanoVeiculo
+      amolgamentoVeiculo,
+      fraturaVeiculo,
+      atritamentoVeiculo,
+      aspectoDano,
+      dianteiraVeiculo,
+      traseiraVeiculo,
+      flancoEsquerdo,
+      flancoDireito
     };
+
     // Conditionally renders views
     if (view === "Requisicao") {
       return (
@@ -199,6 +231,7 @@ export default class ExamForm extends React.Component {
           nextView={this.nextView}
           prevView={this.prevView}
           handleChange={this.handleChange}
+          handleCheck={this.handleCheck}
           values={values}
         />
       );

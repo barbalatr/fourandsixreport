@@ -15,12 +15,21 @@ export function TableInput({ values }) {
         {valuesArray.map(v => (
           <tr>
             <td>{v[0]}</td>
-            <td>{v[1]}</td>
+            <td>{render(v[1])}</td>
           </tr>
         ))}
       </tbody>
     </Table>
   );
+  function render(a) {
+    if (a === true) {
+      return "Sim";
+    }
+    if (a === false) {
+      return;
+    }
+    return a;
+  }
 }
 
 export function TextInput({ label, value, onChange }) {
@@ -61,5 +70,16 @@ export function TimeInput({ label, value, onChange }) {
       <Form.Label>{label}</Form.Label>
       <Form.Control type="time" onChange={onChange} value={value} />
     </Form.Group>
+  );
+}
+
+export function CheckBoxInput({ label, value, onChange }) {
+  return (
+    <Form.Check
+      type="checkbox"
+      label={label}
+      onChange={onChange}
+      value={value}
+    />
   );
 }

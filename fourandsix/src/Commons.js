@@ -136,6 +136,10 @@ export const Amolgamento = "Amolgamento";
 export const Atritamento = "Atritamento Metálico";
 export const TipoDanoVeiculo = [Fratura, Amolgamento, Atritamento];
 
+export const Recente = "Recente";
+export const NaoRecente = "Não Recente";
+export const AspectoDano = [Recente, NaoRecente];
+
 /*
 export const ForaApp = "fora de app";
 export const DentroApp10 = "dentro de app largura inferior a 10 metros";
