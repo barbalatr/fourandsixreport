@@ -67,7 +67,7 @@ export const Vistoria = "Vistoria";
 export const DanoPatrimonial = "Dano Patrimonial";
 export const Furto = "Furto";
 export const FurtoQualificado = "Furto Qualificado";
-export const Natureza = [Homicidio, Vistoria];
+export const Natureza = [Vistoria];
 
 // Delegacias do Litoral Norte
 export const DelPolCaraguatatuba1 = "01 Caraguatatuba";
@@ -110,13 +110,22 @@ export const SaoSebastiao = "São Sebastião - SP";
 export const Municipios = [Ubatuba, Caraguatatuba, Ilhabela, SaoSebastiao];
 
 // Fotografos
-export const Ana = "Ana Cristina Romano";
+export const Ana = "Ana Cristina Toledo";
 export const Fabio = "Fabio Romano";
+export const Gilberto = "Gilberto Bardacim";
 export const Mauro = "Mauro";
-export const Paulo = "Paulo";
+export const Paulo = "Paulo Junior";
 export const Silvia = "Silvia Jeiger";
 export const Ubirajara = "Ubirajara";
-export const Fotografos = [Ana, Fabio, Mauro, Paulo, Silvia, Ubirajara];
+export const Fotografos = [
+  Ana,
+  Fabio,
+  Gilberto,
+  Mauro,
+  Paulo,
+  Silvia,
+  Ubirajara
+];
 
 export const Residential = "residencial";
 export const Comercial = "comercial";
@@ -127,9 +136,10 @@ export const SemRecuo = "sem recuo";
 export const AlinhamentoDeLocal = [ComRecuo, SemRecuo];
 
 export const Automovel = "Automóvel";
+export const Caminhao = "Caminhão";
 export const Onibus = "Ônibus";
 export const Motocicleta = "Motocicleta";
-export const TipoVeiculo = [Automovel, Onibus, Motocicleta];
+export const TipoVeiculo = [Automovel, Motocicleta, Caminhao, Onibus];
 
 export const Fratura = "Fratura";
 export const Amolgamento = "Amolgamento";
@@ -139,6 +149,10 @@ export const TipoDanoVeiculo = [Fratura, Amolgamento, Atritamento];
 export const Recente = "Recente";
 export const NaoRecente = "Não Recente";
 export const AspectoDano = [Recente, NaoRecente];
+
+export const Sim = "Sim";
+export const Nao = "Não";
+export const isPreservado = [Sim, Nao];
 
 /*
 export const ForaApp = "fora de app";

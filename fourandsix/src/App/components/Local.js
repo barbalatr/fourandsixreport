@@ -7,7 +7,7 @@ import {
   ButtonToolbar,
   Form
 } from "react-bootstrap";
-import { Fotografos, Natureza } from "../../Commons";
+import { Fotografos, Natureza, isPreservado } from "../../Commons";
 
 export default class Local extends React.Component {
   render() {
@@ -20,6 +20,12 @@ export default class Local extends React.Component {
 
         <Container>
           <Form>
+            <Select
+              label="Fotógrafo"
+              value={values.fotografo}
+              onChange={handleChange("fotografo")}
+              values={Fotografos}
+            />
             <DateInput
               label="Data do Atendimento"
               value={values.dataAtendimento}
@@ -30,18 +36,10 @@ export default class Local extends React.Component {
               value={values.horaChegada}
               onChange={handleChange("horaChegada")}
             />
-
             <TextInput
               label="Endereço"
               value={values.endereco}
               onChange={handleChange("endereco")}
-            />
-
-            <Select
-              label="Fotógrafo"
-              value={values.fotografo}
-              onChange={handleChange("fotografo")}
-              values={Fotografos}
             />
           </Form>
         </Container>
@@ -59,3 +57,27 @@ export default class Local extends React.Component {
     );
   }
 }
+
+/*
+<Select
+  label="Preservado"
+  value={values.isPreservado}
+  onChange={handleChange("isPreservado")}
+  values={isPreservado}
+/>
+<TextInput
+  label="Encarregado"
+  value={values.encarregado}
+  onChange={handleChange("encarregado")}
+/>
+<TextInput
+  label="RE Encarregado"
+  value={values.reEncarregado}
+  onChange={handleChange("reEncarregado")}
+/>
+<TextInput
+  label="Prefixo Viatura"
+  value={values.prefixoViatura}
+  onChange={handleChange("prefixoViatura")}
+/>
+*/

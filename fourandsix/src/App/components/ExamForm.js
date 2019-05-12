@@ -14,8 +14,8 @@ export default class ExamForm extends React.Component {
       requisicao: "",
       laudo: "",
       boletim: "",
-      natureza: "",
-      preservado: "",
+      natureza: "Vistoria",
+      isPreservado: "",
       encarregado: "",
       reEncarregado: "",
       prefixoViatura: "",
@@ -37,10 +37,15 @@ export default class ExamForm extends React.Component {
       fraturaVeiculo: false,
       atritamentoVeiculo: false,
       aspectoDano: "",
+      esquerdaParaDireita: "",
+      direitaParaEsquerda: "",
+      frenteParaTras: "",
+      trasParafrente: "",
       dianteiraVeiculo: false,
       traseiraVeiculo: false,
       flancoEsquerdo: false,
-      flancoDireito: false
+      flancoDireito: false,
+      teto: false
     };
   }
   // Return previous view
@@ -135,14 +140,13 @@ export default class ExamForm extends React.Component {
   };
 
   render() {
-    console.log(this.state.aspectoDano);
     const { view } = this.state;
     const {
       requisicao,
       laudo,
       boletim,
       natureza,
-      preservado,
+      isPreservado,
       encarregado,
       reEncarregado,
       prefixoViatura,
@@ -164,17 +168,22 @@ export default class ExamForm extends React.Component {
       fraturaVeiculo,
       atritamentoVeiculo,
       aspectoDano,
+      esquerdaParaDireita,
+      direitaParaEsquerda,
+      frenteParaTras,
+      trasParafrente,
       dianteiraVeiculo,
       traseiraVeiculo,
       flancoEsquerdo,
-      flancoDireito
+      flancoDireito,
+      teto
     } = this.state;
     const values = {
       requisicao,
       laudo,
       boletim,
       natureza,
-      preservado,
+      isPreservado,
       encarregado,
       reEncarregado,
       prefixoViatura,
@@ -196,10 +205,15 @@ export default class ExamForm extends React.Component {
       fraturaVeiculo,
       atritamentoVeiculo,
       aspectoDano,
+      esquerdaParaDireita,
+      direitaParaEsquerda,
+      frenteParaTras,
+      trasParafrente,
       dianteiraVeiculo,
       traseiraVeiculo,
       flancoEsquerdo,
-      flancoDireito
+      flancoDireito,
+      teto
     };
 
     // Conditionally renders views

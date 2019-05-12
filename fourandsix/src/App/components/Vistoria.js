@@ -92,6 +92,7 @@ export default class Vistoria extends React.Component {
               checked={values.aspectoDano === "Não Recentes"}
               onChange={handleRadio("aspectoDano")}
             />
+
             <h3>Localização</h3>
             <CheckBoxInput
               label="Dianteira"
@@ -112,6 +113,32 @@ export default class Vistoria extends React.Component {
               label="Flanco Direito"
               value={values.flancoDireito}
               onChange={handleCheck("flancoDireito")}
+            />
+            <CheckBoxInput
+              label="Teto"
+              value={values.teto}
+              onChange={handleCheck("teto")}
+            />
+            <h3>Orientação</h3>
+            <CheckBoxInput
+              label="esquerda para a direita"
+              value={values.esquerdaParaDireita}
+              onChange={handleCheck("esquerdaParaDireita")}
+            />
+            <CheckBoxInput
+              label="direita para a esquerda"
+              value={values.direitaParaEsquerda}
+              onChange={handleCheck("direitaParaEsquerda")}
+            />
+            <CheckBoxInput
+              label="frente para trás"
+              value={values.frenteParaTras}
+              onChange={handleCheck("frenteParaTras")}
+            />
+            <CheckBoxInput
+              label="trás para frente"
+              value={values.trasParafrente}
+              onChange={handleCheck("trasParafrente")}
             />
           </Form>
         </Container>

@@ -73,7 +73,7 @@ export function TimeInput({ label, value, onChange }) {
   );
 }
 
-export function CheckBoxInput({ label, value, onChange }) {
+export function CheckBoxInput({ label, value, onChange, checked }) {
   return (
     <Form.Check
       type="checkbox"
