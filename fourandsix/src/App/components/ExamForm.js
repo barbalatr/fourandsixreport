@@ -6,47 +6,52 @@ import Sucesso from "./Sucesso";
 import Vistoria from "./Vistoria";
 import Homicidio from "./Homicidio";
 
+const initialState = {
+  view: "Requisicao",
+  requisicao: "",
+  laudo: "",
+  boletim: "",
+  natureza: "Vistoria",
+  isPreservado: "",
+  encarregado: "",
+  reEncarregado: "",
+  prefixoViatura: "",
+  delegacia: "",
+  delegado: "",
+  endereco: "",
+  enderecoNumero: "",
+  dataAtendimento: "",
+  horaChegada: "",
+  dataLiberacao: "",
+  horaLiberacao: "",
+  fotografo: "",
+  tipoVeiculo: "",
+  placa: "",
+  marcaVeiculo: "",
+  modeloVeiculo: "",
+  corVeiculo: "",
+  amolgamentoVeiculo: false,
+  fraturaVeiculo: false,
+  atritamentoVeiculo: false,
+  aspectoDano: "",
+  esquerdaParaDireita: false,
+  direitaParaEsquerda: false,
+  frenteParaTras: false,
+  trasParafrente: false,
+  dianteiraVeiculo: false,
+  traseiraVeiculo: false,
+  flancoEsquerdo: false,
+  flancoDireito: false,
+  teto: false,
+  freios: "",
+  direcao: "",
+  parteEletrica: ""
+};
+
 export default class ExamForm extends React.Component {
   constructor() {
     super();
-    this.state = {
-      view: "Requisicao",
-      requisicao: "",
-      laudo: "",
-      boletim: "",
-      natureza: "Vistoria",
-      isPreservado: "",
-      encarregado: "",
-      reEncarregado: "",
-      prefixoViatura: "",
-      delegacia: "",
-      delegado: "",
-      endereco: "",
-      enderecoNumero: "",
-      dataAtendimento: "",
-      horaChegada: "",
-      dataLiberacao: "",
-      horaLiberacao: "",
-      fotografo: "",
-      tipoVeiculo: "",
-      placa: "",
-      marcaVeiculo: "",
-      modeloVeiculo: "",
-      corVeiculo: "",
-      amolgamentoVeiculo: false,
-      fraturaVeiculo: false,
-      atritamentoVeiculo: false,
-      aspectoDano: "",
-      esquerdaParaDireita: "",
-      direitaParaEsquerda: "",
-      frenteParaTras: "",
-      trasParafrente: "",
-      dianteiraVeiculo: false,
-      traseiraVeiculo: false,
-      flancoEsquerdo: false,
-      flancoDireito: false,
-      teto: false
-    };
+    this.state = initialState;
   }
   // Return previous view
   back = () => {
@@ -119,6 +124,7 @@ export default class ExamForm extends React.Component {
   };
   handleRadio = input => event => {
     this.setState({ [input]: event.target.value });
+    console.log("clicked on radio");
   };
   submit = () => {
     console.log("submit");
@@ -133,6 +139,7 @@ export default class ExamForm extends React.Component {
         console.log(response);
         this.setState({ view: "Sucesso" });
       })
+      .then(this.setState(initialState))
       .catch(error => {
         console.log("Erro", error);
         // TODO: Show error to the user
@@ -176,7 +183,10 @@ export default class ExamForm extends React.Component {
       traseiraVeiculo,
       flancoEsquerdo,
       flancoDireito,
-      teto
+      teto,
+      freios,
+      direcao,
+      parteEletrica
     } = this.state;
     const values = {
       requisicao,
@@ -213,7 +223,10 @@ export default class ExamForm extends React.Component {
       traseiraVeiculo,
       flancoEsquerdo,
       flancoDireito,
-      teto
+      teto,
+      freios,
+      direcao,
+      parteEletrica
     };
 
     // Conditionally renders views

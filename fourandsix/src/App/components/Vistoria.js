@@ -17,7 +17,7 @@ import {
   Col,
   Group
 } from "react-bootstrap";
-import { TipoVeiculo, AspectoDano } from "../../Commons";
+import { TipoVeiculo, AspectoDano, isFuncionando } from "../../Commons";
 
 export default class Vistoria extends React.Component {
   render() {
@@ -79,6 +79,7 @@ export default class Vistoria extends React.Component {
               value={values.fraturaVeiculo}
               onChange={handleCheck("fraturaVeiculo")}
             />
+            <br />
 
             <RadioInput
               label="Recentes"
@@ -92,7 +93,7 @@ export default class Vistoria extends React.Component {
               checked={values.aspectoDano === "Não Recentes"}
               onChange={handleRadio("aspectoDano")}
             />
-
+            <br />
             <h3>Localização</h3>
             <CheckBoxInput
               label="Dianteira"
@@ -119,6 +120,7 @@ export default class Vistoria extends React.Component {
               value={values.teto}
               onChange={handleCheck("teto")}
             />
+            <br />
             <h3>Orientação</h3>
             <CheckBoxInput
               label="esquerda para a direita"
@@ -140,8 +142,30 @@ export default class Vistoria extends React.Component {
               value={values.trasParafrente}
               onChange={handleCheck("trasParafrente")}
             />
+
+            <br />
+            <p>Os Sistemas de Segurança estão funcionando?</p>
+            <Select
+              label="Freios"
+              value={values.freios}
+              onChange={handleChange("freios")}
+              values={isFuncionando}
+            />
+            <Select
+              label="Direção"
+              value={values.direcao}
+              onChange={handleChange("direcao")}
+              values={isFuncionando}
+            />
+            <Select
+              label="Parte Elétrica"
+              value={values.parteEletrica}
+              onChange={handleChange("parteEletrica")}
+              values={isFuncionando}
+            />
           </Form>
         </Container>
+        <br />
 
         <ButtonToolbar>
           <Button variant="outline-primary" onClick={prevView}>

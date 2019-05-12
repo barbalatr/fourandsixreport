@@ -152,7 +152,9 @@ export const AspectoDano = [Recente, NaoRecente];
 
 export const Sim = "Sim";
 export const Nao = "Não";
+export const NaoDanos = "Não, em função dos danos";
 export const isPreservado = [Sim, Nao];
+export const isFuncionando = [Sim, Nao, NaoDanos];
 
 /*
 export const ForaApp = "fora de app";
