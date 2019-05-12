@@ -67,16 +67,19 @@ export default class Vistoria extends React.Component {
             <CheckBoxInput
               label="Amolgamento"
               value={values.amolgamentoVeiculo}
+              checked={values.amolgamentoVeiculo}
               onChange={handleCheck("amolgamentoVeiculo")}
             />
             <CheckBoxInput
               label="Atritamento Metálico"
               value={values.atritamentoVeiculo}
+              checked={values.atritamentoVeiculo}
               onChange={handleCheck("atritamentoVeiculo")}
             />
             <CheckBoxInput
               label="Fratura"
               value={values.fraturaVeiculo}
+              checked={values.fraturaVeiculo}
               onChange={handleCheck("fraturaVeiculo")}
             />
             <br />
@@ -98,26 +101,31 @@ export default class Vistoria extends React.Component {
             <CheckBoxInput
               label="Dianteira"
               value={values.dianteiraVeiculo}
+              checked={values.dianteiraVeiculo}
               onChange={handleCheck("dianteiraVeiculo")}
             />
             <CheckBoxInput
               label="Traseira"
               value={values.traseiraVeiculo}
+              checked={values.traseiraVeiculo}
               onChange={handleCheck("traseiraVeiculo")}
             />
             <CheckBoxInput
               label="Flanco Esquerdo"
               value={values.flancoEsquerdo}
+              checked={values.flancoEsquerdo}
               onChange={handleCheck("flancoEsquerdo")}
             />
             <CheckBoxInput
               label="Flanco Direito"
               value={values.flancoDireito}
+              checked={values.flancoDireito}
               onChange={handleCheck("flancoDireito")}
             />
             <CheckBoxInput
               label="Teto"
               value={values.teto}
+              checked={values.teto}
               onChange={handleCheck("teto")}
             />
             <br />
@@ -125,21 +133,25 @@ export default class Vistoria extends React.Component {
             <CheckBoxInput
               label="esquerda para a direita"
               value={values.esquerdaParaDireita}
+              checked={values.esquerdaParaDireita}
               onChange={handleCheck("esquerdaParaDireita")}
             />
             <CheckBoxInput
               label="direita para a esquerda"
               value={values.direitaParaEsquerda}
+              checked={values.direitaParaEsquerda}
               onChange={handleCheck("direitaParaEsquerda")}
             />
             <CheckBoxInput
               label="frente para trás"
               value={values.frenteParaTras}
+              checked={values.frenteParaTras}
               onChange={handleCheck("frenteParaTras")}
             />
             <CheckBoxInput
               label="trás para frente"
               value={values.trasParafrente}
+              checked={values.trasParafrente}
               onChange={handleCheck("trasParafrente")}
             />
 

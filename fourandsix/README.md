@@ -2,8 +2,7 @@
 
 ## Frontend
 
-- reset state after submit
-- create login
+- create login view
 - add form validation
 
 ## Backend

@@ -80,6 +80,7 @@ export function CheckBoxInput({ label, value, onChange, checked }) {
       label={label}
       onChange={onChange}
       value={value}
+      checked={checked}
     />
   );
 }
@@ -90,6 +91,17 @@ export function RadioInput({ label, value, onChange, checked }) {
       label={label}
       onChange={onChange}
       checked={checked}
+      value={value}
+    />
+  );
+}
+
+export function PasswordInput({ label, value, onChange }) {
+  return (
+    <Form.Input
+      type="password"
+      label={label}
+      onChange={onChange}
       value={value}
     />
   );
