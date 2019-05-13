@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../App.css";
 import { TextInput, Select } from "./BasicComponents";
 import { Navbar, Container, Button, Form } from "react-bootstrap";
 import { Natureza, Delegacia, Delegado } from "../../Commons";
