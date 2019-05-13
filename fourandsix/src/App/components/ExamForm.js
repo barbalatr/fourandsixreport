@@ -13,7 +13,7 @@ const initialState = {
   laudo: "",
   boletim: "",
   natureza: "Vistoria",
-  isPreservado: "",
+  isPreservado: false,
   encarregado: "",
   reEncarregado: "",
   prefixoViatura: "",
@@ -121,11 +121,9 @@ export default class ExamForm extends React.Component {
   };
   handleCheck = input => event => {
     this.setState({ [input]: event.target.checked });
-    console.log("state has been changed");
   };
   handleRadio = input => event => {
     this.setState({ [input]: event.target.value });
-    console.log("clicked on radio");
   };
   submit = () => {
     console.log("submit");
@@ -140,7 +138,7 @@ export default class ExamForm extends React.Component {
         console.log(response);
         this.setState({ view: "Sucesso" });
       })
-      .then(this.setState(initialState))
+      .then(() => this.setState(initialState))
       .catch(error => {
         console.log("Erro", error);
         // TODO: Show error to the user
