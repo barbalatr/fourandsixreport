@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../App.css";
+import App from "../App.css";
 import { TextInput, Select } from "./BasicComponents";
 import { Navbar, Container, Button, Form } from "react-bootstrap";
 import { Natureza, Delegacia, Delegado } from "../../Commons";
@@ -14,7 +14,7 @@ export default class Requisicao extends React.Component {
         </Navbar>
 
         <Container>
-          <Form>
+          <Form className="App">
             <TextInput
               label="Requisição"
               value={values.requisicao}

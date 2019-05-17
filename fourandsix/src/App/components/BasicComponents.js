@@ -26,7 +26,7 @@ export function TableInput({ values }) {
       return "Sim";
     }
     if (a === false) {
-      return;
+      return "Não";
     }
     return a;
   }

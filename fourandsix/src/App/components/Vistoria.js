@@ -27,7 +27,8 @@ export default class Vistoria extends React.Component {
       nextView,
       prevView,
       handleCheck,
-      handleRadio
+      handleRadio,
+      handleCheckSistemaSeguranca
     } = this.props;
     return (
       <React.Fragment>
@@ -157,6 +158,14 @@ export default class Vistoria extends React.Component {
 
             <br />
             <p>Os Sistemas de Segurança estão funcionando?</p>
+
+            <CheckBoxInput
+              label="Sim, todos."
+              value={values.isSistemaSeguranca}
+              checked={values.isSistemaSeguranca}
+              onChange={handleCheckSistemaSeguranca}
+            />
+
             <Select
               label="Freios"
               value={values.freios}

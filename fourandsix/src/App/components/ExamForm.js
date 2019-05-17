@@ -21,6 +21,8 @@ const initialState = {
   delegado: "",
   endereco: "",
   enderecoNumero: "",
+  enderecoCidade: "",
+  isLocalIC: false,
   dataAtendimento: "",
   horaChegada: "",
   dataLiberacao: "",
@@ -44,6 +46,7 @@ const initialState = {
   flancoEsquerdo: false,
   flancoDireito: false,
   teto: false,
+  isSistemaSeguranca: false,
   freios: "",
   direcao: "",
   parteEletrica: ""
@@ -108,6 +111,22 @@ export default class ExamForm extends React.Component {
     }
   };
 
+  setStateSistemaSeguranca = () => {
+    this.setState(state => {
+      state.isSistemaSeguranca
+        ? this.setState({
+            freios: "Sim",
+            direcao: "Sim",
+            parteEletrica: "Sim"
+          })
+        : this.setState({
+            freios: "",
+            direcao: "",
+            parteEletrica: ""
+          });
+    });
+  };
+
   // Proceed to next view
   nextView = () => {
     this.setState({
@@ -122,6 +141,41 @@ export default class ExamForm extends React.Component {
   handleCheck = input => event => {
     this.setState({ [input]: event.target.checked });
   };
+  handleCheckEndereco = event => {
+    let newState = event.target.checked
+      ? {
+          isLocalIC: true,
+          endereco: "Alameda das Corvinas",
+          enderecoNumero: 60,
+          enderecoCidade: "São Sebastião - SP"
+        }
+      : {
+          isLocalIC: false,
+          endereco: "",
+          enderecoNumero: "",
+          enderecoCidade: ""
+        };
+    this.setState(newState);
+  };
+
+  handleCheckSistemaSeguranca = event => {
+    let newState = event.target.checked
+      ? {
+          isSistemaSeguranca: true,
+          freios: "Sim",
+          direcao: "Sim",
+          parteEletrica: "Sim"
+        }
+      : {
+          isSistemaSeguranca: false,
+          freios: "",
+          direcao: "",
+          parteEletrica: ""
+        };
+
+    this.setState(newState);
+  };
+
   handleRadio = input => event => {
     this.setState({ [input]: event.target.value });
   };
@@ -159,6 +213,8 @@ export default class ExamForm extends React.Component {
       delegacia,
       delegado,
       endereco,
+      enderecoCidade,
+      isLocalIC,
       enderecoNumero,
       dataAtendimento,
       horaChegada,
@@ -183,6 +239,7 @@ export default class ExamForm extends React.Component {
       flancoEsquerdo,
       flancoDireito,
       teto,
+      isSistemaSeguranca,
       freios,
       direcao,
       parteEletrica
@@ -199,6 +256,8 @@ export default class ExamForm extends React.Component {
       delegacia,
       delegado,
       endereco,
+      enderecoCidade,
+      isLocalIC,
       enderecoNumero,
       dataAtendimento,
       horaChegada,
@@ -223,6 +282,7 @@ export default class ExamForm extends React.Component {
       flancoEsquerdo,
       flancoDireito,
       teto,
+      isSistemaSeguranca,
       freios,
       direcao,
       parteEletrica
@@ -245,6 +305,8 @@ export default class ExamForm extends React.Component {
           nextView={this.nextView}
           prevView={this.prevView}
           handleChange={this.handleChange}
+          handleCheck={this.handleCheck}
+          handleCheckEndereco={this.handleCheckEndereco}
           values={values}
         />
       );
@@ -257,6 +319,7 @@ export default class ExamForm extends React.Component {
           handleChange={this.handleChange}
           handleCheck={this.handleCheck}
           handleRadio={this.handleRadio}
+          handleCheckSistemaSeguranca={this.handleCheckSistemaSeguranca}
           values={values}
         />
       );
