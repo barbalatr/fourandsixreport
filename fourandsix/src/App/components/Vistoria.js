@@ -28,7 +28,8 @@ export default class Vistoria extends React.Component {
       prevView,
       handleCheck,
       handleRadio,
-      handleCheckSistemaSeguranca
+      handleCheckSistemaSeguranca,
+      handleCheckPneu
     } = this.props;
     return (
       <React.Fragment>
@@ -64,107 +65,53 @@ export default class Vistoria extends React.Component {
               value={values.corVeiculo}
               onChange={handleChange("corVeiculo")}
             />
-            <h3>Danos </h3>
-            <CheckBoxInput
-              label="Amolgamento"
-              value={values.amolgamentoVeiculo}
-              checked={values.amolgamentoVeiculo}
-              onChange={handleCheck("amolgamentoVeiculo")}
-            />
-            <CheckBoxInput
-              label="Atritamento Metálico"
-              value={values.atritamentoVeiculo}
-              checked={values.atritamentoVeiculo}
-              onChange={handleCheck("atritamentoVeiculo")}
-            />
-            <CheckBoxInput
-              label="Fratura"
-              value={values.fraturaVeiculo}
-              checked={values.fraturaVeiculo}
-              onChange={handleCheck("fraturaVeiculo")}
-            />
-            <br />
 
-            <RadioInput
-              label="Recentes"
-              value="Recentes"
-              checked={values.aspectoDano === "Recentes"}
-              onChange={handleRadio("aspectoDano")}
-            />
-            <RadioInput
-              label="Não Recentes"
-              value="Não Recentes"
-              checked={values.aspectoDano === "Não Recentes"}
-              onChange={handleRadio("aspectoDano")}
-            />
-            <br />
-            <h3>Localização</h3>
+            <p>Pneus em bom estado de consevação</p>
             <CheckBoxInput
-              label="Dianteira"
-              value={values.dianteiraVeiculo}
-              checked={values.dianteiraVeiculo}
-              onChange={handleCheck("dianteiraVeiculo")}
-            />
-            <CheckBoxInput
-              label="Traseira"
-              value={values.traseiraVeiculo}
-              checked={values.traseiraVeiculo}
-              onChange={handleCheck("traseiraVeiculo")}
-            />
-            <CheckBoxInput
-              label="Flanco Esquerdo"
-              value={values.flancoEsquerdo}
-              checked={values.flancoEsquerdo}
-              onChange={handleCheck("flancoEsquerdo")}
-            />
-            <CheckBoxInput
-              label="Flanco Direito"
-              value={values.flancoDireito}
-              checked={values.flancoDireito}
-              onChange={handleCheck("flancoDireito")}
-            />
-            <CheckBoxInput
-              label="Teto"
-              value={values.teto}
-              checked={values.teto}
-              onChange={handleCheck("teto")}
-            />
-            <br />
-            <h3>Orientação</h3>
-            <CheckBoxInput
-              label="esquerda para a direita"
-              value={values.esquerdaParaDireita}
-              checked={values.esquerdaParaDireita}
-              onChange={handleCheck("esquerdaParaDireita")}
-            />
-            <CheckBoxInput
-              label="direita para a esquerda"
-              value={values.direitaParaEsquerda}
-              checked={values.direitaParaEsquerda}
-              onChange={handleCheck("direitaParaEsquerda")}
-            />
-            <CheckBoxInput
-              label="frente para trás"
-              value={values.frenteParaTras}
-              checked={values.frenteParaTras}
-              onChange={handleCheck("frenteParaTras")}
-            />
-            <CheckBoxInput
-              label="trás para frente"
-              value={values.trasParafrente}
-              checked={values.trasParafrente}
-              onChange={handleCheck("trasParafrente")}
+              label="Todos."
+              value={values.isPneuOk}
+              checked={values.isPneuOk}
+              onChange={handleCheckPneu}
             />
 
             <br />
-            <p>Os Sistemas de Segurança estão funcionando?</p>
 
             <CheckBoxInput
-              label="Sim, todos."
+              label="Dianteiro Direito"
+              value={values.pneuDianteiroDireito}
+              checked={values.pneuDianteiroDireito}
+              onChange={handleCheck("pneuDianteiroDireito")}
+            />
+            <CheckBoxInput
+              label="Dianteiro Esquerdo"
+              value={values.pneuDianteiroEsquerdo}
+              checked={values.pneuDianteiroEsquerdo}
+              onChange={handleCheck("pneuDianteiroEsquerdo")}
+            />
+            <CheckBoxInput
+              label="Traseiro Direito"
+              value={values.pneuTraseiroDireito}
+              checked={values.pneuTraseiroDireito}
+              onChange={handleCheck("pneuTraseiroDireito")}
+            />
+            <CheckBoxInput
+              label="Traseiro Esquerdo"
+              value={values.pneuTraseiroEsquerdo}
+              checked={values.pneuTraseiroEsquerdo}
+              onChange={handleCheck("pneuTraseiroEsquerdo")}
+            />
+
+            <br />
+
+            <p>Sistemas de Segurança funcionando</p>
+
+            <CheckBoxInput
+              label="Todos."
               value={values.isSistemaSeguranca}
               checked={values.isSistemaSeguranca}
               onChange={handleCheckSistemaSeguranca}
             />
+            <br />
 
             <Select
               label="Freios"

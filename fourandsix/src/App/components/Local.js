@@ -57,17 +57,17 @@ export default class Local extends React.Component {
             />
 
             <TextInput
-              label="Endereço"
+              placeholder="Endereço"
               value={values.endereco}
               onChange={handleChange("endereco")}
             />
             <TextInput
-              label="Número"
+              placeholder="Número"
               value={values.enderecoNumero}
               onChange={handleChange("enderecoNumero")}
             />
             <TextInput
-              label="Cidade"
+              placeholder="Cidade"
               value={values.enderecoCidade}
               onChange={handleChange("enderecoCidade")}
             />

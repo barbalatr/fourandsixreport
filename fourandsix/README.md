@@ -8,7 +8,6 @@
 
 ## Backend
 
-- fix CheckBox
 - change state structure to user + report
 - send email with info
 - generate reports based on DB info

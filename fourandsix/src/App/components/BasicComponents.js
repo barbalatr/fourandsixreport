@@ -32,20 +32,30 @@ export function TableInput({ values }) {
   }
 }
 
-export function TextInput({ label, value, onChange }) {
+export function TextInput({ label, value, onChange, placeholder }) {
   return (
     <Form.Group>
       <Form.Label>{label}</Form.Label>
-      <Form.Control type="text" onChange={onChange} value={value} />
+      <Form.Control
+        type="text"
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+      />
     </Form.Group>
   );
 }
 
-export function Select({ label, value, onChange, values }) {
+export function Select({ label, value, onChange, values, placeholder }) {
   return (
     <Form.Group>
       <Form.Label>{label}</Form.Label>
-      <Form.Control as="select" value={value} onChange={onChange}>
+      <Form.Control
+        as="select"
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+      >
         <option />
         {values.map(v => (
           <option>{v}</option>

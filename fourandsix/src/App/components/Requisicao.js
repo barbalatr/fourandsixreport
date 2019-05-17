@@ -36,18 +36,11 @@ export default class Requisicao extends React.Component {
               onChange={handleChange("natureza")}
               values={Natureza}
             />
-
             <Select
               label="Delegacia"
               value={values.delegacia}
               onChange={handleChange("delegacia")}
               values={Delegacia}
-            />
-            <Select
-              label="Delegado"
-              value={values.delegado}
-              onChange={handleChange("delegado")}
-              values={Delegado[values.delegacia] || []}
             />
           </Form>
         </Container>

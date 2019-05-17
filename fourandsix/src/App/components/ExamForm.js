@@ -5,6 +5,7 @@ import Local from "./Local";
 import Confirmar from "./Confirmar";
 import Sucesso from "./Sucesso";
 import Vistoria from "./Vistoria";
+import DanosVeiculo1 from "./DanosVeiculo1";
 import Homicidio from "./Homicidio";
 
 const initialState = {
@@ -46,6 +47,11 @@ const initialState = {
   flancoEsquerdo: false,
   flancoDireito: false,
   teto: false,
+  isPneuOk: "",
+  pneuDianteiroDireito: "",
+  pneuDianteiroEsquerdo: "",
+  pneuTraseiroDireito: "",
+  pneuTraseiroEsquerdo: "",
   isSistemaSeguranca: false,
   freios: "",
   direcao: "",
@@ -101,6 +107,9 @@ export default class ExamForm extends React.Component {
       return "Homicídio";
     }
     if (view === "Vistoria") {
+      return "DanosVeiculo1";
+    }
+    if (view === "DanosVeiculo1") {
       return "Confirmar";
     }
     if (view === "Homicídio") {
@@ -155,6 +164,26 @@ export default class ExamForm extends React.Component {
           enderecoNumero: "",
           enderecoCidade: ""
         };
+    this.setState(newState);
+  };
+
+  handleCheckPneu = event => {
+    let newState = event.target.checked
+      ? {
+          isPneuOk: true,
+          pneuDianteiroDireito: "Sim",
+          pneuDianteiroEsquerdo: "Sim",
+          pneuTraseiroDireito: "Sim",
+          pneuTraseiroEsquerdo: "Sim"
+        }
+      : {
+          isPneuOk: false,
+          pneuDianteiroDireito: "",
+          pneuDianteiroEsquerdo: "",
+          pneuTraseiroDireito: "",
+          pneuTraseiroEsquerdo: ""
+        };
+
     this.setState(newState);
   };
 
@@ -239,6 +268,11 @@ export default class ExamForm extends React.Component {
       flancoEsquerdo,
       flancoDireito,
       teto,
+      isPneuOk,
+      pneuDianteiroDireito,
+      pneuDianteiroEsquerdo,
+      pneuTraseiroDireito,
+      pneuTraseiroEsquerdo,
       isSistemaSeguranca,
       freios,
       direcao,
@@ -282,6 +316,11 @@ export default class ExamForm extends React.Component {
       flancoEsquerdo,
       flancoDireito,
       teto,
+      isPneuOk,
+      pneuDianteiroDireito,
+      pneuDianteiroEsquerdo,
+      pneuTraseiroDireito,
+      pneuTraseiroEsquerdo,
       isSistemaSeguranca,
       freios,
       direcao,
@@ -320,6 +359,21 @@ export default class ExamForm extends React.Component {
           handleCheck={this.handleCheck}
           handleRadio={this.handleRadio}
           handleCheckSistemaSeguranca={this.handleCheckSistemaSeguranca}
+          handleCheckPneu={this.handleCheckPneu}
+          values={values}
+        />
+      );
+    }
+    if (view === "DanosVeiculo1") {
+      return (
+        <DanosVeiculo1
+          nextView={this.nextView}
+          prevView={this.prevView}
+          handleChange={this.handleChange}
+          handleCheck={this.handleCheck}
+          handleRadio={this.handleRadio}
+          handleCheckSistemaSeguranca={this.handleCheckSistemaSeguranca}
+          handleCheckPneu={this.handleCheckPneu}
           values={values}
         />
       );
