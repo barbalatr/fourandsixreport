@@ -1,7 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const nodemailer = require("nodemailer");
 const { Client } = require("pg");
+const sgMail = require("@sendgrid/mail");
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const msg = {
+  to: "barbalatr@gmail.com",
+  from: "46report@46report.com",
+  subject: "Batata",
+  text: "testando o envio de emails",
+  html: "<strong>and easy to do anywhere, even with Node.js</strong>"
+};
+
 var PORT = process.env.PORT || 5000;
 const rootPath = url => path.join(process.cwd(), url);
 
@@ -19,14 +31,23 @@ const app = express()
         console.log(request.body);
         response.json({ message: "ok" });
       })
+      .then(() => {
+        sendEmail(msg);
+        console.log("email enviado");
+      })
       .catch(e => {
         console.log(e);
         response.json({ message: "error" });
       });
   })
+
   .listen(PORT, () => {
     console.log("Server is running...");
   });
+
+function sendEmail(msg) {
+  sgMail.send(msg);
+}
 
 function saveAtendimento(body) {
   const client = new Client({

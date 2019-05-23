@@ -4,7 +4,7 @@
 
 - create login
 - add form validation
-- create more damage views
+- create more damage views in Vistoria
 
 ## Backend
 
