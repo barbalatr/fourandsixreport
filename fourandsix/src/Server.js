@@ -33,12 +33,10 @@ const app = express()
         response.json({ message: "ok" });
       })
       .then(() => {
+        generateDoc(request.body);
+        console.log("arquivo docx gerado");
         sendEmail(msg);
         console.log("email enviado");
-      })
-      .then(() => {
-        generateDoc();
-        console.log("arquivo docx gerado");
       })
       .catch(e => {
         console.log(e);
