@@ -14,6 +14,7 @@
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "css-loader": "^2.1.1",
+    "docx": "^4.7.1",
     "express": "^4.16.4",
     "iso-morphic-style-loader": "^2.0.1",
     "node-sass": "^4.12.0",

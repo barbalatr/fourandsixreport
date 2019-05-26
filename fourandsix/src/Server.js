@@ -1,3 +1,4 @@
+import { generateDoc } from "./GenerateDocx";
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -34,6 +35,10 @@ const app = express()
       .then(() => {
         sendEmail(msg);
         console.log("email enviado");
+      })
+      .then(() => {
+        generateDoc();
+        console.log("arquivo docx gerado");
       })
       .catch(e => {
         console.log(e);
