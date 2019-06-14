@@ -119,18 +119,39 @@ export default class Vistoria extends React.Component {
               onChange={handleChange("freios")}
               values={isFuncionando}
             />
+            {values.freios === "Não" && (
+              <TextInput
+                label="Encarregado"
+                value={values.encarregado}
+                onChange={handleChange("encarregado")}
+              />
+            )}
             <Select
               label="Direção"
               value={values.direcao}
               onChange={handleChange("direcao")}
               values={isFuncionando}
             />
+            {values.direcao === "Não" && (
+              <TextInput
+                label="Encarregado"
+                value={values.encarregado}
+                onChange={handleChange("encarregado")}
+              />
+            )}
             <Select
               label="Parte Elétrica"
               value={values.parteEletrica}
               onChange={handleChange("parteEletrica")}
               values={isFuncionando}
             />
+            {values.parteEletrica === "Não" && (
+              <TextInput
+                label="Encarregado"
+                value={values.encarregado}
+                onChange={handleChange("encarregado")}
+              />
+            )}
           </Form>
         </Container>
         <br />

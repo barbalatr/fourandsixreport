@@ -63,27 +63,38 @@ export const CrimeAmbiental = {
 // Natureza do Crime
 export const Homicidio = "Homicídio";
 export const MorteSuspeita = "Morte Suspeita";
-export const Vistoria = "Vistoria";
+export const Vistoria = "Vistoria Veicular";
 export const DanoPatrimonial = "Dano Patrimonial";
 export const Furto = "Furto";
 export const FurtoQualificado = "Furto Qualificado";
 export const Natureza = [Vistoria];
 
 // Delegacias do Litoral Norte
-export const DelPolCaraguatatuba1 = "01 Caraguatatuba";
-export const DelPolCaraguatatuba2 = "02 Caraguatatuba";
+//TODO adicionar DDM em todos
+export const DelPolCaraguatatuba1 = "01º Delegacia de Polícia Caraguatatuba";
+export const DelPolCaraguatatuba2 = "02º Delegacia de Polícia Caraguatatuba";
+export const DelPolCaraguatatuba = "Delegacia de Polícia de Caraguatatuba";
 export const DelPolIlhabela = "Ilhabela";
-export const DelPolSaoSebastiao = "São Sebastião";
+export const DelPolSeccional = "Delegacia Seccional de São Sebastião";
+export const DelPolSaoSebastiao1 = "01 São Sebastião";
+export const DelPolSaoSebastiao2 = "02 São Sebastião";
+export const DelPolDIGDISE = "DIG/DISE de São Sebastião";
+export const DelPolDDMSaoSebastiao = "DDM de São Sebastião";
 export const DelPolUbatuba = "Del. Pol. Ubatuba";
 export const Delegacia = [
   DelPolCaraguatatuba1,
   DelPolCaraguatatuba2,
+  DelPolCaraguatatuba,
   DelPolIlhabela,
-  DelPolSaoSebastiao,
+  DelPolSeccional,
+  DelPolSaoSebastiao1,
+  DelPolSaoSebastiao2,
+  DelPolDIGDISE,
+  DelPolDDMSaoSebastiao,
   DelPolUbatuba
 ];
 
-// Delegados do Litoral Norte
+/* Delegados do Litoral Norte
 export const DelegadoA = "delegado A";
 export const DelegadoB = "delegado B";
 export const DelegadoC = "delegado C";
@@ -95,6 +106,7 @@ export const Delegado = {
   [DelPolSaoSebastiao]: [DelegadoC, DelegadoD],
   [DelPolUbatuba]: [DelegadoC, DelegadoD]
 };
+*/
 
 export const Avenida = "Avenida";
 export const Rua = "Rua";

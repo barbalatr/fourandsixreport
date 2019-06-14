@@ -13,7 +13,7 @@ const initialState = {
   requisicao: "",
   laudo: "",
   boletim: "",
-  natureza: "Vistoria",
+  natureza: "Vistoria Veicular",
   isPreservado: false,
   encarregado: "",
   reEncarregado: "",
@@ -69,7 +69,7 @@ export default class ExamForm extends React.Component {
     if (view === "Local") {
       return "Requisicao";
     }
-    if (view === "Vistoria") {
+    if (view === "Vistoria Veicular") {
       return "Local";
     }
     if (view === "Homicídio") {
@@ -78,8 +78,8 @@ export default class ExamForm extends React.Component {
     if (view === "Confirmar" && natureza === "") {
       return "Local";
     }
-    if (view === "Confirmar" && natureza === "Vistoria") {
-      return "Vistoria";
+    if (view === "Confirmar" && natureza === "Vistoria Veicular") {
+      return "Vistoria Veicular";
     }
     if (view === "Confirmar" && natureza === "Homicídio") {
       return "Homicídio";
@@ -100,13 +100,13 @@ export default class ExamForm extends React.Component {
     if (view === "Local" && natureza === "") {
       return "Confirmar";
     }
-    if (view === "Local" && natureza === "Vistoria") {
-      return "Vistoria";
+    if (view === "Local" && natureza === "Vistoria Veicular") {
+      return "Vistoria Veicular";
     }
     if (view === "Local" && natureza === "Homicídio") {
       return "Homicídio";
     }
-    if (view === "Vistoria") {
+    if (view === "Vistoria Veicular") {
       return "DanosVeiculo1";
     }
     if (view === "DanosVeiculo1") {
@@ -350,7 +350,7 @@ export default class ExamForm extends React.Component {
         />
       );
     }
-    if (view === "Vistoria") {
+    if (view === "Vistoria Veicular") {
       return (
         <Vistoria
           nextView={this.nextView}
