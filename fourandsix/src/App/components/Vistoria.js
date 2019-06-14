@@ -17,7 +17,14 @@ import {
   Col,
   Group
 } from "react-bootstrap";
-import { TipoVeiculo, AspectoDano, isFuncionando } from "../../Commons";
+import {
+  TipoVeiculo,
+  AspectoDano,
+  isAtuando,
+  isParteEletrica,
+  MotivoNaoFoiPossivel,
+  NaoFoiPossivelEletrica
+} from "../../Commons";
 
 export default class Vistoria extends React.Component {
   render() {
@@ -68,7 +75,7 @@ export default class Vistoria extends React.Component {
 
             <p>Pneus em bom estado de consevação</p>
             <CheckBoxInput
-              label="Todos."
+              label="Todos em bom estado."
               value={values.isPneuOk}
               checked={values.isPneuOk}
               onChange={handleCheckPneu}
@@ -103,10 +110,10 @@ export default class Vistoria extends React.Component {
 
             <br />
 
-            <p>Sistemas de Segurança funcionando</p>
+            <p>Sistemas de Segurança</p>
 
             <CheckBoxInput
-              label="Todos."
+              label="Todos em bom estado."
               value={values.isSistemaSeguranca}
               checked={values.isSistemaSeguranca}
               onChange={handleCheckSistemaSeguranca}
@@ -115,41 +122,50 @@ export default class Vistoria extends React.Component {
 
             <Select
               label="Freios"
+              placeholder="Username"
               value={values.freios}
               onChange={handleChange("freios")}
-              values={isFuncionando}
+              values={isAtuando}
             />
-            {values.freios === "Não" && (
+            {values.freios === "não foi possível verificar" && (
               <TextInput
-                label="Encarregado"
-                value={values.encarregado}
-                onChange={handleChange("encarregado")}
+                placeholder="Descreva o motivo"
+                value={values.motivoFreio}
+                onChange={handleChange("motivoFreio")}
               />
             )}
             <Select
               label="Direção"
               value={values.direcao}
               onChange={handleChange("direcao")}
-              values={isFuncionando}
+              values={isAtuando}
             />
-            {values.direcao === "Não" && (
+            {values.direcao === "não foi possível verificar" && (
               <TextInput
-                label="Encarregado"
-                value={values.encarregado}
-                onChange={handleChange("encarregado")}
+                placeholder="Descreva o motivo"
+                value={values.motivoDirecao}
+                onChange={handleChange("motivoDirecao")}
               />
             )}
             <Select
               label="Parte Elétrica"
               value={values.parteEletrica}
               onChange={handleChange("parteEletrica")}
-              values={isFuncionando}
+              values={isParteEletrica}
             />
-            {values.parteEletrica === "Não" && (
+            {values.parteEletrica === "funcionando parcialmente" && (
               <TextInput
-                label="Encarregado"
-                value={values.encarregado}
-                onChange={handleChange("encarregado")}
+                placeholder={"Descreva os detalhes"}
+                value={values.motivoParteEletrica}
+                onChange={handleChange("motivoParteEletrica")}
+              />
+            )}
+            {values.parteEletrica === "não foi possível verificar" && (
+              <Select
+                placeholder={"Descreva o motivo"}
+                value={values.motivoParteEletrica}
+                values={MotivoNaoFoiPossivel[NaoFoiPossivelEletrica]}
+                onChange={handleChange("motivoParteEletrica")}
               />
             )}
           </Form>

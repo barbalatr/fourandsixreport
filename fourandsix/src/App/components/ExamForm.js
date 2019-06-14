@@ -55,7 +55,10 @@ const initialState = {
   isSistemaSeguranca: false,
   freios: "",
   direcao: "",
-  parteEletrica: ""
+  parteEletrica: "",
+  motivoFreio: "",
+  motivoDirecao: "",
+  motivoParteEletrica: ""
 };
 
 export default class ExamForm extends React.Component {
@@ -71,6 +74,9 @@ export default class ExamForm extends React.Component {
     }
     if (view === "Vistoria Veicular") {
       return "Local";
+    }
+    if (view === "DanosVeiculo1") {
+      return "Vistoria Veicular";
     }
     if (view === "Homicídio") {
       return "Local";
@@ -191,9 +197,9 @@ export default class ExamForm extends React.Component {
     let newState = event.target.checked
       ? {
           isSistemaSeguranca: true,
-          freios: "Sim",
-          direcao: "Sim",
-          parteEletrica: "Sim"
+          freios: "atuando a contento",
+          direcao: "atuando a contento",
+          parteEletrica: "funcionando normalmente"
         }
       : {
           isSistemaSeguranca: false,
@@ -276,7 +282,10 @@ export default class ExamForm extends React.Component {
       isSistemaSeguranca,
       freios,
       direcao,
-      parteEletrica
+      parteEletrica,
+      motivoFreio,
+      motivoDirecao,
+      motivoParteEletrica
     } = this.state;
     const values = {
       requisicao,
@@ -324,7 +333,10 @@ export default class ExamForm extends React.Component {
       isSistemaSeguranca,
       freios,
       direcao,
-      parteEletrica
+      parteEletrica,
+      motivoFreio,
+      motivoDirecao,
+      motivoParteEletrica
     };
 
     // Conditionally renders views

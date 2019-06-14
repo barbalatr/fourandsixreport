@@ -98,7 +98,7 @@ export function generateDoc(body) {
     .font("Spranq eco sans");
   objetivoHeading.addRun(objetivoHeadingText);
 
-  var objetivoParagraph = new docx.Paragraph();
+  var objetivoParagraph = new docx.Paragraph().justified();
   var textoObjetivo = new docx.TextRun(
     "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando a realização de Vistoria Veicular."
   )
@@ -121,12 +121,18 @@ export function generateDoc(body) {
     .font("Spranq eco sans");
   doVeiculoDosExamesHeading.addRun(doVeiculoDosExamesHeadingText);
 
-  var doVeiculoDosExamesParagraph = new docx.Paragraph();
+  var doVeiculoDosExamesParagraph = new docx.Paragraph().justified();
 
   doc.addParagraph(doVeiculoDosExamesHeading);
 
+  const localVistoria = body.isLocalIC
+    ? " na sede da Equipe de Perícias Criminalísticas de São Sebastião"
+    : "";
+
   var textoDoVeiculoDosExames = new docx.TextRun(
-    "Nas condições em que foi apresentado para a perícia, foi examinado um veículo do tipo " +
+    "Nas condições em que foi apresentado à perícia" +
+      localVistoria +
+      ", foi examinado um veículo do tipo " +
       body.tipoVeiculo +
       ", da marca " +
       body.marcaVeiculo +
@@ -162,15 +168,50 @@ export function generateDoc(body) {
   dano3Paragraph.addRun(dano3);
   doc.addParagraph(dano3Paragraph);
 
+  // Sistemas de Segurança
   doc.addParagraph(emptyBreak);
   var sistemaSegurancaParagraph = new docx.Paragraph();
   var sistemaSegurancaText = new docx.TextRun(
-    "Quando da realização dos exames periciais, seus sistemas de segurança para o tráfego se encontravam:"
+    "Através da realização de exame estático, foi verificado que seus sistemas de segurança para tráfego se encontravam nas seguintes condições:"
   )
     .size(24)
     .font("Spranq eco sans");
   sistemaSegurancaParagraph.addRun(sistemaSegurancaText);
+
+  var sistemaSegurancaParagraph1 = new docx.Paragraph();
+  var freioText = new docx.TextRun(
+    "Freio dianteiro: " + body.freios + ". " + body.motivoFreio
+  )
+    .size(24)
+    .font("Spranq eco sans")
+    .break();
+
+  sistemaSegurancaParagraph1.addRun(freioText);
+
+  var direcaoText = new docx.TextRun(
+    "Direção: " + body.direcao + ". " + body.motivoDirecao
+  )
+    .size(24)
+    .font("Spranq eco sans")
+    .break();
+  sistemaSegurancaParagraph1.addRun(direcaoText);
+
+  const xpto =
+    body.parteEletrica === "funcionando parcialmente"
+      ? ". " + body.motivoParteEletrica
+      : body.parteEletrica === "não foi possível verificar"
+      ? " em razão da " + body.motivoParteEletrica + "."
+      : ".";
+  var parteEletricaText = new docx.TextRun(
+    "Parte Elétrica: " + body.parteEletrica + xpto
+  )
+    .size(24)
+    .font("Spranq eco sans")
+    .break();
+  sistemaSegurancaParagraph1.addRun(parteEletricaText);
+
   doc.addParagraph(sistemaSegurancaParagraph);
+  doc.addParagraph(sistemaSegurancaParagraph1);
 
   // Considerações Finais
   doc.addParagraph(emptyBreak);
@@ -191,20 +232,21 @@ export function generateDoc(body) {
   consideracoesParagraph.addRun(textoRelatar.break());
 
   var textoConsideracoes = new docx.TextRun(
-    "As fotografias presentes neste laudo são de responsabilidade técnica de " +
-      body.fotografo +
-      ". O laudo original foi assinado digitalmente nos termos da M.P. 2200-2/2001 de 24/08/2001 e encontra-se arquivado eletronicamente nas bases do Sistema Gestor de Laudos (GDL) da Superintendência da Polícia Técnico-Científica do Estado de São Paulo"
+    " O laudo original foi assinado digitalmente nos termos da M.P. 2200-2/2001 de 24/08/2001 e encontra-se arquivado eletronicamente nas bases do Sistema Gestor de Laudos (GDL) da Superintendência da Polícia Técnico-Científica do Estado de São Paulo."
   )
     .size(20)
-    .font("Spranq eco sans");
+    .font("Spranq eco sans")
+    .break();
 
-  consideracoesParagraph1.addRun(textoConsideracoes.break());
+  consideracoesParagraph1.addRun(textoConsideracoes);
+
   doc.addParagraph(consideracoesParagraph);
   doc.addParagraph(consideracoesParagraph1);
 
   //Data Assinatura
   doc.addParagraph(emptyBreak);
-  var dataAssinatura = new docx.Paragraph(
+  var dataAssinatura = new docx.Paragraph().right();
+  const dataAssinaturaText = new docx.TextRun(
     "São Sebastião, " +
       diaAtendimento +
       " de " +
@@ -212,15 +254,26 @@ export function generateDoc(body) {
       " de " +
       anoAtendimento +
       "."
-  ).right();
+  )
+    .size(24)
+    .font("Spranq eco sans");
+  dataAssinatura.addRun(dataAssinaturaText);
   doc.addParagraph(dataAssinatura);
 
   // Id Perito
   doc.addParagraph(emptyBreak);
-  var IdPerito = new docx.Paragraph("RODRIGO BARBALAT VIANA").center();
-  doc.addParagraph(IdPerito);
-  var peritoCriminal = new docx.Paragraph("PERITO CRIMINAL").center();
-  doc.addParagraph(peritoCriminal);
+  var idPeritoParagraph = new docx.Paragraph().center();
+  const IdPeritoText = new docx.TextRun("RODRIGO BARBALAT VIANA")
+    .size(24)
+    .font("Spranq eco sans");
+  const peritoCriminal = new docx.TextRun("PERITO CRIMINAL")
+    .size(24)
+    .font("Spranq eco sans")
+    .break();
+  idPeritoParagraph.addRun(IdPeritoText);
+  idPeritoParagraph.addRun(peritoCriminal);
+
+  doc.addParagraph(idPeritoParagraph);
 
   // Used to export the file into a .docx file
   const nomeArquivo = "Laudo - Req. " + body.requisicao + ".docx";

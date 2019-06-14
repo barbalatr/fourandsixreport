@@ -147,10 +147,10 @@ export const ComRecuo = "com recuo";
 export const SemRecuo = "sem recuo";
 export const AlinhamentoDeLocal = [ComRecuo, SemRecuo];
 
-export const Automovel = "Automóvel";
-export const Caminhao = "Caminhão";
-export const Onibus = "Ônibus";
-export const Motocicleta = "Motocicleta";
+export const Automovel = "automóvel";
+export const Caminhao = "caminhão";
+export const Onibus = "ônibus";
+export const Motocicleta = "motocicleta";
 export const TipoVeiculo = [Automovel, Motocicleta, Caminhao, Onibus];
 
 export const Fratura = "Fratura";
@@ -167,6 +167,25 @@ export const Nao = "Não";
 export const NaoDanos = "Não, em função dos danos";
 export const isPreservado = [Sim, Nao];
 export const isFuncionando = [Sim, Nao, NaoDanos];
+export const Atuando = "atuando a contento";
+export const NaoAtuando = "não atuando a contento";
+export const NaoFoiPossivel = "não foi possível verificar";
+export const isAtuando = [Atuando, NaoAtuando, NaoFoiPossivel];
+
+export const FuncionandoNormalmente = "funcionando normalmente";
+export const FuncionandoParcialmente = "funcionando parcialmente";
+export const NaoFoiPossivelEletrica = "não foi possível verificar";
+export const isParteEletrica = [
+  FuncionandoNormalmente,
+  FuncionandoParcialmente,
+  NaoFoiPossivelEletrica
+];
+
+export const SemChaves = "ausência das chaves de ignição";
+export const SemBateria = "ausência da bateria";
+export const MotivoNaoFoiPossivel = {
+  [NaoFoiPossivelEletrica]: [SemChaves, SemBateria]
+};
 
 /*
 export const ForaApp = "fora de app";
