@@ -24,7 +24,7 @@ const initialState = {
   enderecoNumero: "",
   enderecoCidade: "",
   isLocalIC: false,
-  dataAtendimento: "",
+  diaAtendimento: "",
   horaChegada: "",
   dataLiberacao: "",
   horaLiberacao: "",

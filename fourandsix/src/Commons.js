@@ -71,13 +71,13 @@ export const Natureza = [Vistoria];
 
 // Delegacias do Litoral Norte
 //TODO adicionar DDM em todos
-export const DelPolCaraguatatuba1 = "01º Delegacia de Polícia Caraguatatuba";
-export const DelPolCaraguatatuba2 = "02º Delegacia de Polícia Caraguatatuba";
+export const DelPolCaraguatatuba1 = "01º DP de Caraguatatuba";
+export const DelPolCaraguatatuba2 = "02º DP de Caraguatatuba";
 export const DelPolCaraguatatuba = "Delegacia de Polícia de Caraguatatuba";
 export const DelPolIlhabela = "Ilhabela";
 export const DelPolSeccional = "Delegacia Seccional de São Sebastião";
-export const DelPolSaoSebastiao1 = "01 São Sebastião";
-export const DelPolSaoSebastiao2 = "02 São Sebastião";
+export const DelPolSaoSebastiao1 = "01º DP de São Sebastião";
+export const DelPolSaoSebastiao2 = "02º DP de São Sebastião";
 export const DelPolDIGDISE = "DIG/DISE de São Sebastião";
 export const DelPolDDMSaoSebastiao = "DDM de São Sebastião";
 export const DelPolUbatuba = "Del. Pol. Ubatuba";

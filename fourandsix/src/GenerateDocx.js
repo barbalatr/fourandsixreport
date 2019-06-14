@@ -48,12 +48,36 @@ export function generateDoc(body) {
   doc.addParagraph(laudoPericial);
 
   // Cabeçalho
+  const diaAtendimento = body.dataAtendimento.substring(8, 10);
+  const mesAtendimentoNumero = body.dataAtendimento.substring(5, 7);
+  const meses = {
+    "01": "janeiro",
+    "02": "fevereiro",
+    "03": "março",
+    "04": "abril",
+    "05": "maio",
+    "06": "junho",
+    "07": "julho",
+    "08": "agosto",
+    "09": "setembro",
+    "10": "outubro",
+    "11": "novembro",
+    "12": "dezembro"
+  };
+  const mesAtendimentoNome = meses[mesAtendimentoNumero];
+  const anoAtendimento = body.dataAtendimento.substring(0, 4);
+
   doc.addParagraph(emptyBreak);
+
   var cabecalhoParagraph = new docx.Paragraph().justified();
   var textoCabecalho = new docx.TextRun(
     "Em " +
-      body.dataAtendimento +
-      " , no Instituto de Criminalística da Superintendência da Polícia Técnico-Científica da Secretaria da Segurança Pública do Estado de São Paulo, em conformidade com o disposto no artigo 178 do Decreto Lei nº 3.689, de 3 de outubro de 1941, o Diretor deste Instituto, Dr. Maurício da Silva Lazzarin, designou o Perito Criminal Dr. Rodrigo Barbalat Viana para proceder aos exames periciais em face da requisição de exame expedida pela autoridade competente do(a) " +
+      diaAtendimento +
+      " de " +
+      mesAtendimentoNome +
+      " de " +
+      anoAtendimento +
+      ", no Instituto de Criminalística da Superintendência da Polícia Técnico-Científica da Secretaria da Segurança Pública do Estado de São Paulo, em conformidade com o disposto no artigo 178 do Decreto Lei nº 3.689, de 3 de outubro de 1941, o Diretor deste Instituto, Dr. Maurício da Silva Lazzarin, designou o Perito Criminal Dr. Rodrigo Barbalat Viana para proceder aos exames periciais em face da requisição de exame expedida pela autoridade competente do(a) " +
       body.delegacia +
       "."
   )
@@ -181,7 +205,13 @@ export function generateDoc(body) {
   //Data Assinatura
   doc.addParagraph(emptyBreak);
   var dataAssinatura = new docx.Paragraph(
-    "São Sebastião, " + body.dataAtendimento
+    "São Sebastião, " +
+      diaAtendimento +
+      " de " +
+      mesAtendimentoNome +
+      " de " +
+      anoAtendimento +
+      "."
   ).right();
   doc.addParagraph(dataAssinatura);
 
