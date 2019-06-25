@@ -34,19 +34,7 @@ const initialState = {
   marcaVeiculo: "",
   modeloVeiculo: "",
   corVeiculo: "",
-  amolgamentoVeiculo: false,
-  fraturaVeiculo: false,
-  atritamentoVeiculo: false,
-  aspectoDano: "",
-  esquerdaParaDireita: false,
-  direitaParaEsquerda: false,
-  frenteParaTras: false,
-  trasParafrente: false,
-  dianteiraVeiculo: false,
-  traseiraVeiculo: false,
-  flancoEsquerdo: false,
-  flancoDireito: false,
-  teto: false,
+  danosVeiculoAutomovel: [],
   isPneuOk: "",
   pneuDianteiroDireito: "",
   pneuDianteiroEsquerdo: "",
@@ -126,6 +114,13 @@ export default class ExamForm extends React.Component {
     }
   };
 
+  // Proceed to next view
+  nextView = () => {
+    this.setState({
+      view: this.next()
+    });
+  };
+
   setStateSistemaSeguranca = () => {
     this.setState(state => {
       state.isSistemaSeguranca
@@ -142,12 +137,6 @@ export default class ExamForm extends React.Component {
     });
   };
 
-  // Proceed to next view
-  nextView = () => {
-    this.setState({
-      view: this.next()
-    });
-  };
   // Handle change
   handleChange = input => event => {
     this.setState({ [input]: event.target.value });
@@ -172,7 +161,6 @@ export default class ExamForm extends React.Component {
         };
     this.setState(newState);
   };
-
   handleCheckPneu = event => {
     let newState = event.target.checked
       ? {
@@ -192,7 +180,6 @@ export default class ExamForm extends React.Component {
 
     this.setState(newState);
   };
-
   handleCheckSistemaSeguranca = event => {
     let newState = event.target.checked
       ? {
@@ -213,6 +200,40 @@ export default class ExamForm extends React.Component {
 
   handleRadio = input => event => {
     this.setState({ [input]: event.target.value });
+  };
+
+  addDano = () => {
+    const danosVeiculoAutomovel = this.state.danosVeiculoAutomovel;
+    danosVeiculoAutomovel.push({
+      amolgamentoVeiculo: false,
+      fraturaVeiculo: false,
+      atritamentoVeiculo: false,
+      aspectoDano: "",
+      esquerdaParaDireita: false,
+      direitaParaEsquerda: false,
+      frenteParaTras: false,
+      trasParafrente: false,
+      dianteiraVeiculo: false,
+      traseiraVeiculo: false,
+      flancoEsquerdo: false,
+      flancoDireito: false,
+      teto: false
+    });
+    this.setState({ danosVeiculoAutomovel });
+  };
+
+  removeDano = () => {
+    const danosVeiculoAutomovel = this.state.danosVeiculoAutomovel;
+    danosVeiculoAutomovel.pop();
+    this.setState({ danosVeiculoAutomovel });
+  };
+
+  asdf = (index, atributo) => () => {
+    const danosVeiculoAutomovel = this.state.danosVeiculoAutomovel;
+    danosVeiculoAutomovel[index][atributo] = !danosVeiculoAutomovel[index][
+      atributo
+    ];
+    this.setState({ danosVeiculoAutomovel });
   };
   submit = () => {
     console.log("submit");
@@ -261,19 +282,7 @@ export default class ExamForm extends React.Component {
       marcaVeiculo,
       modeloVeiculo,
       corVeiculo,
-      amolgamentoVeiculo,
-      fraturaVeiculo,
-      atritamentoVeiculo,
-      aspectoDano,
-      esquerdaParaDireita,
-      direitaParaEsquerda,
-      frenteParaTras,
-      trasParafrente,
-      dianteiraVeiculo,
-      traseiraVeiculo,
-      flancoEsquerdo,
-      flancoDireito,
-      teto,
+      danosVeiculoAutomovel,
       isPneuOk,
       pneuDianteiroDireito,
       pneuDianteiroEsquerdo,
@@ -312,19 +321,7 @@ export default class ExamForm extends React.Component {
       marcaVeiculo,
       modeloVeiculo,
       corVeiculo,
-      amolgamentoVeiculo,
-      fraturaVeiculo,
-      atritamentoVeiculo,
-      aspectoDano,
-      esquerdaParaDireita,
-      direitaParaEsquerda,
-      frenteParaTras,
-      trasParafrente,
-      dianteiraVeiculo,
-      traseiraVeiculo,
-      flancoEsquerdo,
-      flancoDireito,
-      teto,
+      danosVeiculoAutomovel,
       isPneuOk,
       pneuDianteiroDireito,
       pneuDianteiroEsquerdo,
@@ -387,6 +384,9 @@ export default class ExamForm extends React.Component {
           handleCheckSistemaSeguranca={this.handleCheckSistemaSeguranca}
           handleCheckPneu={this.handleCheckPneu}
           values={values}
+          addDano={this.addDano}
+          removeDano={this.removeDano}
+          asdf={this.asdf}
         />
       );
     }
@@ -416,3 +416,21 @@ export default class ExamForm extends React.Component {
     }
   }
 }
+
+/*
+
+amolgamentoVeiculo: false,
+fraturaVeiculo: false,
+atritamentoVeiculo: false,
+aspectoDano: "",
+esquerdaParaDireita: false,
+direitaParaEsquerda: false,
+frenteParaTras: false,
+trasParafrente: false,
+dianteiraVeiculo: false,
+traseiraVeiculo: false,
+flancoEsquerdo: false,
+flancoDireito: false,
+teto: false
+
+*/

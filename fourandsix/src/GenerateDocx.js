@@ -178,24 +178,22 @@ export function generateDoc(body) {
     .font("Spranq eco sans");
   sistemaSegurancaParagraph.addRun(sistemaSegurancaText);
 
-  var sistemaSegurancaParagraph1 = new docx.Paragraph();
+  var sistemaSegurancaParagraph1 = new docx.Paragraph().bullet();
   var freioText = new docx.TextRun(
     "Freio dianteiro: " + body.freios + ". " + body.motivoFreio
   )
     .size(24)
-    .font("Spranq eco sans")
-    .break();
-
+    .font("Spranq eco sans");
   sistemaSegurancaParagraph1.addRun(freioText);
-
+  var sistemaSegurancaParagraph2 = new docx.Paragraph().bullet();
   var direcaoText = new docx.TextRun(
     "Direção: " + body.direcao + ". " + body.motivoDirecao
   )
     .size(24)
-    .font("Spranq eco sans")
-    .break();
-  sistemaSegurancaParagraph1.addRun(direcaoText);
+    .font("Spranq eco sans");
+  sistemaSegurancaParagraph2.addRun(direcaoText);
 
+  var sistemaSegurancaParagraph3 = new docx.Paragraph().bullet();
   const xpto =
     body.parteEletrica === "funcionando parcialmente"
       ? ". " + body.motivoParteEletrica
@@ -206,12 +204,14 @@ export function generateDoc(body) {
     "Parte Elétrica: " + body.parteEletrica + xpto
   )
     .size(24)
-    .font("Spranq eco sans")
-    .break();
-  sistemaSegurancaParagraph1.addRun(parteEletricaText);
+    .font("Spranq eco sans");
+  sistemaSegurancaParagraph3.addRun(parteEletricaText);
 
   doc.addParagraph(sistemaSegurancaParagraph);
+  doc.addParagraph(emptyBreak);
   doc.addParagraph(sistemaSegurancaParagraph1);
+  doc.addParagraph(sistemaSegurancaParagraph2);
+  doc.addParagraph(sistemaSegurancaParagraph3);
 
   // Considerações Finais
   doc.addParagraph(emptyBreak);

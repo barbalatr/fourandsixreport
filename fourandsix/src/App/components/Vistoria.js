@@ -41,7 +41,7 @@ export default class Vistoria extends React.Component {
     return (
       <React.Fragment>
         <Navbar bg="light" variant="dark">
-          <h1>Vistoria</h1>
+          <h1>Vistoria Veicular</h1>
         </Navbar>
 
         <Container>
