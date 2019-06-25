@@ -151,22 +151,50 @@ export function generateDoc(body) {
 
   doc.addParagraph(emptyBreak);
 
-  var dano1Paragraph = new docx.Paragraph().bullet();
-  var dano1 = new docx.TextRun("Vestígios de maça")
-    .size(24)
-    .font("Spranq eco sans");
-  dano1Paragraph.addRun(dano1);
-  doc.addParagraph(dano1Paragraph);
+  // Danos
+  body.danosVeiculoAutomovel.map(dano => {
+    let danoParagraph = new docx.Paragraph().bullet();
+    let danoText = new docx.TextRun(
+      "Vestígios de" +
+        (dano.amolgamentoVeiculo &&
+        dano.atritamentoVeiculo &&
+        dano.fraturaVeiculo
+          ? " amolgamento, atritamento e fratura"
+          : dano.amolgamentoVeiculo && dano.atritamentoVeiculo
+          ? " amolgamento e atritamento"
+          : dano.amolgamentoVeiculo && dano.fraturaVeiculo
+          ? " amolgamento e fratura"
+          : dano.atritamentoVeiculo && dano.fraturaVeiculo
+          ? " atritamento e fratura"
+          : dano.amolgamentoVeiculo
+          ? " amolgamento"
+          : dano.atritamentoVeiculo
+          ? " atritamento"
+          : dano.fraturaVeiculo
+          ? " fratura"
+          : "") +
+        (dano.aspectoDano === "Recentes"
+          ? " de aspecto recente"
+          : " de aspecto não recente") +
+        " localizados" +
+        (dano.dianteiraVeiculo ? " na dianteira" : "") +
+        (dano.traseiraVeiculo ? " na traseira" : "") +
+        (dano.flancoEsquerdo ? " no flanco esquerdo" : "") +
+        (dano.flancoDireito ? " no flanco direito" : "") +
+        (dano.teto ? " no teto" : "") +
+        " e orientados" +
+        (dano.esquerdaParaDireita ? " da esqueda para a direita" : "") +
+        (dano.direitaParaEsquerda ? " da direita para a esquerda" : "") +
+        (dano.frenteParaTras ? " da frente para trás" : "") +
+        (dano.trasParafrente ? " de trás para a frente" : "") +
+        "."
+    )
+      .size(24)
+      .font("Spranq eco sans");
 
-  var dano2Paragraph = new docx.Paragraph().bullet();
-  var dano2 = new docx.TextRun("abacate").size(24).font("Spranq eco sans");
-  dano2Paragraph.addRun(dano2);
-  doc.addParagraph(dano2Paragraph);
-
-  var dano3Paragraph = new docx.Paragraph().bullet();
-  var dano3 = new docx.TextRun("banana").size(24).font("Spranq eco sans");
-  dano3Paragraph.addRun(dano3);
-  doc.addParagraph(dano3Paragraph);
+    danoParagraph.addRun(danoText);
+    doc.addParagraph(danoParagraph);
+  });
 
   // Sistemas de Segurança
   doc.addParagraph(emptyBreak);

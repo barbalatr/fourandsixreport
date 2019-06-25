@@ -32,7 +32,8 @@ export default class Vistoria extends React.Component {
       handleCheckPneu,
       addDano,
       removeDano,
-      asdf
+      asdf,
+      qwer
     } = this.props;
     return (
       <React.Fragment>
@@ -52,87 +53,87 @@ export default class Vistoria extends React.Component {
                 />
                 <CheckBoxInput
                   label="Atritamento Metálico"
-                  value={values.atritamentoVeiculo}
-                  checked={values.atritamentoVeiculo}
-                  onChange={handleCheck("atritamentoVeiculo")}
+                  value={dano.atritamentoVeiculo}
+                  checked={dano.atritamentoVeiculo}
+                  onChange={asdf(index, "atritamentoVeiculo")}
                 />
                 <CheckBoxInput
                   label="Fratura"
-                  value={values.fraturaVeiculo}
-                  checked={values.fraturaVeiculo}
-                  onChange={handleCheck("fraturaVeiculo")}
+                  value={dano.fraturaVeiculo}
+                  checked={dano.fraturaVeiculo}
+                  onChange={asdf(index, "fraturaVeiculo")}
                 />
                 <br />
 
                 <RadioInput
                   label="Recentes"
                   value="Recentes"
-                  checked={values.aspectoDano === "Recentes"}
-                  onChange={handleRadio("aspectoDano")}
+                  checked={dano.aspectoDano === "Recentes"}
+                  onChange={qwer(index, "aspectoDano")}
                 />
                 <RadioInput
                   label="Não Recentes"
                   value="Não Recentes"
-                  checked={values.aspectoDano === "Não Recentes"}
-                  onChange={handleRadio("aspectoDano")}
+                  checked={dano.aspectoDano === "Não Recentes"}
+                  onChange={qwer(index, "aspectoDano")}
                 />
                 <br />
                 <h3>Localização</h3>
                 <CheckBoxInput
                   label="Dianteira"
-                  value={values.dianteiraVeiculo}
-                  checked={values.dianteiraVeiculo}
-                  onChange={handleCheck("dianteiraVeiculo")}
+                  value={dano.dianteiraVeiculo}
+                  checked={dano.dianteiraVeiculo}
+                  onChange={asdf(index, "dianteiraVeiculo")}
                 />
                 <CheckBoxInput
                   label="Traseira"
-                  value={values.traseiraVeiculo}
-                  checked={values.traseiraVeiculo}
-                  onChange={handleCheck("traseiraVeiculo")}
+                  value={dano.traseiraVeiculo}
+                  checked={dano.traseiraVeiculo}
+                  onChange={asdf(index, "traseiraVeiculo")}
                 />
                 <CheckBoxInput
                   label="Flanco Esquerdo"
-                  value={values.flancoEsquerdo}
-                  checked={values.flancoEsquerdo}
-                  onChange={handleCheck("flancoEsquerdo")}
+                  value={dano.flancoEsquerdo}
+                  checked={dano.flancoEsquerdo}
+                  onChange={asdf(index, "flancoEsquerdo")}
                 />
                 <CheckBoxInput
                   label="Flanco Direito"
-                  value={values.flancoDireito}
-                  checked={values.flancoDireito}
-                  onChange={handleCheck("flancoDireito")}
+                  value={dano.flancoDireito}
+                  checked={dano.flancoDireito}
+                  onChange={asdf(index, "flancoDireito")}
                 />
                 <CheckBoxInput
                   label="Teto"
-                  value={values.teto}
-                  checked={values.teto}
-                  onChange={handleCheck("teto")}
+                  value={dano.teto}
+                  checked={dano.teto}
+                  onChange={asdf(index, "teto")}
                 />
                 <br />
                 <h3>Orientação</h3>
                 <CheckBoxInput
                   label="esquerda para a direita"
-                  value={values.esquerdaParaDireita}
-                  checked={values.esquerdaParaDireita}
-                  onChange={handleCheck("esquerdaParaDireita")}
+                  value={dano.esquerdaParaDireita}
+                  checked={dano.esquerdaParaDireita}
+                  onChange={asdf(index, "esquerdaParaDireita")}
                 />
                 <CheckBoxInput
                   label="direita para a esquerda"
-                  value={values.direitaParaEsquerda}
-                  checked={values.direitaParaEsquerda}
-                  onChange={handleCheck("direitaParaEsquerda")}
+                  value={dano.direitaParaEsquerda}
+                  checked={dano.direitaParaEsquerda}
+                  onChange={asdf(index, "direitaParaEsquerda")}
                 />
                 <CheckBoxInput
                   label="frente para trás"
-                  value={values.frenteParaTras}
-                  checked={values.frenteParaTras}
-                  onChange={handleCheck("frenteParaTras")}
+                  value={dano.frenteParaTras}
+                  checked={dano.frenteParaTras}
+                  onChange={asdf(index, "frenteParaTras")}
                 />
                 <CheckBoxInput
                   label="trás para frente"
-                  value={values.trasParafrente}
-                  checked={values.trasParafrente}
-                  onChange={handleCheck("trasParafrente")}
+                  value={dano.trasParafrente}
+                  checked={dano.trasParafrente}
+                  onChange={asdf(index, "trasParafrente")}
                 />
 
                 <br />

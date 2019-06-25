@@ -12,6 +12,15 @@ import {
 export default class Confirmar extends React.Component {
   render() {
     const { values, submit, prevView } = this.props;
+
+    const xxx = Object.entries(values).flatMap(([a, b]) => {
+      if (b instanceof Array)
+        return b.flatMap((object, index) =>
+          [[a + "-" + index, ""]].concat(Object.entries(object))
+        );
+      return [[a, b]];
+    });
+
     return (
       <React.Fragment>
         <Navbar bg="light" variant="dark">
@@ -19,7 +28,7 @@ export default class Confirmar extends React.Component {
         </Navbar>
 
         <Container>
-          <TableInput values={values} />
+          <TableInput values={xxx} />
         </Container>
 
         <ButtonToolbar>

@@ -2,7 +2,6 @@ import React from "react";
 import { Form, Table } from "react-bootstrap";
 
 export function TableInput({ values }) {
-  let valuesArray = Object.entries(values);
   return (
     <Table striped bordered hover size="sm">
       <thead>
@@ -12,7 +11,7 @@ export function TableInput({ values }) {
         </tr>
       </thead>
       <tbody>
-        {valuesArray.map(v => (
+        {values.map(v => (
           <tr>
             <td>{v[0]}</td>
             <td>{render(v[1])}</td>

@@ -34,7 +34,23 @@ const initialState = {
   marcaVeiculo: "",
   modeloVeiculo: "",
   corVeiculo: "",
-  danosVeiculoAutomovel: [],
+  danosVeiculoAutomovel: [
+    {
+      amolgamentoVeiculo: false,
+      fraturaVeiculo: false,
+      atritamentoVeiculo: false,
+      aspectoDano: "",
+      esquerdaParaDireita: false,
+      direitaParaEsquerda: false,
+      frenteParaTras: false,
+      trasParafrente: false,
+      dianteiraVeiculo: false,
+      traseiraVeiculo: false,
+      flancoEsquerdo: false,
+      flancoDireito: false,
+      teto: false
+    }
+  ],
   isPneuOk: "",
   pneuDianteiroDireito: "",
   pneuDianteiroEsquerdo: "",
@@ -72,8 +88,11 @@ export default class ExamForm extends React.Component {
     if (view === "Confirmar" && natureza === "") {
       return "Local";
     }
-    if (view === "Confirmar" && natureza === "Vistoria Veicular") {
+    if (view === "DanosVeiculo1" && natureza === "Vistoria Veicular") {
       return "Vistoria Veicular";
+    }
+    if (view === "Confirmar" && natureza === "Vistoria Veicular") {
+      return "DanosVeiculo1";
     }
     if (view === "Confirmar" && natureza === "Homicídio") {
       return "Homicídio";
@@ -235,6 +254,13 @@ export default class ExamForm extends React.Component {
     ];
     this.setState({ danosVeiculoAutomovel });
   };
+
+  qwer = (index, atributo) => event => {
+    const danosVeiculoAutomovel = this.state.danosVeiculoAutomovel;
+    danosVeiculoAutomovel[index][atributo] = event.target.value;
+    this.setState({ danosVeiculoAutomovel });
+  };
+
   submit = () => {
     console.log("submit");
     fetch("/", {
@@ -387,6 +413,7 @@ export default class ExamForm extends React.Component {
           addDano={this.addDano}
           removeDano={this.removeDano}
           asdf={this.asdf}
+          qwer={this.qwer}
         />
       );
     }
