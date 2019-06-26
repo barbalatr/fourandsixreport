@@ -1,4 +1,5 @@
 import React from "react";
+import { ButtonStyle, AppHeader } from "../App.css";
 import {
   TextInput,
   Select,
@@ -37,7 +38,7 @@ export default class Vistoria extends React.Component {
     } = this.props;
     return (
       <React.Fragment>
-        <Navbar bg="light" variant="dark">
+        <Navbar bg="light" variant="dark" className="AppHeader">
           <h1>Vistoria Veicular</h1>
         </Navbar>
         {values.danosVeiculoAutomovel.map((dano, index) => {
@@ -142,17 +143,16 @@ export default class Vistoria extends React.Component {
           );
         })}
 
-        <ButtonToolbar>
+        <div className="ButtonStyle">
           <Button variant="outline-primary" onClick={removeDano}>
-            Apagar Dano
+            Excluir Dano
           </Button>
           &nbsp;
           <Button variant="primary" onClick={addDano}>
             Adicionar Novo Dano
           </Button>
-        </ButtonToolbar>
-        <br />
-        <ButtonToolbar>
+          <br />
+          <br />
           <Button variant="outline-primary" onClick={prevView}>
             Voltar
           </Button>
@@ -160,7 +160,7 @@ export default class Vistoria extends React.Component {
           <Button variant="primary" onClick={nextView}>
             Continuar
           </Button>
-        </ButtonToolbar>
+        </div>
       </React.Fragment>
     );
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import App from "../App.css";
+import { ButtonStyle, AppHeader } from "../App.css";
 import { TextInput, Select } from "./BasicComponents";
 import { Navbar, Container, Button, Form } from "react-bootstrap";
 import { Natureza, Delegacia, Delegado } from "../../Commons";
@@ -9,12 +9,12 @@ export default class Requisicao extends React.Component {
     const { values, handleChange, nextView } = this.props;
     return (
       <React.Fragment>
-        <Navbar bg="light" variant="dark">
+        <Navbar bg="light" variant="dark" className="AppHeader">
           <h1>Requisição</h1>
         </Navbar>
 
         <Container>
-          <Form className="App">
+          <Form>
             <TextInput
               label="Requisição - REP"
               value={values.requisicao}
@@ -45,7 +45,9 @@ export default class Requisicao extends React.Component {
           </Form>
         </Container>
 
-        <Button onClick={nextView}>Continuar</Button>
+        <div className="ButtonStyle">
+          <Button onClick={nextView}>Continuar</Button>
+        </div>
       </React.Fragment>
     );
   }

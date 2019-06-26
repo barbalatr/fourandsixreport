@@ -1,5 +1,5 @@
 import React from "react";
-import App from "../App.css";
+import { ButtonStyle, AppHeader } from "../App.css";
 import {
   TextInput,
   Select,
@@ -29,12 +29,12 @@ export default class Local extends React.Component {
     } = this.props;
     return (
       <React.Fragment>
-        <Navbar bg="light" variant="dark">
+        <Navbar bg="light" variant="dark" className="AppHeader">
           <h1>Local</h1>
         </Navbar>
 
         <Container>
-          <Form className="App">
+          <Form>
             <DateInput
               label="Data do Atendimento"
               value={values.dataAtendimento}
@@ -47,14 +47,17 @@ export default class Local extends React.Component {
               onChange={handleChange("horaChegada")}
             />
 
-            <p>Endereço</p>
-
-            <CheckBoxInput
-              label="IC São Sebastião"
-              value={values.isLocalIC}
-              checked={values.isLocalIC}
-              onChange={handleCheckEndereco}
-            />
+            {values.natureza === "Vistoria Veicular" && (
+              <Container>
+                <p>Endereço</p>
+                <CheckBoxInput
+                  label="IC São Sebastião"
+                  value={values.isLocalIC}
+                  checked={values.isLocalIC}
+                  onChange={handleCheckEndereco}
+                />
+              </Container>
+            )}
 
             <TextInput
               placeholder="Endereço"
@@ -110,7 +113,7 @@ export default class Local extends React.Component {
           </Form>
         </Container>
         <br />
-        <ButtonToolbar>
+        <div className="ButtonStyle">
           <Button variant="outline-primary" onClick={prevView}>
             Voltar
           </Button>
@@ -118,7 +121,7 @@ export default class Local extends React.Component {
           <Button variant="primary" onClick={nextView}>
             Continuar
           </Button>
-        </ButtonToolbar>
+        </div>
       </React.Fragment>
     );
   }

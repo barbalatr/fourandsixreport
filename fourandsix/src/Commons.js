@@ -151,7 +151,127 @@ export const Automovel = "automóvel";
 export const Caminhao = "caminhão";
 export const Onibus = "ônibus";
 export const Motocicleta = "motocicleta";
-export const TipoVeiculo = [Automovel, Motocicleta, Caminhao, Onibus];
+export const TipoVeiculo = [Automovel, Motocicleta];
+
+export const AlfaRomeo = "Alfa Romeo";
+export const AstonMartin = "Aston Martin";
+export const Audi = "Audi";
+export const BMW = "BMW";
+export const Bugre = "Bugre";
+export const Bugway = "Bugway";
+export const Chery = "Chery";
+export const Chevrolet = "Chevrolet";
+export const Chrysler = "Chrysler";
+export const Citroen = "Citroen";
+export const Daewoo = "Daewoo";
+export const Dodge = "Dodge";
+export const Ferrari = "Ferrari";
+export const FIAT = "FIAT";
+export const Ford = "Ford";
+export const GMC = "GMC";
+export const Gurgel = "Gurgel";
+export const Honda = "Honda";
+export const Hyundai = "Hyundai";
+export const IVECO = "IVECO";
+export const JAC = "JAC";
+export const Jaguar = "Jaguar";
+export const Jeep = "Jeep";
+export const KIA = "KIA";
+export const Lamborghini = "Lamborghini";
+export const LandRover = "Land Rover";
+export const Lexus = "Lexus";
+export const Mazda = "Mazda";
+export const MercedesBenz = "Mercedez-Benz";
+export const Mitsubishi = "Mitsubishi";
+export const Nissan = "Nissan";
+export const Pegeout = "Pegeout";
+export const Porsche = "Porsche";
+export const Renault = "Renault";
+export const Shelby = "Shelby";
+export const Subaru = "Subaru";
+export const Suzuki = "Suzuki";
+export const Toyota = "Toyota";
+export const Troller = "Troller";
+export const Volkswagen = "Volkswagen";
+export const Volvo = "Volvo";
+export const MarcaCarro = [
+  Chevrolet,
+  Citroen,
+  FIAT,
+  Ford,
+  Honda,
+  Jeep,
+  KIA,
+  Hyundai,
+  Mitsubishi,
+  Pegeout,
+  Renault,
+  Volkswagen,
+  "--------------",
+  AlfaRomeo,
+  AstonMartin,
+  Audi,
+  BMW,
+  Bugre,
+  Bugway,
+  Chery,
+  Chrysler,
+  Daewoo,
+  Dodge,
+  Ferrari,
+  GMC,
+  Gurgel,
+  IVECO,
+  JAC,
+  Jaguar,
+  Lamborghini,
+  LandRover,
+  Lexus,
+  Mazda,
+  MercedesBenz,
+  Nissan,
+  Porsche,
+  Shelby,
+  Subaru,
+  Suzuki,
+  Toyota,
+  Troller,
+  Volvo
+];
+
+export const Dafra = "Dafra";
+export const Ducati = "Ducati";
+export const HarleyDavidson = "Harley Davidson";
+export const Kasinski = "Kasinski";
+export const Kawasaki = "Kawasaki";
+export const Indian = "Indian";
+export const Sundown = "Sundown";
+export const Triumph = "Triumph";
+export const Vespa = "Vespa";
+export const Yamaha = "Yamaha";
+
+export const MarcaMoto = [
+  BMW,
+  Dafra,
+  Ducati,
+  HarleyDavidson,
+  Honda,
+  Kasinski,
+  Kawasaki,
+  Suzuki,
+  Yamaha,
+  "--------",
+  Indian,
+  Sundown,
+  Triumph,
+  Vespa
+];
+
+export const MarcaVeiculo = {
+  "": [],
+  automóvel: MarcaCarro,
+  motocicleta: MarcaMoto
+};
 
 export const Fratura = "Fratura";
 export const Amolgamento = "Amolgamento";

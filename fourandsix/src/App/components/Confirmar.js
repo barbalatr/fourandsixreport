@@ -1,4 +1,5 @@
 import React from "react";
+import { ButtonStyle, AppHeader } from "../App.css";
 import { TextInput, Select, TableInput } from "./BasicComponents";
 import {
   Navbar,
@@ -23,7 +24,7 @@ export default class Confirmar extends React.Component {
 
     return (
       <React.Fragment>
-        <Navbar bg="light" variant="dark">
+        <Navbar bg="light" variant="dark" className="AppHeader">
           <h1>Resumo</h1>
         </Navbar>
 
@@ -31,7 +32,7 @@ export default class Confirmar extends React.Component {
           <TableInput values={xxx} />
         </Container>
 
-        <ButtonToolbar>
+        <div className="ButtonStyle">
           <Button variant="outline-primary" onClick={prevView}>
             Voltar
           </Button>
@@ -39,7 +40,7 @@ export default class Confirmar extends React.Component {
           <Button variant="primary" onClick={submit}>
             Finalizar
           </Button>
-        </ButtonToolbar>
+        </div>
       </React.Fragment>
     );
   }

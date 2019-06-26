@@ -1,4 +1,5 @@
 import React from "react";
+import { ButtonStyle, AppHeader } from "../App.css";
 import {
   TextInput,
   Select,
@@ -19,6 +20,9 @@ import {
 } from "react-bootstrap";
 import {
   TipoVeiculo,
+  MarcaVeiculo,
+  Automovel,
+  Motocicleta,
   AspectoDano,
   isAtuando,
   isParteEletrica,
@@ -41,7 +45,7 @@ export default class Vistoria extends React.Component {
     } = this.props;
     return (
       <React.Fragment>
-        <Navbar bg="light" variant="dark">
+        <Navbar bg="light" variant="dark" className="AppHeader">
           <h1>Vistoria Veicular</h1>
         </Navbar>
 
@@ -58,10 +62,11 @@ export default class Vistoria extends React.Component {
               value={values.placa}
               onChange={handleChange("placa")}
             />
-            <TextInput
+            <Select
               label="Marca"
               value={values.marcaVeiculo}
               onChange={handleChange("marcaVeiculo")}
+              values={MarcaVeiculo[values.tipoVeiculo]}
             />
             <TextInput
               label="Modelo"
@@ -74,9 +79,9 @@ export default class Vistoria extends React.Component {
               onChange={handleChange("corVeiculo")}
             />
 
-            <p>Pneus em bom estado de consevação</p>
+            <h3>Estado de Conservação dos Pneus</h3>
             <CheckBoxInput
-              label="Todos em bom estado."
+              label="Todos em bom estado"
               value={values.isPneuOk}
               checked={values.isPneuOk}
               onChange={handleCheckPneu}
@@ -84,38 +89,75 @@ export default class Vistoria extends React.Component {
 
             <br />
 
-            <Select
-              label="Dianteiro Direito"
-              value={values.pneuDianteiroDireito}
-              checked={values.pneuDianteiroDireito}
-              onChange={handleChange("pneuDianteiroDireito")}
-              values={EstadoConservacao}
-            />
-            <Select
-              label="Dianteiro Esquerdo"
-              value={values.pneuDianteiroEsquerdo}
-              checked={values.pneuDianteiroEsquerdo}
-              onChange={handleChange("pneuDianteiroEsquerdo")}
-              values={EstadoConservacao}
-            />
-            <Select
-              label="Traseiro Direito"
-              value={values.pneuTraseiroDireito}
-              checked={values.pneuTraseiroDireito}
-              onChange={handleChange("pneuTraseiroDireito")}
-              values={EstadoConservacao}
-            />
-            <Select
-              label="Traseiro Esquerdo"
-              value={values.pneuTraseiroEsquerdo}
-              checked={values.pneuTraseiroEsquerdo}
-              onChange={handleChange("pneuTraseiroEsquerdo")}
-              values={EstadoConservacao}
-            />
+            {values.tipoVeiculo === "automóvel" && (
+              <Container>
+                <Row>
+                  <Col>
+                    <Select
+                      label="Dianteiro Esquerdo"
+                      value={values.pneuDianteiroEsquerdo}
+                      checked={values.pneuDianteiroEsquerdo}
+                      onChange={handleChange("pneuDianteiroEsquerdo")}
+                      values={EstadoConservacao}
+                    />
+                  </Col>
+                  <Col>
+                    <Select
+                      label="Dianteiro Direito"
+                      value={values.pneuDianteiroDireito}
+                      checked={values.pneuDianteiroDireito}
+                      onChange={handleChange("pneuDianteiroDireito")}
+                      values={EstadoConservacao}
+                    />
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col>
+                    <Select
+                      label="Traseiro Esquerdo"
+                      value={values.pneuTraseiroEsquerdo}
+                      checked={values.pneuTraseiroEsquerdo}
+                      onChange={handleChange("pneuTraseiroEsquerdo")}
+                      values={EstadoConservacao}
+                    />
+                  </Col>
+
+                  <Col>
+                    <Select
+                      label="Traseiro Direito"
+                      value={values.pneuTraseiroDireito}
+                      checked={values.pneuTraseiroDireito}
+                      onChange={handleChange("pneuTraseiroDireito")}
+                      values={EstadoConservacao}
+                    />
+                  </Col>
+                </Row>
+              </Container>
+            )}
+
+            {values.tipoVeiculo === "motocicleta" && (
+              <Container>
+                <Select
+                  label="Dianteiro"
+                  value={values.pneuDianteiro}
+                  checked={values.pneuDianteiro}
+                  onChange={handleChange("pneuDianteiro")}
+                  values={EstadoConservacao}
+                />
+                <Select
+                  label="Traseiro"
+                  value={values.pneuTraseiro}
+                  checked={values.pneuTraseiro}
+                  onChange={handleChange("pneuTraseiro")}
+                  values={EstadoConservacao}
+                />
+              </Container>
+            )}
 
             <br />
 
-            <p>Sistemas de Segurança</p>
+            <h3>Sistemas de Segurança</h3>
 
             <CheckBoxInput
               label="Todos em bom estado"
@@ -177,7 +219,7 @@ export default class Vistoria extends React.Component {
         </Container>
         <br />
 
-        <ButtonToolbar>
+        <div className="ButtonStyle">
           <Button variant="outline-primary" onClick={prevView}>
             Voltar
           </Button>
@@ -185,7 +227,7 @@ export default class Vistoria extends React.Component {
           <Button variant="primary" onClick={nextView}>
             Continuar
           </Button>
-        </ButtonToolbar>
+        </div>
       </React.Fragment>
     );
   }

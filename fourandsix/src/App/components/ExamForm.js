@@ -5,7 +5,7 @@ import Local from "./Local";
 import Confirmar from "./Confirmar";
 import Sucesso from "./Sucesso";
 import Vistoria from "./Vistoria";
-import DanosVeiculo1 from "./DanosVeiculo1";
+import DanosVeiculo from "./DanosVeiculo";
 import Homicidio from "./Homicidio";
 
 const initialState = {
@@ -56,6 +56,8 @@ const initialState = {
   pneuDianteiroEsquerdo: "",
   pneuTraseiroDireito: "",
   pneuTraseiroEsquerdo: "",
+  pneuDianteiro: "",
+  pneuTraseiro: "",
   isSistemaSeguranca: false,
   freios: "",
   direcao: "",
@@ -79,7 +81,7 @@ export default class ExamForm extends React.Component {
     if (view === "Vistoria Veicular") {
       return "Local";
     }
-    if (view === "DanosVeiculo1") {
+    if (view === "DanosVeiculo") {
       return "Vistoria Veicular";
     }
     if (view === "Homicídio") {
@@ -88,11 +90,11 @@ export default class ExamForm extends React.Component {
     if (view === "Confirmar" && natureza === "") {
       return "Local";
     }
-    if (view === "DanosVeiculo1" && natureza === "Vistoria Veicular") {
+    if (view === "DanosVeiculo" && natureza === "Vistoria Veicular") {
       return "Vistoria Veicular";
     }
     if (view === "Confirmar" && natureza === "Vistoria Veicular") {
-      return "DanosVeiculo1";
+      return "DanosVeiculo";
     }
     if (view === "Confirmar" && natureza === "Homicídio") {
       return "Homicídio";
@@ -120,9 +122,9 @@ export default class ExamForm extends React.Component {
       return "Homicídio";
     }
     if (view === "Vistoria Veicular") {
-      return "DanosVeiculo1";
+      return "DanosVeiculo";
     }
-    if (view === "DanosVeiculo1") {
+    if (view === "DanosVeiculo") {
       return "Confirmar";
     }
     if (view === "Homicídio") {
@@ -187,14 +189,18 @@ export default class ExamForm extends React.Component {
           pneuDianteiroDireito: "em bom estado de conservação",
           pneuDianteiroEsquerdo: "em bom estado de conservação",
           pneuTraseiroDireito: "em bom estado de conservação",
-          pneuTraseiroEsquerdo: "em bom estado de conservação"
+          pneuTraseiroEsquerdo: "em bom estado de conservação",
+          pneuDianteiro: "em bom estado de conservação",
+          pneuTraseiro: "em bom estado de conservação"
         }
       : {
           isPneuOk: false,
           pneuDianteiroDireito: "",
           pneuDianteiroEsquerdo: "",
           pneuTraseiroDireito: "",
-          pneuTraseiroEsquerdo: ""
+          pneuTraseiroEsquerdo: "",
+          pneuDianteiro: "",
+          pneuTraseiro: ""
         };
 
     this.setState(newState);
@@ -314,6 +320,8 @@ export default class ExamForm extends React.Component {
       pneuDianteiroEsquerdo,
       pneuTraseiroDireito,
       pneuTraseiroEsquerdo,
+      pneuDianteiro,
+      pneuTraseiro,
       isSistemaSeguranca,
       freios,
       direcao,
@@ -353,6 +361,8 @@ export default class ExamForm extends React.Component {
       pneuDianteiroEsquerdo,
       pneuTraseiroDireito,
       pneuTraseiroEsquerdo,
+      pneuDianteiro,
+      pneuTraseiro,
       isSistemaSeguranca,
       freios,
       direcao,
@@ -399,9 +409,9 @@ export default class ExamForm extends React.Component {
         />
       );
     }
-    if (view === "DanosVeiculo1") {
+    if (view === "DanosVeiculo") {
       return (
-        <DanosVeiculo1
+        <DanosVeiculo
           nextView={this.nextView}
           prevView={this.prevView}
           handleChange={this.handleChange}
