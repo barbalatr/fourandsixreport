@@ -144,11 +144,11 @@ export default class Vistoria extends React.Component {
 
         <ButtonToolbar>
           <Button variant="outline-primary" onClick={removeDano}>
-            Dano Anterior
+            Apagar Dano
           </Button>
           &nbsp;
           <Button variant="primary" onClick={addDano}>
-            Adicionar Dano
+            Adicionar Novo Dano
           </Button>
         </ButtonToolbar>
         <br />

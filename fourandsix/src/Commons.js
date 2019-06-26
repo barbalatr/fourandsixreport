@@ -181,10 +181,15 @@ export const isParteEletrica = [
   NaoFoiPossivelEletrica
 ];
 
+export const BomEstado = "em bom estado de conservação";
+export const EmDesacordo = "em desacordo com a legislação vigente";
+export const EstadoConservacao = [BomEstado, EmDesacordo];
+
 export const SemChaves = "ausência das chaves de ignição";
 export const SemBateria = "ausência da bateria";
+export const Fogo = "ação do fogo";
 export const MotivoNaoFoiPossivel = {
-  [NaoFoiPossivelEletrica]: [SemChaves, SemBateria]
+  [NaoFoiPossivelEletrica]: [SemChaves, SemBateria, Fogo]
 };
 
 /*

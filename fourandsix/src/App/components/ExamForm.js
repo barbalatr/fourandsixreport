@@ -184,10 +184,10 @@ export default class ExamForm extends React.Component {
     let newState = event.target.checked
       ? {
           isPneuOk: true,
-          pneuDianteiroDireito: "Sim",
-          pneuDianteiroEsquerdo: "Sim",
-          pneuTraseiroDireito: "Sim",
-          pneuTraseiroEsquerdo: "Sim"
+          pneuDianteiroDireito: "em bom estado de conservação",
+          pneuDianteiroEsquerdo: "em bom estado de conservação",
+          pneuTraseiroDireito: "em bom estado de conservação",
+          pneuTraseiroEsquerdo: "em bom estado de conservação"
         }
       : {
           isPneuOk: false,
@@ -443,21 +443,3 @@ export default class ExamForm extends React.Component {
     }
   }
 }
-
-/*
-
-amolgamentoVeiculo: false,
-fraturaVeiculo: false,
-atritamentoVeiculo: false,
-aspectoDano: "",
-esquerdaParaDireita: false,
-direitaParaEsquerda: false,
-frenteParaTras: false,
-trasParafrente: false,
-dianteiraVeiculo: false,
-traseiraVeiculo: false,
-flancoEsquerdo: false,
-flancoDireito: false,
-teto: false
-
-*/

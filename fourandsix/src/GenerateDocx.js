@@ -196,6 +196,58 @@ export function generateDoc(body) {
     doc.addParagraph(danoParagraph);
   });
 
+  // Pneus
+  doc.addParagraph(emptyBreak);
+
+  let pneusParagraph = new docx.Paragraph();
+  let pneusText = new docx.TextRun(
+    body.isPneuOk
+      ? "Todos os pneumáticos do veículo se encontravam em bom estado de conservação no momento da realização dos exames."
+      : "Foi verificado que os pneumáticos do veículo se encontravam nas seguintes condições no momento da realização do exame:"
+  )
+    .size(24)
+    .font("Spranq eco sans");
+  pneusParagraph.addRun(pneusText);
+  doc.addParagraph(pneusParagraph);
+
+  doc.addParagraph(emptyBreak);
+
+  let pneu1 = new docx.Paragraph().bullet();
+  let pneu1Text = new docx.TextRun(
+    "Pneumático dianteiro direito: " + body.pneuDianteiroDireito + "."
+  )
+    .size(24)
+    .font("Spranq eco sans");
+  let pneu2 = new docx.Paragraph().bullet();
+  let pneu2Text = new docx.TextRun(
+    "Pneumático dianteiro esquerdo: " + body.pneuDianteiroEsquerdo + "."
+  )
+    .size(24)
+    .font("Spranq eco sans");
+  let pneu3 = new docx.Paragraph().bullet();
+  let pneu3Text = new docx.TextRun(
+    "Pneumático traseiro direito: " + body.pneuTraseiroDireito + "."
+  )
+    .size(24)
+    .font("Spranq eco sans");
+  let pneu4 = new docx.Paragraph().bullet();
+  let pneu4Text = new docx.TextRun(
+    "Pneumático traseiro esquerdo: " + body.pneuTraseiroEsquerdo + "."
+  )
+    .size(24)
+    .font("Spranq eco sans");
+
+  if (body.isPneuOk !== true) {
+    pneu1.addRun(pneu1Text);
+    doc.addParagraph(pneu1);
+    pneu2.addRun(pneu2Text);
+    doc.addParagraph(pneu2);
+    pneu3.addRun(pneu3Text);
+    doc.addParagraph(pneu3);
+    pneu4.addRun(pneu4Text);
+    doc.addParagraph(pneu4);
+  }
+
   // Sistemas de Segurança
   doc.addParagraph(emptyBreak);
   var sistemaSegurancaParagraph = new docx.Paragraph();

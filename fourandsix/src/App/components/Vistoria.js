@@ -23,7 +23,8 @@ import {
   isAtuando,
   isParteEletrica,
   MotivoNaoFoiPossivel,
-  NaoFoiPossivelEletrica
+  NaoFoiPossivelEletrica,
+  EstadoConservacao
 } from "../../Commons";
 
 export default class Vistoria extends React.Component {
@@ -83,29 +84,33 @@ export default class Vistoria extends React.Component {
 
             <br />
 
-            <CheckBoxInput
+            <Select
               label="Dianteiro Direito"
               value={values.pneuDianteiroDireito}
               checked={values.pneuDianteiroDireito}
-              onChange={handleCheck("pneuDianteiroDireito")}
+              onChange={handleChange("pneuDianteiroDireito")}
+              values={EstadoConservacao}
             />
-            <CheckBoxInput
+            <Select
               label="Dianteiro Esquerdo"
               value={values.pneuDianteiroEsquerdo}
               checked={values.pneuDianteiroEsquerdo}
-              onChange={handleCheck("pneuDianteiroEsquerdo")}
+              onChange={handleChange("pneuDianteiroEsquerdo")}
+              values={EstadoConservacao}
             />
-            <CheckBoxInput
+            <Select
               label="Traseiro Direito"
               value={values.pneuTraseiroDireito}
               checked={values.pneuTraseiroDireito}
-              onChange={handleCheck("pneuTraseiroDireito")}
+              onChange={handleChange("pneuTraseiroDireito")}
+              values={EstadoConservacao}
             />
-            <CheckBoxInput
+            <Select
               label="Traseiro Esquerdo"
               value={values.pneuTraseiroEsquerdo}
               checked={values.pneuTraseiroEsquerdo}
-              onChange={handleCheck("pneuTraseiroEsquerdo")}
+              onChange={handleChange("pneuTraseiroEsquerdo")}
+              values={EstadoConservacao}
             />
 
             <br />
@@ -113,7 +118,7 @@ export default class Vistoria extends React.Component {
             <p>Sistemas de Segurança</p>
 
             <CheckBoxInput
-              label="Todos em bom estado."
+              label="Todos em bom estado"
               value={values.isSistemaSeguranca}
               checked={values.isSistemaSeguranca}
               onChange={handleCheckSistemaSeguranca}
