@@ -1,6 +1,117 @@
 var fs = require("fs");
 var docx = require("docx");
 
+export function bodyToSections(body) {
+  const result = [];
+
+  result.push({
+    header: "I - OBJETIVO",
+    paragraphs: [
+      "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando a realização de Vistoria Veicular."
+    ]
+  });
+  result.push({
+    header: "II - DO VEÍCULO E DOS EXAMES",
+    paragraphs: [
+      "Nas condições em que foi apresentado à perícia" +
+        (body.isLocalIC
+          ? " na sede da Equipe de Perícias Criminalísticas de São Sebastião"
+          : "") +
+        ", foi examinado um veículo do tipo " +
+        body.tipoVeiculo +
+        ", da marca " +
+        body.marcaVeiculo +
+        ", modelo " +
+        body.modeloVeiculo +
+        ", da cor " +
+        body.corVeiculo +
+        ", de placas " +
+        body.placa +
+        ", e que quando da realização dos exames apresentava: "
+    ]
+      .concat(
+        body.danosVeiculo.map(dano => {
+          return (
+            "Vestígios de" +
+            (dano.amolgamentoVeiculo &&
+            dano.atritamentoVeiculo &&
+            dano.fraturaVeiculo
+              ? " amolgamento, atritamento e fratura"
+              : dano.amolgamentoVeiculo && dano.atritamentoVeiculo
+              ? " amolgamento e atritamento"
+              : dano.amolgamentoVeiculo && dano.fraturaVeiculo
+              ? " amolgamento e fratura"
+              : dano.atritamentoVeiculo && dano.fraturaVeiculo
+              ? " atritamento e fratura"
+              : dano.amolgamentoVeiculo
+              ? " amolgamento"
+              : dano.atritamentoVeiculo
+              ? " atritamento"
+              : dano.fraturaVeiculo
+              ? " fratura"
+              : "") +
+            (dano.aspectoDano === "Recentes"
+              ? " de aspecto(s) recente(s)"
+              : " de aspecto(s) não recente(s)") +
+            " localizados" +
+            (dano.dianteiraVeiculo ? " na dianteira" : "") +
+            (dano.traseiraVeiculo ? " na traseira" : "") +
+            (dano.flancoEsquerdo ? " no flanco esquerdo" : "") +
+            (dano.flancoDireito ? " no flanco direito" : "") +
+            (dano.teto ? " no teto" : "") +
+            " e orientados" +
+            (dano.esquerdaParaDireita ? " da esqueda para a direita" : "") +
+            (dano.direitaParaEsquerda ? " da direita para a esquerda" : "") +
+            (dano.frenteParaTras ? " da frente para trás" : "") +
+            (dano.trasParafrente ? " de trás para a frente" : "") +
+            "."
+          );
+        })
+      )
+      .concat([
+        body.isPneuOk
+          ? "Todos os pneumáticos do veículo se encontravam em bom estado de conservação no momento da realização dos exames."
+          : "Foi verificado que os pneumáticos do veículo se encontravam nas seguintes condições no momento da realização do exame:"
+      ])
+      .concat(
+        body.isPneuOk !== true && body.tipoVeiculo === "automóvel"
+          ? [
+              "Pneumático dianteiro direito " + body.pneuDianteiroDireito + ".",
+              "Pneumático dianteiro esquerdo " +
+                body.pneuDianteiroEsquerdo +
+                ".",
+              "Pneumático traseiro direito " + body.pneuTraseiroDireito + ".",
+              "Pneumático traseiro esquerdo " + body.pneuTraseiroEsquerdo + "."
+            ]
+          : []
+      )
+      .concat(
+        body.isPneuOk !== true && body.tipoVeiculo === "motocicleta"
+          ? [
+              "Pneumático dianteiro " + body.pneuDianteiro + ".",
+              "Pneumático traseiro " + body.pneuTraseiro + "."
+            ]
+          : []
+      )
+      .concat([
+        "Através da realização de exame estático, foi verificado que seus sistemas de segurança para tráfego se encontravam nas seguintes condições:",
+        "Freio dianteiro: " + body.freios + ". " + body.motivoFreio,
+        "Direção: " + body.direcao + ". " + body.motivoDirecao,
+        "Parte Elétrica: " +
+          body.parteEletrica +
+          (body.parteEletrica === "funcionando parcialmente"
+            ? ". " + body.motivoParteEletrica
+            : body.parteEletrica === "não foi possível verificar"
+            ? " em razão da " + body.motivoParteEletrica + "."
+            : ".")
+      ])
+  });
+  result.push({
+    header: "III - CONSIDERAÇÕES FINAIS",
+    paragraphs: ["Era o que havia a relatar."]
+  });
+  return result;
+}
 export function generateDoc(body) {
   // Create document
   var doc = new docx.Document();
@@ -87,260 +198,38 @@ export function generateDoc(body) {
   cabecalhoParagraph.addRun(textoCabecalho);
   doc.addParagraph(cabecalhoParagraph);
 
-  // Objetivo
+  //Generate Chapters
+  const sections = bodyToSections(body);
 
-  doc.addParagraph(emptyBreak);
-
-  var objetivoHeading = new docx.Paragraph();
-  var objetivoHeadingText = new docx.TextRun("I - OBJETIVO")
-    .bold()
-    .size(24)
-    .font("Spranq eco sans");
-  objetivoHeading.addRun(objetivoHeadingText);
-
-  var objetivoParagraph = new docx.Paragraph().justified();
-  var textoObjetivo = new docx.TextRun(
-    "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando a realização de Vistoria Veicular."
-  )
-    .size(24)
-    .font("Spranq eco sans");
-
-  objetivoParagraph.addRun(textoObjetivo.break());
-  doc.addParagraph(objetivoHeading);
-  doc.addParagraph(objetivoParagraph);
-
-  // Do Veículo e dos Exames
-  doc.addParagraph(emptyBreak);
-
-  var doVeiculoDosExamesHeading = new docx.Paragraph();
-  var doVeiculoDosExamesHeadingText = new docx.TextRun(
-    "II - DO VEÍCULO E DOS EXAMES"
-  )
-    .bold()
-    .size(24)
-    .font("Spranq eco sans");
-  doVeiculoDosExamesHeading.addRun(doVeiculoDosExamesHeadingText);
-
-  var doVeiculoDosExamesParagraph = new docx.Paragraph().justified();
-
-  doc.addParagraph(doVeiculoDosExamesHeading);
-
-  const localVistoria = body.isLocalIC
-    ? " na sede da Equipe de Perícias Criminalísticas de São Sebastião"
-    : "";
-
-  var textoDoVeiculoDosExames = new docx.TextRun(
-    "Nas condições em que foi apresentado à perícia" +
-      localVistoria +
-      ", foi examinado um veículo do tipo " +
-      body.tipoVeiculo +
-      ", da marca " +
-      body.marcaVeiculo +
-      ", modelo " +
-      body.modeloVeiculo +
-      ", da cor " +
-      body.corVeiculo +
-      ", de placas " +
-      body.placa +
-      ", e que quando da realização dos exames apresentava: "
-  )
-    .size(24)
-    .font("Spranq eco sans");
-  doVeiculoDosExamesParagraph.addRun(textoDoVeiculoDosExames.break());
-  doc.addParagraph(doVeiculoDosExamesParagraph);
-
-  doc.addParagraph(emptyBreak);
-
-  // Danos
-  body.danosVeiculoAutomovel.map(dano => {
-    let danoParagraph = new docx.Paragraph().bullet();
-    let danoText = new docx.TextRun(
-      "Vestígios de" +
-        (dano.amolgamentoVeiculo &&
-        dano.atritamentoVeiculo &&
-        dano.fraturaVeiculo
-          ? " amolgamento, atritamento e fratura"
-          : dano.amolgamentoVeiculo && dano.atritamentoVeiculo
-          ? " amolgamento e atritamento"
-          : dano.amolgamentoVeiculo && dano.fraturaVeiculo
-          ? " amolgamento e fratura"
-          : dano.atritamentoVeiculo && dano.fraturaVeiculo
-          ? " atritamento e fratura"
-          : dano.amolgamentoVeiculo
-          ? " amolgamento"
-          : dano.atritamentoVeiculo
-          ? " atritamento"
-          : dano.fraturaVeiculo
-          ? " fratura"
-          : "") +
-        (dano.aspectoDano === "Recentes"
-          ? " de aspecto(s) recente(s)"
-          : " de aspecto(s) não recente(s)") +
-        " localizados" +
-        (dano.dianteiraVeiculo ? " na dianteira" : "") +
-        (dano.traseiraVeiculo ? " na traseira" : "") +
-        (dano.flancoEsquerdo ? " no flanco esquerdo" : "") +
-        (dano.flancoDireito ? " no flanco direito" : "") +
-        (dano.teto ? " no teto" : "") +
-        " e orientados" +
-        (dano.esquerdaParaDireita ? " da esqueda para a direita" : "") +
-        (dano.direitaParaEsquerda ? " da direita para a esquerda" : "") +
-        (dano.frenteParaTras ? " da frente para trás" : "") +
-        (dano.trasParafrente ? " de trás para a frente" : "") +
-        "."
-    )
+  sections.forEach(({ header, paragraphs }) => {
+    doc.addParagraph(emptyBreak);
+    var heading = new docx.Paragraph();
+    var headingText = new docx.TextRun(header)
+      .bold()
       .size(24)
       .font("Spranq eco sans");
+    heading.addRun(headingText);
+    doc.addParagraph(heading);
+    doc.addParagraph(emptyBreak);
 
-    danoParagraph.addRun(danoText);
-    doc.addParagraph(danoParagraph);
+    paragraphs.forEach(paragraph => {
+      var docParagraph = new docx.Paragraph().justified();
+      var text = new docx.TextRun(paragraph).size(24).font("Spranq eco sans");
+      docParagraph.addRun(text);
+      doc.addParagraph(docParagraph);
+    });
   });
 
-  // Pneus
+  //Disclaimer
   doc.addParagraph(emptyBreak);
-
-  let pneusParagraph = new docx.Paragraph();
-  let pneusText = new docx.TextRun(
-    body.isPneuOk
-      ? "Todos os pneumáticos do veículo se encontravam em bom estado de conservação no momento da realização dos exames."
-      : "Foi verificado que os pneumáticos do veículo se encontravam nas seguintes condições no momento da realização do exame:"
-  )
-    .size(24)
-    .font("Spranq eco sans");
-  pneusParagraph.addRun(pneusText);
-  doc.addParagraph(pneusParagraph);
-
-  doc.addParagraph(emptyBreak);
-
-  let pneuDD = new docx.Paragraph().bullet();
-  let pneuDDText = new docx.TextRun(
-    "Pneumático dianteiro direito " + body.pneuDianteiroDireito + "."
-  )
-    .size(24)
-    .font("Spranq eco sans");
-  let pneuDE = new docx.Paragraph().bullet();
-  let pneuDEText = new docx.TextRun(
-    "Pneumático dianteiro esquerdo " + body.pneuDianteiroEsquerdo + "."
-  )
-    .size(24)
-    .font("Spranq eco sans");
-  let pneuTD = new docx.Paragraph().bullet();
-  let pneuTDText = new docx.TextRun(
-    "Pneumático traseiro direito " + body.pneuTraseiroDireito + "."
-  )
-    .size(24)
-    .font("Spranq eco sans");
-  let pneuTE = new docx.Paragraph().bullet();
-  let pneuTEText = new docx.TextRun(
-    "Pneumático traseiro esquerdo " + body.pneuTraseiroEsquerdo + "."
-  )
-    .size(24)
-    .font("Spranq eco sans");
-
-  if (body.isPneuOk !== true && body.tipoVeiculo === "automóvel") {
-    pneuDD.addRun(pneuDDText);
-    doc.addParagraph(pneuDD);
-    pneuDE.addRun(pneuDEText);
-    doc.addParagraph(pneuDE);
-    pneuTD.addRun(pneuTDText);
-    doc.addParagraph(pneuTD);
-    pneuTE.addRun(pneuTEText);
-    doc.addParagraph(pneuTE);
-  }
-
-  let pneuDianteiro = new docx.Paragraph().bullet();
-  let pneuDianteiroText = new docx.TextRun(
-    "Pneumático dianteiro " + body.pneuDianteiro + "."
-  )
-    .size(24)
-    .font("Spranq eco sans");
-  let pneuTraseiro = new docx.Paragraph().bullet();
-  let pneuTraseiroText = new docx.TextRun(
-    "Pneumático traseiro " + body.pneuTraseiro + "."
-  )
-    .size(24)
-    .font("Spranq eco sans");
-
-  if (body.isPneuOk !== true && body.tipoVeiculo === "motocicleta") {
-    pneuDianteiro.addRun(pneuDianteiroText);
-    doc.addParagraph(pneuDianteiro);
-    pneuTraseiro.addRun(pneuTraseiroText);
-    doc.addParagraph(pneuTraseiro);
-  }
-  doc.addParagraph(emptyBreak);
-  // Sistemas de Segurança
-  var sistemaSegurancaParagraph = new docx.Paragraph();
-  var sistemaSegurancaText = new docx.TextRun(
-    "Através da realização de exame estático, foi verificado que seus sistemas de segurança para tráfego se encontravam nas seguintes condições:"
-  )
-    .size(24)
-    .font("Spranq eco sans");
-  sistemaSegurancaParagraph.addRun(sistemaSegurancaText);
-
-  var sistemaSegurancaParagraph1 = new docx.Paragraph().bullet();
-  var freioText = new docx.TextRun(
-    "Freio dianteiro: " + body.freios + ". " + body.motivoFreio
-  )
-    .size(24)
-    .font("Spranq eco sans");
-  sistemaSegurancaParagraph1.addRun(freioText);
-  var sistemaSegurancaParagraph2 = new docx.Paragraph().bullet();
-  var direcaoText = new docx.TextRun(
-    "Direção: " + body.direcao + ". " + body.motivoDirecao
-  )
-    .size(24)
-    .font("Spranq eco sans");
-  sistemaSegurancaParagraph2.addRun(direcaoText);
-
-  var sistemaSegurancaParagraph3 = new docx.Paragraph().bullet();
-  const xpto =
-    body.parteEletrica === "funcionando parcialmente"
-      ? ". " + body.motivoParteEletrica
-      : body.parteEletrica === "não foi possível verificar"
-      ? " em razão da " + body.motivoParteEletrica + "."
-      : ".";
-  var parteEletricaText = new docx.TextRun(
-    "Parte Elétrica: " + body.parteEletrica + xpto
-  )
-    .size(24)
-    .font("Spranq eco sans");
-  sistemaSegurancaParagraph3.addRun(parteEletricaText);
-
-  doc.addParagraph(sistemaSegurancaParagraph);
-  doc.addParagraph(emptyBreak);
-  doc.addParagraph(sistemaSegurancaParagraph1);
-  doc.addParagraph(sistemaSegurancaParagraph2);
-  doc.addParagraph(sistemaSegurancaParagraph3);
-
-  // Considerações Finais
-  doc.addParagraph(emptyBreak);
-
-  var consideracoesHeading = new docx.Paragraph();
-  var consideracoesHeadingText = new docx.TextRun("III - CONSIDERAÇÕES FINAIS")
-    .bold()
-    .size(24)
-    .font("Spranq eco sans");
-  consideracoesHeading.addRun(consideracoesHeadingText);
-  doc.addParagraph(consideracoesHeading);
-
-  var consideracoesParagraph = new docx.Paragraph();
-  var consideracoesParagraph1 = new docx.Paragraph().justified();
-  var textoRelatar = new docx.TextRun("Era o que havia a relatar.")
-    .size(24)
-    .font("Spranq eco sans");
-  consideracoesParagraph.addRun(textoRelatar.break());
-
-  var textoConsideracoes = new docx.TextRun(
-    " O laudo original foi assinado digitalmente nos termos da M.P. 2200-2/2001 de 24/08/2001 e encontra-se arquivado eletronicamente nas bases do Sistema Gestor de Laudos (GDL) da Superintendência da Polícia Técnico-Científica do Estado de São Paulo."
+  var disclaimerParagraph = new docx.Paragraph().justified();
+  const disclaimerText = new docx.TextRun(
+    "O laudo original foi assinado digitalmente nos termos da M.P. 2200-2/2001 de 24/08/2001 e encontra-se arquivado eletronicamente nas bases do Sistema Gestor de Laudos (GDL) da Superintendência da Polícia Técnico-Científica do Estado de São Paulo."
   )
     .size(20)
-    .font("Spranq eco sans")
-    .break();
-
-  consideracoesParagraph1.addRun(textoConsideracoes);
-
-  doc.addParagraph(consideracoesParagraph);
-  doc.addParagraph(consideracoesParagraph1);
+    .font("Spranq eco sans");
+  disclaimerParagraph.addRun(disclaimerText);
+  doc.addParagraph(disclaimerParagraph);
 
   //Data Assinatura
   doc.addParagraph(emptyBreak);

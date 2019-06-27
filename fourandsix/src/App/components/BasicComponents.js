@@ -45,6 +45,20 @@ export function TextInput({ label, value, onChange, placeholder }) {
   );
 }
 
+export function TextArea({ label, value, onChange, placeholder }) {
+  return (
+    <Form.Group>
+      <Form.Label>{label}</Form.Label>
+      <Form.Control
+        type="textarea"
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+      />
+    </Form.Group>
+  );
+}
+
 export function Select({ label, value, onChange, values, placeholder }) {
   return (
     <Form.Group>

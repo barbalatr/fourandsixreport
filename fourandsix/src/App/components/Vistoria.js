@@ -2,6 +2,7 @@ import React from "react";
 import { ButtonStyle, AppHeader } from "../App.css";
 import {
   TextInput,
+  TextArea,
   Select,
   DateInput,
   TimeInput,
@@ -41,7 +42,8 @@ export default class Vistoria extends React.Component {
       handleCheck,
       handleRadio,
       handleCheckSistemaSeguranca,
-      handleCheckPneu
+      handleCheckPneu,
+      qwer
     } = this.props;
     return (
       <React.Fragment>
@@ -133,6 +135,27 @@ export default class Vistoria extends React.Component {
                     />
                   </Col>
                 </Row>
+
+                <h4> Vidros </h4>
+                <RadioInput
+                  label="Não danificados"
+                  value="Não danificados"
+                  checked={values.isVidrosVeiculoOk === "Não danificados"}
+                  onChange={handleRadio("isVidrosVeiculoOk")}
+                />
+                <RadioInput
+                  label="Danificados"
+                  value="Danificados"
+                  checked={values.isVidrosVeiculoOk === "Danificados"}
+                  onChange={handleRadio("isVidrosVeiculoOk")}
+                />
+                {values.isVidrosVeiculoOk === "Danificados" && (
+                  <TextInput
+                    placeholder="Dê mais detalhes..."
+                    value={values.detalhesVidroAutomovel}
+                    onChange={handleChange("detalhesVidroAutomovel")}
+                  />
+                )}
               </Container>
             )}
 

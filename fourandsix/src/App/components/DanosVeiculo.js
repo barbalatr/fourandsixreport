@@ -2,6 +2,7 @@ import React from "react";
 import { ButtonStyle, AppHeader } from "../App.css";
 import {
   TextInput,
+  TextArea,
   Select,
   DateInput,
   TimeInput,
@@ -41,12 +42,14 @@ export default class Vistoria extends React.Component {
         <Navbar bg="light" variant="dark" className="AppHeader">
           <h1>Vistoria Veicular</h1>
         </Navbar>
-        <h3>{values.marcaVeiculo + " " + values.modeloVeiculo}</h3>
-        {values.danosVeiculoAutomovel.map((dano, index) => {
+        <h4 align="center">
+          {values.marcaVeiculo + " " + values.modeloVeiculo}
+        </h4>
+        {values.danosVeiculo.map((dano, index) => {
           return (
             <Container>
               <Form>
-                <h3>Danos {index + 1}</h3>
+                <h4>Danos {index + 1}</h4>
                 <CheckBoxInput
                   label="Amolgamento"
                   value={dano.amolgamentoVeiculo}
@@ -65,6 +68,15 @@ export default class Vistoria extends React.Component {
                   checked={dano.fraturaVeiculo}
                   onChange={asdf(index, "fraturaVeiculo")}
                 />
+                {values.tipoVeiculo === "motocicleta" && (
+                  <CheckBoxInput
+                    label="Entortamento"
+                    value={dano.entortamento}
+                    checked={dano.entortamento}
+                    onChange={asdf(index, "entortamento")}
+                  />
+                )}
+
                 <br />
 
                 <RadioInput
@@ -80,7 +92,7 @@ export default class Vistoria extends React.Component {
                   onChange={qwer(index, "aspectoDano")}
                 />
                 <br />
-                <h3>Localização</h3>
+                <h4>Localização</h4>
                 {values.tipoVeiculo === "automóvel" && (
                   <Container>
                     <CheckBoxInput
@@ -142,11 +154,35 @@ export default class Vistoria extends React.Component {
                       checked={dano.flancoDireito}
                       onChange={asdf(index, "flancoDireito")}
                     />
+                    <CheckBoxInput
+                      label="Guidão"
+                      value={dano.guidao}
+                      checked={dano.guidao}
+                      onChange={asdf(index, "guidao")}
+                    />
+                    <CheckBoxInput
+                      label="Tanque de Combustível"
+                      value={dano.tanqueCombustivel}
+                      checked={dano.tanqueCombustivel}
+                      onChange={asdf(index, "tanqueCombustivel")}
+                    />
+                    <CheckBoxInput
+                      label="Escapamento"
+                      value={dano.escapamento}
+                      checked={dano.escapamento}
+                      onChange={asdf(index, "escapamento")}
+                    />
+                    <CheckBoxInput
+                      label="Carenagem"
+                      value={dano.carenagem}
+                      checked={dano.carenagem}
+                      onChange={asdf(index, "carenagem")}
+                    />
                   </Container>
                 )}
 
                 <br />
-                <h3>Orientação</h3>
+                <h4>Orientação</h4>
                 <CheckBoxInput
                   label="esquerda para a direita"
                   value={dano.esquerdaParaDireita}

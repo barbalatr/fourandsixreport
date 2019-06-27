@@ -34,11 +34,12 @@ const initialState = {
   marcaVeiculo: "",
   modeloVeiculo: "",
   corVeiculo: "",
-  danosVeiculoAutomovel: [
+  danosVeiculo: [
     {
       amolgamentoVeiculo: false,
       fraturaVeiculo: false,
       atritamentoVeiculo: false,
+      entortamento: false,
       aspectoDano: "",
       esquerdaParaDireita: false,
       direitaParaEsquerda: false,
@@ -48,9 +49,15 @@ const initialState = {
       traseiraVeiculo: false,
       flancoEsquerdo: false,
       flancoDireito: false,
-      teto: false
+      teto: false,
+      guidao: false,
+      tanqueCombustivel: false,
+      escapamento: false,
+      carenagem: false
     }
   ],
+  isVidrosVeiculoOk: "",
+  detalhesVidroAutomovel: "",
   isPneuOk: "",
   pneuDianteiroDireito: "",
   pneuDianteiroEsquerdo: "",
@@ -228,11 +235,12 @@ export default class ExamForm extends React.Component {
   };
 
   addDano = () => {
-    const danosVeiculoAutomovel = this.state.danosVeiculoAutomovel;
-    danosVeiculoAutomovel.push({
+    const danosVeiculo = this.state.danosVeiculo;
+    danosVeiculo.push({
       amolgamentoVeiculo: false,
       fraturaVeiculo: false,
       atritamentoVeiculo: false,
+      entortamento: false,
       aspectoDano: "",
       esquerdaParaDireita: false,
       direitaParaEsquerda: false,
@@ -242,29 +250,31 @@ export default class ExamForm extends React.Component {
       traseiraVeiculo: false,
       flancoEsquerdo: false,
       flancoDireito: false,
-      teto: false
+      teto: false,
+      guidao: false,
+      tanqueCombustivel: false,
+      escapamento: false,
+      carenagem: false
     });
-    this.setState({ danosVeiculoAutomovel });
+    this.setState({ danosVeiculo });
   };
 
   removeDano = () => {
-    const danosVeiculoAutomovel = this.state.danosVeiculoAutomovel;
-    danosVeiculoAutomovel.pop();
-    this.setState({ danosVeiculoAutomovel });
+    const danosVeiculo = this.state.danosVeiculo;
+    danosVeiculo.pop();
+    this.setState({ danosVeiculo });
   };
 
   asdf = (index, atributo) => () => {
-    const danosVeiculoAutomovel = this.state.danosVeiculoAutomovel;
-    danosVeiculoAutomovel[index][atributo] = !danosVeiculoAutomovel[index][
-      atributo
-    ];
-    this.setState({ danosVeiculoAutomovel });
+    const danosVeiculo = this.state.danosVeiculo;
+    danosVeiculo[index][atributo] = !danosVeiculo[index][atributo];
+    this.setState({ danosVeiculo });
   };
 
   qwer = (index, atributo) => event => {
-    const danosVeiculoAutomovel = this.state.danosVeiculoAutomovel;
-    danosVeiculoAutomovel[index][atributo] = event.target.value;
-    this.setState({ danosVeiculoAutomovel });
+    const danosVeiculo = this.state.danosVeiculo;
+    danosVeiculo[index][atributo] = event.target.value;
+    this.setState({ danosVeiculo });
   };
 
   submit = () => {
@@ -314,7 +324,9 @@ export default class ExamForm extends React.Component {
       marcaVeiculo,
       modeloVeiculo,
       corVeiculo,
-      danosVeiculoAutomovel,
+      danosVeiculo,
+      isVidrosVeiculoOk,
+      detalhesVidroAutomovel,
       isPneuOk,
       pneuDianteiroDireito,
       pneuDianteiroEsquerdo,
@@ -355,7 +367,9 @@ export default class ExamForm extends React.Component {
       marcaVeiculo,
       modeloVeiculo,
       corVeiculo,
-      danosVeiculoAutomovel,
+      danosVeiculo,
+      isVidrosVeiculoOk,
+      detalhesVidroAutomovel,
       isPneuOk,
       pneuDianteiroDireito,
       pneuDianteiroEsquerdo,
