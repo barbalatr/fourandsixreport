@@ -41,6 +41,7 @@ export default class Vistoria extends React.Component {
         <Navbar bg="light" variant="dark" className="AppHeader">
           <h1>Vistoria Veicular</h1>
         </Navbar>
+        <h3>{values.marcaVeiculo + " " + values.modeloVeiculo}</h3>
         {values.danosVeiculoAutomovel.map((dano, index) => {
           return (
             <Container>
@@ -80,36 +81,70 @@ export default class Vistoria extends React.Component {
                 />
                 <br />
                 <h3>Localização</h3>
-                <CheckBoxInput
-                  label="Dianteira"
-                  value={dano.dianteiraVeiculo}
-                  checked={dano.dianteiraVeiculo}
-                  onChange={asdf(index, "dianteiraVeiculo")}
-                />
-                <CheckBoxInput
-                  label="Traseira"
-                  value={dano.traseiraVeiculo}
-                  checked={dano.traseiraVeiculo}
-                  onChange={asdf(index, "traseiraVeiculo")}
-                />
-                <CheckBoxInput
-                  label="Flanco Esquerdo"
-                  value={dano.flancoEsquerdo}
-                  checked={dano.flancoEsquerdo}
-                  onChange={asdf(index, "flancoEsquerdo")}
-                />
-                <CheckBoxInput
-                  label="Flanco Direito"
-                  value={dano.flancoDireito}
-                  checked={dano.flancoDireito}
-                  onChange={asdf(index, "flancoDireito")}
-                />
-                <CheckBoxInput
-                  label="Teto"
-                  value={dano.teto}
-                  checked={dano.teto}
-                  onChange={asdf(index, "teto")}
-                />
+                {values.tipoVeiculo === "automóvel" && (
+                  <Container>
+                    <CheckBoxInput
+                      label="Dianteira"
+                      value={dano.dianteiraVeiculo}
+                      checked={dano.dianteiraVeiculo}
+                      onChange={asdf(index, "dianteiraVeiculo")}
+                    />
+                    <CheckBoxInput
+                      label="Traseira"
+                      value={dano.traseiraVeiculo}
+                      checked={dano.traseiraVeiculo}
+                      onChange={asdf(index, "traseiraVeiculo")}
+                    />
+                    <CheckBoxInput
+                      label="Flanco Esquerdo"
+                      value={dano.flancoEsquerdo}
+                      checked={dano.flancoEsquerdo}
+                      onChange={asdf(index, "flancoEsquerdo")}
+                    />
+                    <CheckBoxInput
+                      label="Flanco Direito"
+                      value={dano.flancoDireito}
+                      checked={dano.flancoDireito}
+                      onChange={asdf(index, "flancoDireito")}
+                    />
+                    <CheckBoxInput
+                      label="Teto"
+                      value={dano.teto}
+                      checked={dano.teto}
+                      onChange={asdf(index, "teto")}
+                    />
+                  </Container>
+                )}
+
+                {values.tipoVeiculo === "motocicleta" && (
+                  <Container>
+                    <CheckBoxInput
+                      label="Dianteira"
+                      value={dano.dianteiraVeiculo}
+                      checked={dano.dianteiraVeiculo}
+                      onChange={asdf(index, "dianteiraVeiculo")}
+                    />
+                    <CheckBoxInput
+                      label="Traseira"
+                      value={dano.traseiraVeiculo}
+                      checked={dano.traseiraVeiculo}
+                      onChange={asdf(index, "traseiraVeiculo")}
+                    />
+                    <CheckBoxInput
+                      label="Flanco Esquerdo"
+                      value={dano.flancoEsquerdo}
+                      checked={dano.flancoEsquerdo}
+                      onChange={asdf(index, "flancoEsquerdo")}
+                    />
+                    <CheckBoxInput
+                      label="Flanco Direito"
+                      value={dano.flancoDireito}
+                      checked={dano.flancoDireito}
+                      onChange={asdf(index, "flancoDireito")}
+                    />
+                  </Container>
+                )}
+
                 <br />
                 <h3>Orientação</h3>
                 <CheckBoxInput

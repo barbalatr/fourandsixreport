@@ -79,8 +79,6 @@ export default class Vistoria extends React.Component {
               onChange={handleChange("corVeiculo")}
             />
 
-            <br />
-
             <h3>Estado de Conservação dos Pneus</h3>
             <CheckBoxInput
               label="Todos em bom estado"
@@ -88,7 +86,9 @@ export default class Vistoria extends React.Component {
               checked={values.isPneuOk}
               onChange={handleCheckPneu}
             />
+
             <br />
+
             {values.tipoVeiculo === "automóvel" && (
               <Container>
                 <Row>

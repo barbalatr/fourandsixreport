@@ -138,7 +138,7 @@ export function generateDoc(body) {
       body.marcaVeiculo +
       ", modelo " +
       body.modeloVeiculo +
-      " , da cor " +
+      ", da cor " +
       body.corVeiculo +
       ", de placas " +
       body.placa +
@@ -174,8 +174,8 @@ export function generateDoc(body) {
           ? " fratura"
           : "") +
         (dano.aspectoDano === "Recentes"
-          ? " de aspecto recente"
-          : " de aspecto não recente") +
+          ? " de aspecto(s) recente(s)"
+          : " de aspecto(s) não recente(s)") +
         " localizados" +
         (dano.dianteiraVeiculo ? " na dianteira" : "") +
         (dano.traseiraVeiculo ? " na traseira" : "") +
@@ -212,44 +212,63 @@ export function generateDoc(body) {
 
   doc.addParagraph(emptyBreak);
 
-  let pneu1 = new docx.Paragraph().bullet();
-  let pneu1Text = new docx.TextRun(
-    "Pneumático dianteiro direito: " + body.pneuDianteiroDireito + "."
+  let pneuDD = new docx.Paragraph().bullet();
+  let pneuDDText = new docx.TextRun(
+    "Pneumático dianteiro direito " + body.pneuDianteiroDireito + "."
   )
     .size(24)
     .font("Spranq eco sans");
-  let pneu2 = new docx.Paragraph().bullet();
-  let pneu2Text = new docx.TextRun(
-    "Pneumático dianteiro esquerdo: " + body.pneuDianteiroEsquerdo + "."
+  let pneuDE = new docx.Paragraph().bullet();
+  let pneuDEText = new docx.TextRun(
+    "Pneumático dianteiro esquerdo " + body.pneuDianteiroEsquerdo + "."
   )
     .size(24)
     .font("Spranq eco sans");
-  let pneu3 = new docx.Paragraph().bullet();
-  let pneu3Text = new docx.TextRun(
-    "Pneumático traseiro direito: " + body.pneuTraseiroDireito + "."
+  let pneuTD = new docx.Paragraph().bullet();
+  let pneuTDText = new docx.TextRun(
+    "Pneumático traseiro direito " + body.pneuTraseiroDireito + "."
   )
     .size(24)
     .font("Spranq eco sans");
-  let pneu4 = new docx.Paragraph().bullet();
-  let pneu4Text = new docx.TextRun(
-    "Pneumático traseiro esquerdo: " + body.pneuTraseiroEsquerdo + "."
+  let pneuTE = new docx.Paragraph().bullet();
+  let pneuTEText = new docx.TextRun(
+    "Pneumático traseiro esquerdo " + body.pneuTraseiroEsquerdo + "."
   )
     .size(24)
     .font("Spranq eco sans");
 
-  if (body.isPneuOk !== true) {
-    pneu1.addRun(pneu1Text);
-    doc.addParagraph(pneu1);
-    pneu2.addRun(pneu2Text);
-    doc.addParagraph(pneu2);
-    pneu3.addRun(pneu3Text);
-    doc.addParagraph(pneu3);
-    pneu4.addRun(pneu4Text);
-    doc.addParagraph(pneu4);
+  if (body.isPneuOk !== true && body.tipoVeiculo === "automóvel") {
+    pneuDD.addRun(pneuDDText);
+    doc.addParagraph(pneuDD);
+    pneuDE.addRun(pneuDEText);
+    doc.addParagraph(pneuDE);
+    pneuTD.addRun(pneuTDText);
+    doc.addParagraph(pneuTD);
+    pneuTE.addRun(pneuTEText);
+    doc.addParagraph(pneuTE);
   }
 
-  // Sistemas de Segurança
+  let pneuDianteiro = new docx.Paragraph().bullet();
+  let pneuDianteiroText = new docx.TextRun(
+    "Pneumático dianteiro " + body.pneuDianteiro + "."
+  )
+    .size(24)
+    .font("Spranq eco sans");
+  let pneuTraseiro = new docx.Paragraph().bullet();
+  let pneuTraseiroText = new docx.TextRun(
+    "Pneumático traseiro " + body.pneuTraseiro + "."
+  )
+    .size(24)
+    .font("Spranq eco sans");
+
+  if (body.isPneuOk !== true && body.tipoVeiculo === "motocicleta") {
+    pneuDianteiro.addRun(pneuDianteiroText);
+    doc.addParagraph(pneuDianteiro);
+    pneuTraseiro.addRun(pneuTraseiroText);
+    doc.addParagraph(pneuTraseiro);
+  }
   doc.addParagraph(emptyBreak);
+  // Sistemas de Segurança
   var sistemaSegurancaParagraph = new docx.Paragraph();
   var sistemaSegurancaText = new docx.TextRun(
     "Através da realização de exame estático, foi verificado que seus sistemas de segurança para tráfego se encontravam nas seguintes condições:"
