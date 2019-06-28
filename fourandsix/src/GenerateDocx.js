@@ -5,117 +5,152 @@ export function bodyToSections(body) {
   const result = [];
 
   result.push({
-    header: "I - OBJETIVO",
-    paragraphs: [
+    type: "header",
+    content: "I - OBJETIVO"
+  });
+
+  result.push({
+    type: "paragraph",
+    content:
       "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando a realização de Vistoria Veicular."
-    ]
   });
   result.push({
-    header: "II - DO VEÍCULO E DOS EXAMES",
-    paragraphs: [
+    type: "header",
+    content: "II - DO VEÍCULO E DOS EXAMES"
+  });
+  result.push({
+    type: "paragraph",
+    content:
       "Nas condições em que foi apresentado à perícia" +
-        (body.isLocalIC
-          ? " na sede da Equipe de Perícias Criminalísticas de São Sebastião"
-          : "") +
-        ", foi examinado um veículo do tipo " +
-        body.tipoVeiculo +
-        ", da marca " +
-        body.marcaVeiculo +
-        ", modelo " +
-        body.modeloVeiculo +
-        ", da cor " +
-        body.corVeiculo +
-        ", de placas " +
-        body.placa +
-        ", e que quando da realização dos exames apresentava: "
-    ]
-      .concat(
-        body.danosVeiculo.map(dano => {
-          return (
-            "Vestígios de" +
-            (dano.amolgamentoVeiculo &&
-            dano.atritamentoVeiculo &&
-            dano.fraturaVeiculo
-              ? " amolgamento, atritamento e fratura"
-              : dano.amolgamentoVeiculo && dano.atritamentoVeiculo
-              ? " amolgamento e atritamento"
-              : dano.amolgamentoVeiculo && dano.fraturaVeiculo
-              ? " amolgamento e fratura"
-              : dano.atritamentoVeiculo && dano.fraturaVeiculo
-              ? " atritamento e fratura"
-              : dano.amolgamentoVeiculo
-              ? " amolgamento"
-              : dano.atritamentoVeiculo
-              ? " atritamento"
-              : dano.fraturaVeiculo
-              ? " fratura"
-              : "") +
-            (dano.aspectoDano === "Recentes"
-              ? " de aspecto(s) recente(s)"
-              : " de aspecto(s) não recente(s)") +
-            " localizados" +
-            (dano.dianteiraVeiculo ? " na dianteira" : "") +
-            (dano.traseiraVeiculo ? " na traseira" : "") +
-            (dano.flancoEsquerdo ? " no flanco esquerdo" : "") +
-            (dano.flancoDireito ? " no flanco direito" : "") +
-            (dano.teto ? " no teto" : "") +
-            " e orientados" +
-            (dano.esquerdaParaDireita ? " da esqueda para a direita" : "") +
-            (dano.direitaParaEsquerda ? " da direita para a esquerda" : "") +
-            (dano.frenteParaTras ? " da frente para trás" : "") +
-            (dano.trasParafrente ? " de trás para a frente" : "") +
-            "."
-          );
-        })
-      )
-      .concat([
-        body.isPneuOk
-          ? "Todos os pneumáticos do veículo se encontravam em bom estado de conservação no momento da realização dos exames."
-          : "Foi verificado que os pneumáticos do veículo se encontravam nas seguintes condições no momento da realização do exame:"
-      ])
-      .concat(
-        body.isPneuOk !== true && body.tipoVeiculo === "automóvel"
-          ? [
-              "Pneumático dianteiro direito " + body.pneuDianteiroDireito + ".",
-              "Pneumático dianteiro esquerdo " +
-                body.pneuDianteiroEsquerdo +
-                ".",
-              "Pneumático traseiro direito " + body.pneuTraseiroDireito + ".",
-              "Pneumático traseiro esquerdo " + body.pneuTraseiroEsquerdo + "."
-            ]
-          : []
-      )
-      .concat(
-        body.isPneuOk !== true && body.tipoVeiculo === "motocicleta"
-          ? [
-              "Pneumático dianteiro " + body.pneuDianteiro + ".",
-              "Pneumático traseiro " + body.pneuTraseiro + "."
-            ]
-          : []
-      )
-      .concat([
-        "Através da realização de exame estático, foi verificado que seus sistemas de segurança para tráfego se encontravam nas seguintes condições:",
-        "Freio dianteiro: " + body.freios + ". " + body.motivoFreio,
-        "Direção: " + body.direcao + ". " + body.motivoDirecao,
-        "Parte Elétrica: " +
-          body.parteEletrica +
-          (body.parteEletrica === "funcionando parcialmente"
-            ? ". " + body.motivoParteEletrica
-            : body.parteEletrica === "não foi possível verificar"
-            ? " em razão da " + body.motivoParteEletrica + "."
-            : ".")
-      ])
+      (body.isLocalIC
+        ? " na sede da Equipe de Perícias Criminalísticas de São Sebastião"
+        : "") +
+      ", foi examinado um veículo do tipo " +
+      body.tipoVeiculo +
+      ", da marca " +
+      body.marcaVeiculo +
+      ", modelo " +
+      body.modeloVeiculo +
+      ", da cor " +
+      body.corVeiculo +
+      ", de placas " +
+      body.placa +
+      ", e que quando da realização dos exames apresentava: "
   });
   result.push({
-    header: "III - CONSIDERAÇÕES FINAIS",
-    paragraphs: ["Era o que havia a relatar."]
+    type: "bullet",
+    content: body.danosVeiculo.map(dano => {
+      return (
+        "Vestígios de" +
+        (dano.amolgamentoVeiculo &&
+        dano.atritamentoVeiculo &&
+        dano.fraturaVeiculo
+          ? " amolgamento, atritamento e fratura"
+          : dano.amolgamentoVeiculo && dano.atritamentoVeiculo
+          ? " amolgamento e atritamento"
+          : dano.amolgamentoVeiculo && dano.fraturaVeiculo
+          ? " amolgamento e fratura"
+          : dano.atritamentoVeiculo && dano.fraturaVeiculo
+          ? " atritamento e fratura"
+          : dano.amolgamentoVeiculo
+          ? " amolgamento"
+          : dano.atritamentoVeiculo
+          ? " atritamento"
+          : dano.fraturaVeiculo
+          ? " fratura"
+          : "") +
+        (dano.aspectoDano === "Recentes"
+          ? " de aspecto(s) recente(s)"
+          : " de aspecto(s) não recente(s)") +
+        " localizados" +
+        (dano.dianteiraVeiculo ? " na dianteira" : "") +
+        (dano.setorAngularAnteriorDireito
+          ? " no setor angular anterior direito"
+          : "") +
+        (dano.setorAngularAnteriorEsquerdo
+          ? " no setor angular anterior esquerdo"
+          : "") +
+        (dano.setorAngularPosteriorDireito
+          ? " no setor angular posterior direito"
+          : "") +
+        (dano.setorAngularPosteriorEsquerdo
+          ? " no setor angular posterior esquerdo"
+          : "") +
+        (dano.traseiraVeiculo ? " na traseira" : "") +
+        (dano.flancoEsquerdo ? " no flanco esquerdo" : "") +
+        (dano.flancoDireito ? " no flanco direito" : "") +
+        (dano.teto ? " no teto" : "") +
+        " e orientados" +
+        (dano.esquerdaParaDireita ? " da esqueda para a direita" : "") +
+        (dano.direitaParaEsquerda ? " da direita para a esquerda" : "") +
+        (dano.frenteParaTras ? " da frente para trás" : "") +
+        (dano.trasParafrente ? " de trás para a frente" : "") +
+        "."
+      );
+    })
+  });
+  result.push({
+    type: "paragraph",
+    content: body.isPneuOk
+      ? "Todos os pneumáticos do veículo se encontravam em bom estado de conservação no momento da realização dos exames."
+      : "Foi verificado que os pneumáticos do veículo se encontravam nas seguintes condições no momento da realização do exame:"
+  });
+  if (body.isPneuOk !== true && body.tipoVeiculo === "automóvel") {
+    result.push({
+      type: "bullet",
+      content: [
+        "Pneumático dianteiro direito " + body.pneuDianteiroDireito + ".",
+        "Pneumático dianteiro esquerdo " + body.pneuDianteiroEsquerdo + ".",
+        "Pneumático traseiro direito " + body.pneuTraseiroDireito + ".",
+        "Pneumático traseiro esquerdo " + body.pneuTraseiroEsquerdo + "."
+      ]
+    });
+  }
+  if (body.isPneuOk !== true && body.tipoVeiculo === "motocicleta") {
+    result.push({
+      type: "bullet",
+      content: [
+        "Pneumático dianteiro " + body.pneuDianteiro + ".",
+        "Pneumático traseiro " + body.pneuTraseiro + "."
+      ]
+    });
+  }
+  result.push({
+    type: "paragraph",
+    content:
+      "Através da realização de exame estático, foi verificado que seus sistemas de segurança para tráfego se encontravam nas seguintes condições:"
+  });
+  result.push({
+    type: "bullet",
+    content: [
+      "Freio dianteiro: " + body.freios + ". " + body.motivoFreio,
+      "Direção: " + body.direcao + ". " + body.motivoDirecao,
+      "Parte Elétrica: " +
+        body.parteEletrica +
+        (body.parteEletrica === "funcionando parcialmente"
+          ? ". " + body.motivoParteEletrica
+          : body.parteEletrica === "não foi possível verificar"
+          ? " em razão da " + body.motivoParteEletrica + "."
+          : ".")
+    ]
+  });
+  result.push({
+    type: "header",
+    content: "III - CONSIDERAÇÕES FINAIS"
+  });
+  result.push({
+    type: "paragraph",
+    content: "Era o que havia a relatar."
   });
   return result;
 }
 export function generateDoc(body) {
   // Create document
   var doc = new docx.Document();
-  var emptyBreak = new docx.Paragraph("");
+  // Create custom break
+  var emptyBreak = new docx.Paragraph();
+  var emptyBreakText = new docx.TextRun("").size(24).font("Spranq eco sans");
+  emptyBreak.addRun(emptyBreakText);
 
   // Header
   doc.Header;
@@ -139,9 +174,7 @@ export function generateDoc(body) {
   // Natureza
   doc.addParagraph(emptyBreak);
   const naturezaParagraph = new docx.Paragraph().center();
-  const naturezaParagraphText = new docx.TextRun(
-    "Natureza da Ocorrência: " + body.natureza
-  )
+  const naturezaParagraphText = new docx.TextRun("Natureza: " + body.natureza)
 
     .size(24)
     .font("Spranq eco sans");
@@ -194,34 +227,44 @@ export function generateDoc(body) {
   )
     .size(24)
     .font("Spranq eco sans");
-  // Add more text into the paragraph if you wish
   cabecalhoParagraph.addRun(textoCabecalho);
   doc.addParagraph(cabecalhoParagraph);
+  doc.addParagraph(emptyBreak);
 
   //Generate Chapters
   const sections = bodyToSections(body);
-
-  sections.forEach(({ header, paragraphs }) => {
-    doc.addParagraph(emptyBreak);
-    var heading = new docx.Paragraph();
-    var headingText = new docx.TextRun(header)
-      .bold()
-      .size(24)
-      .font("Spranq eco sans");
-    heading.addRun(headingText);
-    doc.addParagraph(heading);
-    doc.addParagraph(emptyBreak);
-
-    paragraphs.forEach(paragraph => {
-      var docParagraph = new docx.Paragraph().justified();
-      var text = new docx.TextRun(paragraph).size(24).font("Spranq eco sans");
-      docParagraph.addRun(text);
-      doc.addParagraph(docParagraph);
-    });
+  sections.forEach(({ type, content }) => {
+    if (type === "header") {
+      var heading = new docx.Paragraph();
+      var headingText = new docx.TextRun(content)
+        .bold()
+        .size(24)
+        .font("Spranq eco sans");
+      heading.addRun(headingText);
+      doc.addParagraph(heading);
+      doc.addParagraph(emptyBreak);
+    } else if (type === "paragraph") {
+      var paragraphParagraph = new docx.Paragraph();
+      var paragraphParagraphText = new docx.TextRun(content)
+        .size(24)
+        .font("Spranq eco sans");
+      paragraphParagraph.addRun(paragraphParagraphText);
+      doc.addParagraph(paragraphParagraph);
+      doc.addParagraph(emptyBreak);
+    } else if (type === "bullet") {
+      content.forEach(content => {
+        var bulletParagraph = new docx.Paragraph().bullet();
+        var bulletText = new docx.TextRun(content)
+          .size(24)
+          .font("Spranq eco sans");
+        bulletParagraph.addRun(bulletText);
+        doc.addParagraph(bulletParagraph);
+      });
+      doc.addParagraph(emptyBreak);
+    }
   });
 
   //Disclaimer
-  doc.addParagraph(emptyBreak);
   var disclaimerParagraph = new docx.Paragraph().justified();
   const disclaimerText = new docx.TextRun(
     "O laudo original foi assinado digitalmente nos termos da M.P. 2200-2/2001 de 24/08/2001 e encontra-se arquivado eletronicamente nas bases do Sistema Gestor de Laudos (GDL) da Superintendência da Polícia Técnico-Científica do Estado de São Paulo."

@@ -102,6 +102,30 @@ export default class Vistoria extends React.Component {
                       onChange={asdf(index, "dianteiraVeiculo")}
                     />
                     <CheckBoxInput
+                      label="Setor Angular Anterior Direito"
+                      value={dano.setorAngularAnteriorDireito}
+                      checked={dano.setorAngularAnteriorDireito}
+                      onChange={asdf(index, "setorAngularAnteriorDireito")}
+                    />
+                    <CheckBoxInput
+                      label="Setor Angular Anterior Esquerdo"
+                      value={dano.setorAngularAnteriorEsquerdo}
+                      checked={dano.setorAngularAnteriorEsquerdo}
+                      onChange={asdf(index, "setorAngularAnteriorEsquerdo")}
+                    />
+                    <CheckBoxInput
+                      label="Setor Angular Posterior Direito"
+                      value={dano.setorAngularPosteriorDireito}
+                      checked={dano.setorAngularPosteriorDireito}
+                      onChange={asdf(index, "setorAngularPosteriorDireito")}
+                    />
+                    <CheckBoxInput
+                      label="Setor Angular Posterior Esquerdo"
+                      value={dano.setorAngularPosteriorEsquerdo}
+                      checked={dano.setorAngularPosteriorEsquerdo}
+                      onChange={asdf(index, "setorAngularPosteriorEsquerdo")}
+                    />
+                    <CheckBoxInput
                       label="Traseira"
                       value={dano.traseiraVeiculo}
                       checked={dano.traseiraVeiculo}
