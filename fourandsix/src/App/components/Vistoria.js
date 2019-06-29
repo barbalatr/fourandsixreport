@@ -61,7 +61,7 @@ export default class Vistoria extends React.Component {
             />
             <TextInput
               label="Placa"
-              value={values.placa}
+              value={values.placa.toUpperCase()}
               onChange={handleChange("placa")}
             />
             <Select
@@ -77,7 +77,7 @@ export default class Vistoria extends React.Component {
             />
             <TextInput
               label="Cor"
-              value={values.corVeiculo}
+              value={values.corVeiculo.toLowerCase()}
               onChange={handleChange("corVeiculo")}
             />
 
