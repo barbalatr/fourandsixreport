@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonStyle, AppHeader } from "../App.css";
+import { ButtonStyle, AppHeader, FormLogradouro } from "../App.css";
 import {
   TextInput,
   Select,
@@ -13,9 +13,11 @@ import {
   Button,
   ButtonToolbar,
   Form,
-  FormGroup
+  FormGroup,
+  Row,
+  Col
 } from "react-bootstrap";
-import { Fotografos, Natureza, isPreservado } from "../../Commons";
+import { Fotografos, Natureza, isPreservado, Municipios } from "../../Commons";
 
 export default class Local extends React.Component {
   render() {
@@ -56,23 +58,32 @@ export default class Local extends React.Component {
                   checked={values.isLocalIC}
                   onChange={handleCheckEndereco}
                 />
+                <br />
               </Container>
             )}
+            <Row>
+              <Col>
+                <TextInput
+                  label="Endereço"
+                  value={values.endereco}
+                  onChange={handleChange("endereco")}
+                />
+              </Col>
 
-            <TextInput
-              placeholder="Endereço"
-              value={values.endereco}
-              onChange={handleChange("endereco")}
-            />
-            <TextInput
-              placeholder="Número"
-              value={values.enderecoNumero}
-              onChange={handleChange("enderecoNumero")}
-            />
-            <TextInput
-              placeholder="Cidade"
+              <Col>
+                <TextInput
+                  label="Número"
+                  value={values.enderecoNumero}
+                  onChange={handleChange("enderecoNumero")}
+                />
+              </Col>
+            </Row>
+
+            <Select
+              label="Cidade"
               value={values.enderecoCidade}
               onChange={handleChange("enderecoCidade")}
+              values={Municipios}
             />
 
             {values.natureza !== "Vistoria Veicular" && (

@@ -7,6 +7,7 @@ import Sucesso from "./Sucesso";
 import Vistoria from "./Vistoria";
 import DanosVeiculo from "./DanosVeiculo";
 import Homicidio from "./Homicidio";
+import Municipios from "../../Commons";
 
 const initialState = {
   view: "Requisicao",
@@ -61,7 +62,8 @@ const initialState = {
   parteEletrica: "",
   motivoFreio: "",
   motivoDirecao: "",
-  motivoParteEletrica: ""
+  motivoParteEletrica: "",
+  BOPamb: ""
 };
 
 export default class ExamForm extends React.Component {
@@ -169,7 +171,7 @@ export default class ExamForm extends React.Component {
           isLocalIC: true,
           endereco: "Alameda das Corvinas",
           enderecoNumero: 60,
-          enderecoCidade: "São Sebastião - SP"
+          enderecoCidade: "São Sebastião"
         }
       : {
           isLocalIC: false,
@@ -330,7 +332,8 @@ export default class ExamForm extends React.Component {
       parteEletrica,
       motivoFreio,
       motivoDirecao,
-      motivoParteEletrica
+      motivoParteEletrica,
+      BOPamb
     } = this.state;
     const values = {
       requisicao,
@@ -373,7 +376,8 @@ export default class ExamForm extends React.Component {
       parteEletrica,
       motivoFreio,
       motivoDirecao,
-      motivoParteEletrica
+      motivoParteEletrica,
+      BOPamb
     };
 
     // Conditionally renders views

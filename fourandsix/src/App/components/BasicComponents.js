@@ -59,16 +59,11 @@ export function TextArea({ label, value, onChange, placeholder }) {
   );
 }
 
-export function Select({ label, value, onChange, values, placeholder }) {
+export function Select({ label, value, onChange, values }) {
   return (
     <Form.Group>
       <Form.Label>{label}</Form.Label>
-      <Form.Control
-        as="select"
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-      >
+      <Form.Control as="select" value={value} onChange={onChange}>
         <option />
         {values.map(v => (
           <option>{v}</option>

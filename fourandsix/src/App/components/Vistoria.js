@@ -83,7 +83,7 @@ export default class Vistoria extends React.Component {
 
             <br />
 
-            <h3>Estado de Conservação dos Pneus</h3>
+            <h4>Estado de Conservação dos Pneus</h4>
             <CheckBoxInput
               label="Todos em bom estado"
               value={values.isPneuOk}
@@ -180,7 +180,7 @@ export default class Vistoria extends React.Component {
 
             <br />
 
-            <h3>Sistemas de Segurança</h3>
+            <h4>Sistemas de Segurança</h4>
 
             <CheckBoxInput
               label="Todos em bom estado"

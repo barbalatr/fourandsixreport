@@ -17,7 +17,7 @@ export const Ocorrencia = {
 };
 export const Local = {
   // TipoDeLogradouro
-  tipoDeLogradouro: null,
+  tipoLogradouro: null,
   // string
   endereco: "",
   // string
@@ -94,31 +94,10 @@ export const Delegacia = [
   DelPolUbatuba
 ];
 
-/* Delegados do Litoral Norte
-export const DelegadoA = "delegado A";
-export const DelegadoB = "delegado B";
-export const DelegadoC = "delegado C";
-export const DelegadoD = "delegado D";
-export const Delegado = {
-  [DelPolCaraguatatuba1]: [DelegadoA, DelegadoB],
-  [DelPolCaraguatatuba2]: [DelegadoC, DelegadoD],
-  [DelPolIlhabela]: [DelegadoC, DelegadoD],
-  [DelPolSaoSebastiao]: [DelegadoC, DelegadoD],
-  [DelPolUbatuba]: [DelegadoC, DelegadoD]
-};
-*/
-
-export const Avenida = "Avenida";
-export const Rua = "Rua";
-export const Rodovia = "Rodovia";
-export const Estrada = "Estrada";
-export const Praca = "Praça";
-export const TipoDeLogradouro = [Avenida, Rua, Rodovia, Estrada, Praca];
-
-export const Ubatuba = "Ubatuba - SP";
-export const Caraguatatuba = "Caraguatatuba - SP";
-export const Ilhabela = "Ilhabela - SP";
-export const SaoSebastiao = "São Sebastião - SP";
+export const Ubatuba = "Ubatuba";
+export const Caraguatatuba = "Caraguatatuba";
+export const Ilhabela = "Ilhabela";
+export const SaoSebastiao = "São Sebastião";
 export const Municipios = [Ubatuba, Caraguatatuba, Ilhabela, SaoSebastiao];
 
 // Fotografos
@@ -126,7 +105,7 @@ export const Ana = "Ana Cristina Toledo";
 export const Fabio = "Fabio Romano";
 export const Gilberto = "Gilberto Bardacim";
 export const Mauro = "Mauro";
-export const Paulo = "Paulo Junior";
+export const Paulo = "Paulo Guimarães Júnior";
 export const Silvia = "Silvia Jeiger";
 export const Ubirajara = "Ubirajara";
 export const Fotografos = [
@@ -139,9 +118,9 @@ export const Fotografos = [
   Ubirajara
 ];
 
-export const Residential = "residencial";
+export const Residencial = "residencial";
 export const Comercial = "comercial";
-export const TipoDeLocal = [Residential, Comercial];
+export const TipoLocal = [Residencial, Comercial];
 
 export const ComRecuo = "com recuo";
 export const SemRecuo = "sem recuo";
@@ -312,14 +291,19 @@ export const MotivoNaoFoiPossivel = {
   [NaoFoiPossivelEletrica]: [SemChaves, SemBateria, Fogo]
 };
 
-/*
 export const ForaApp = "fora de app";
 export const DentroApp10 = "dentro de app largura inferior a 10 metros";
 export const DentroApp1050 = "dentro de app largura entre 10 e 50 metros";
-export const AreaDeProtecaoAmbiental = [ForaApp, DentroApp10, DentroApp50];
-*/
+export const AreaDeProtecaoAmbiental = [ForaApp, DentroApp10, DentroApp1050];
 
-export const MedianteAmbiental = ["destruição de vegetação nativa típica"];
+export const EstagioRecuperacaoInicial = "inicial";
+export const EstagioRecuperacaoMedio = "médio";
+export const EstagioRecuperacao = [
+  EstagioRecuperacaoInicial,
+  EstagioRecuperacaoMedio
+];
+
+export const MedianteAmbiental = ["destruição"];
 export const MediantePatrimonial = [
   "mediante patrimonial A",
   "mediante patrimonial B"
