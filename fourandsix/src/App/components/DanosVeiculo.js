@@ -80,157 +80,182 @@ export default class Vistoria extends React.Component {
                 <br />
 
                 <RadioInput
-                  label="Recentes"
-                  value="Recentes"
-                  checked={dano.aspectoDano === "Recentes"}
+                  label="recente"
+                  value="recente"
+                  checked={dano.aspectoDano === "recente"}
                   onChange={qwer(index, "aspectoDano")}
                 />
                 <RadioInput
-                  label="Não Recentes"
-                  value="Não Recentes"
-                  checked={dano.aspectoDano === "Não Recentes"}
+                  label="não recente"
+                  value="não recente"
+                  checked={dano.aspectoDano === "não recente"}
                   onChange={qwer(index, "aspectoDano")}
                 />
                 <br />
                 <h4>Localização</h4>
                 {values.tipoVeiculo === "automóvel" && (
                   <Container>
-                    <CheckBoxInput
-                      label="Dianteira"
-                      value={dano.dianteiraVeiculo}
-                      checked={dano.dianteiraVeiculo}
-                      onChange={asdf(index, "dianteiraVeiculo")}
+                    <RadioInput
+                      label="dianteira"
+                      value="dianteira"
+                      checked={dano.localizacaoDanos === "dianteira"}
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Setor Angular Anterior Direito"
-                      value={dano.setorAngularAnteriorDireito}
-                      checked={dano.setorAngularAnteriorDireito}
-                      onChange={asdf(index, "setorAngularAnteriorDireito")}
+                    <RadioInput
+                      label="setor angular anterior direito"
+                      value="setor angular anterior direito"
+                      checked={
+                        dano.localizacaoDanos ===
+                        "setor angular anterior direito"
+                      }
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Setor Angular Anterior Esquerdo"
-                      value={dano.setorAngularAnteriorEsquerdo}
-                      checked={dano.setorAngularAnteriorEsquerdo}
-                      onChange={asdf(index, "setorAngularAnteriorEsquerdo")}
+                    <RadioInput
+                      label="setor angular anterior esquerdo"
+                      value="setor angular anterior esquerdo"
+                      checked={
+                        dano.localizacaoDanos ===
+                        "setor angular anterior esquerdo"
+                      }
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Traseira"
-                      value={dano.traseiraVeiculo}
-                      checked={dano.traseiraVeiculo}
-                      onChange={asdf(index, "traseiraVeiculo")}
+                    <RadioInput
+                      label="setor angular posterior direito"
+                      value="setor angular posterior direito"
+                      checked={
+                        dano.localizacaoDanos ===
+                        "setor angular posterior direito"
+                      }
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Setor Angular Posterior Direito"
-                      value={dano.setorAngularPosteriorDireito}
-                      checked={dano.setorAngularPosteriorDireito}
-                      onChange={asdf(index, "setorAngularPosteriorDireito")}
+                    <RadioInput
+                      label="setor angular posterior esquerdo"
+                      value="setor angular posterior esquerdo"
+                      checked={
+                        dano.localizacaoDanos ===
+                        "setor angular posterior esquerdo"
+                      }
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Setor Angular Posterior Esquerdo"
-                      value={dano.setorAngularPosteriorEsquerdo}
-                      checked={dano.setorAngularPosteriorEsquerdo}
-                      onChange={asdf(index, "setorAngularPosteriorEsquerdo")}
+                    <RadioInput
+                      label="traseira"
+                      value="traseira"
+                      checked={dano.localizacaoDanos === "traseira"}
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-
-                    <CheckBoxInput
-                      label="Flanco Esquerdo"
-                      value={dano.flancoEsquerdo}
-                      checked={dano.flancoEsquerdo}
-                      onChange={asdf(index, "flancoEsquerdo")}
+                    <RadioInput
+                      label="flanco esquerdo"
+                      value="flanco esquerdo"
+                      checked={dano.localizacaoDanos === "flanco esquerdo"}
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Flanco Direito"
-                      value={dano.flancoDireito}
-                      checked={dano.flancoDireito}
-                      onChange={asdf(index, "flancoDireito")}
+                    <RadioInput
+                      label="flanco direito"
+                      value="flanco direito"
+                      checked={dano.localizacaoDanos === "flanco direito"}
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Teto"
-                      value={dano.teto}
-                      checked={dano.teto}
-                      onChange={asdf(index, "teto")}
+                    <RadioInput
+                      label="teto"
+                      value="teto"
+                      checked={dano.localizacaoDanos === "teto"}
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
                   </Container>
                 )}
 
                 {values.tipoVeiculo === "motocicleta" && (
                   <Container>
-                    <CheckBoxInput
-                      label="Dianteira"
-                      value={dano.dianteiraVeiculo}
-                      checked={dano.dianteiraVeiculo}
-                      onChange={asdf(index, "dianteiraVeiculo")}
+                    <RadioInput
+                      label="dianteira"
+                      value="dianteira"
+                      checked={dano.localizacaoDanos === "dianteira"}
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Traseira"
-                      value={dano.traseiraVeiculo}
-                      checked={dano.traseiraVeiculo}
-                      onChange={asdf(index, "traseiraVeiculo")}
+                    <RadioInput
+                      label="traseira"
+                      value="traseira"
+                      checked={dano.localizacaoDanos === "traseira"}
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Flanco Esquerdo"
-                      value={dano.flancoEsquerdo}
-                      checked={dano.flancoEsquerdo}
-                      onChange={asdf(index, "flancoEsquerdo")}
+                    <RadioInput
+                      label="flanco esquerdo"
+                      value="flanco esquerdo"
+                      checked={dano.localizacaoDanos === "flanco esquerdo"}
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Flanco Direito"
-                      value={dano.flancoDireito}
-                      checked={dano.flancoDireito}
-                      onChange={asdf(index, "flancoDireito")}
+                    <RadioInput
+                      label="flanco direito"
+                      value="flanco direito"
+                      checked={dano.localizacaoDanos === "flanco direito"}
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Guidão"
-                      value={dano.guidao}
-                      checked={dano.guidao}
-                      onChange={asdf(index, "guidao")}
+                    <RadioInput
+                      label="guidão"
+                      value="guidão"
+                      checked={dano.localizacaoDanos === "guidão"}
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Tanque de Combustível"
-                      value={dano.tanqueCombustivel}
-                      checked={dano.tanqueCombustivel}
-                      onChange={asdf(index, "tanqueCombustivel")}
+                    <RadioInput
+                      label="tanque de combustível"
+                      value="tanque de combustível"
+                      checked={
+                        dano.localizacaoDanos === "tanque de combustível"
+                      }
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Escapamento"
-                      value={dano.escapamento}
-                      checked={dano.escapamento}
-                      onChange={asdf(index, "escapamento")}
+                    <RadioInput
+                      label="escapamento"
+                      value="escapamento"
+                      checked={dano.localizacaoDanos === "escapamento"}
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
-                    <CheckBoxInput
-                      label="Carenagem"
-                      value={dano.carenagem}
-                      checked={dano.carenagem}
-                      onChange={asdf(index, "carenagem")}
+                    <RadioInput
+                      label="carenagem"
+                      value="carenagem"
+                      checked={dano.localizacaoDanos === "carenagem"}
+                      onChange={qwer(index, "localizacaoDanos")}
                     />
                   </Container>
                 )}
 
                 <br />
                 <h4>Orientação</h4>
-                <CheckBoxInput
+
+                <p>Lateral</p>
+                <RadioInput
                   label="esquerda para a direita"
-                  value={dano.esquerdaParaDireita}
-                  checked={dano.esquerdaParaDireita}
-                  onChange={asdf(index, "esquerdaParaDireita")}
+                  value="esquerda para a direita"
+                  checked={
+                    dano.orientacaoDanosLateral === "esquerda para a direita"
+                  }
+                  onChange={qwer(index, "orientacaoDanosLateral")}
                 />
-                <CheckBoxInput
+                <RadioInput
                   label="direita para a esquerda"
-                  value={dano.direitaParaEsquerda}
-                  checked={dano.direitaParaEsquerda}
-                  onChange={asdf(index, "direitaParaEsquerda")}
+                  value="direita para a esquerda"
+                  checked={
+                    dano.orientacaoDanosLateral === "direita para a esquerda"
+                  }
+                  onChange={qwer(index, "orientacaoDanosLateral")}
                 />
-                <CheckBoxInput
+                <br />
+                <p>Longitudinal</p>
+                <RadioInput
                   label="frente para trás"
-                  value={dano.frenteParaTras}
-                  checked={dano.frenteParaTras}
-                  onChange={asdf(index, "frenteParaTras")}
+                  value="frente para trás"
+                  checked={
+                    dano.orientacaoDanosLongitudinal === "frente para trás"
+                  }
+                  onChange={qwer(index, "orientacaoDanosLongitudinal")}
                 />
-                <CheckBoxInput
+                <RadioInput
                   label="trás para frente"
-                  value={dano.trasParafrente}
-                  checked={dano.trasParafrente}
-                  onChange={asdf(index, "trasParafrente")}
+                  value="trás para frente"
+                  checked={
+                    dano.orientacaoDanosLongitudinal === "trás para frente"
+                  }
+                  onChange={qwer(index, "orientacaoDanosLongitudinal")}
                 />
 
                 <br />

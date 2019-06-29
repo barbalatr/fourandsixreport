@@ -59,32 +59,15 @@ export function bodyToSections(body) {
           : dano.fraturaVeiculo
           ? " fratura"
           : "") +
-        (dano.aspectoDano === "Recentes"
-          ? " de aspecto(s) recente(s)"
-          : " de aspecto(s) não recente(s)") +
-        " localizados" +
-        (dano.dianteiraVeiculo ? " na dianteira" : "") +
-        (dano.setorAngularAnteriorDireito
-          ? " no setor angular anterior direito"
-          : "") +
-        (dano.setorAngularAnteriorEsquerdo
-          ? " no setor angular anterior esquerdo"
-          : "") +
-        (dano.setorAngularPosteriorDireito
-          ? " no setor angular posterior direito"
-          : "") +
-        (dano.setorAngularPosteriorEsquerdo
-          ? " no setor angular posterior esquerdo"
-          : "") +
-        (dano.traseiraVeiculo ? " na traseira" : "") +
-        (dano.flancoEsquerdo ? " no flanco esquerdo" : "") +
-        (dano.flancoDireito ? " no flanco direito" : "") +
-        (dano.teto ? " no teto" : "") +
-        " e orientados" +
-        (dano.esquerdaParaDireita ? " da esqueda para a direita" : "") +
-        (dano.direitaParaEsquerda ? " da direita para a esquerda" : "") +
-        (dano.frenteParaTras ? " da frente para trás" : "") +
-        (dano.trasParafrente ? " de trás para a frente" : "") +
+        " de aspecto(s) " +
+        dano.aspectoDano +
+        "(s)" +
+        " localizados no(a) " +
+        dano.localizacaoDanos +
+        " e orientados da " +
+        dano.orientacaoDanosLateral +
+        " e de " +
+        dano.orientacaoDanosLongitudinal +
         "."
       );
     })
