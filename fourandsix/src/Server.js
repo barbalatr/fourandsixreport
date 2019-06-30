@@ -2,17 +2,18 @@ import { generateDoc } from "./GenerateDocx";
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-const nodemailer = require("nodemailer");
 const { Client } = require("pg");
 const sgMail = require("@sendgrid/mail");
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey(
+  "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"
+);
 const msg = {
   to: "barbalatr@gmail.com",
-  from: "46report@46report.com",
-  subject: "Batata",
-  text: "testando o envio de emails",
-  html: "<strong>and easy to do anywhere, even with Node.js</strong>"
+  from: "no-reply@46report.com",
+  subject: "Laudo Pericial",
+  text: "testando o envio de email",
+  html: "<strong>testando o envio de email</strong>"
 };
 
 var PORT = process.env.PORT || 5000;
