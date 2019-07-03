@@ -74,7 +74,7 @@ export const Natureza = [Vistoria];
 export const DelPolCaraguatatuba1 = "01º DP de Caraguatatuba";
 export const DelPolCaraguatatuba2 = "02º DP de Caraguatatuba";
 export const DelPolCaraguatatuba = "Delegacia de Polícia de Caraguatatuba";
-export const DelPolIlhabela = "Ilhabela";
+export const DelPolIlhabela = "Delegacia de Polícia de Ilhabela";
 export const DelPolSeccional = "Delegacia Seccional de São Sebastião";
 export const DelPolSaoSebastiao1 = "01º DP de São Sebastião";
 export const DelPolSaoSebastiao2 = "02º DP de São Sebastião";
@@ -101,13 +101,13 @@ export const SaoSebastiao = "São Sebastião";
 export const Municipios = [Ubatuba, Caraguatatuba, Ilhabela, SaoSebastiao];
 
 // Fotografos
-export const Ana = "Ana Cristina Toledo";
-export const Fabio = "Fabio Romano";
-export const Gilberto = "Gilberto Bardacim";
-export const Mauro = "Mauro";
+export const Ana = "Ana Cristina de Toledo Romano";
+export const Fabio = "Fabio Alves Penna Romano";
+export const Gilberto = "Gilberto Santana Bardacim";
+export const Mauro = "Mauro Sérgio de Souza";
 export const Paulo = "Paulo Guimarães Júnior";
-export const Silvia = "Silvia Jeiger";
-export const Ubirajara = "Ubirajara";
+export const Silvia = "Silvia Jerger Rocha";
+export const Ubirajara = "Ubirajara Araújo Rofino";
 export const Fotografos = [
   Ana,
   Fabio,
@@ -130,7 +130,7 @@ export const Automovel = "automóvel";
 export const Caminhao = "caminhão";
 export const Onibus = "ônibus";
 export const Motocicleta = "motocicleta";
-export const TipoVeiculo = [Automovel, Motocicleta];
+export const TipoVeiculo = [Automovel, Caminhao, Motocicleta];
 
 export const AlfaRomeo = "Alfa Romeo";
 export const AstonMartin = "Aston Martin";
@@ -218,6 +218,18 @@ export const MarcaCarro = [
   Volvo
 ];
 
+export const MarcaCaminhao = [
+  Ford,
+  Honda,
+  KIA,
+  Hyundai,
+  Pegeout,
+  Renault,
+  Volkswagen,
+  IVECO,
+  MercedesBenz
+];
+
 export const Dafra = "Dafra";
 export const Ducati = "Ducati";
 export const HarleyDavidson = "Harley Davidson";
@@ -249,6 +261,7 @@ export const MarcaMoto = [
 export const MarcaVeiculo = {
   "": [],
   automóvel: MarcaCarro,
+  caminhão: MarcaCaminhao,
   motocicleta: MarcaMoto
 };
 

@@ -89,7 +89,7 @@ export default class Local extends React.Component {
             {values.natureza !== "Vistoria Veicular" && (
               <div>
                 <Select
-                  label="Fotógrafo"
+                  label="Fotógrafo/Desenhista"
                   value={values.fotografo}
                   onChange={handleChange("fotografo")}
                   values={Fotografos}

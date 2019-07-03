@@ -91,7 +91,8 @@ export default class Vistoria extends React.Component {
               onChange={handleCheckPneu}
             />
             <br />
-            {values.tipoVeiculo === "automóvel" && (
+            {(values.tipoVeiculo === "automóvel" ||
+              values.tipoVeiculo === "caminhão") && (
               <Container>
                 <Row>
                   <Col>

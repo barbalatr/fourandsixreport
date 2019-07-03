@@ -12,7 +12,7 @@ export function bodyToSections(body) {
   result.push({
     type: "paragraph",
     content:
-      "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando a realização de Vistoria Veicular."
+      "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando a constatação de danos e verificação de sistemas de segurança."
   });
   result.push({
     type: "header",
@@ -106,7 +106,7 @@ export function bodyToSections(body) {
   result.push({
     type: "bullet",
     content: [
-      "Freio dianteiro: " + body.freios + ". " + body.motivoFreio,
+      "Freios: " + body.freios + ". " + body.motivoFreio,
       "Direção: " + body.direcao + ". " + body.motivoDirecao,
       "Parte Elétrica: " +
         body.parteEletrica +
@@ -125,7 +125,6 @@ export function bodyToSections(body) {
     type: "paragraph",
     content: "Era o que havia a relatar."
   });
-  return result;
 }
 export function generateDoc(body) {
   // Create document
@@ -227,7 +226,7 @@ export function generateDoc(body) {
       doc.addParagraph(heading);
       doc.addParagraph(emptyBreak);
     } else if (type === "paragraph") {
-      var paragraphParagraph = new docx.Paragraph();
+      var paragraphParagraph = new docx.Paragraph().justified();
       var paragraphParagraphText = new docx.TextRun(content)
         .size(24)
         .font("Spranq eco sans");
