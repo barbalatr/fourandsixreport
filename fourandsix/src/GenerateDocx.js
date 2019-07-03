@@ -1,130 +1,222 @@
 var fs = require("fs");
 var docx = require("docx");
+const meses = {
+  "01": "janeiro",
+  "02": "fevereiro",
+  "03": "março",
+  "04": "abril",
+  "05": "maio",
+  "06": "junho",
+  "07": "julho",
+  "08": "agosto",
+  "09": "setembro",
+  "10": "outubro",
+  "11": "novembro",
+  "12": "dezembro"
+};
 
 export function bodyToSections(body) {
   const result = [];
 
-  result.push({
-    type: "header",
-    content: "I - OBJETIVO"
-  });
+  // Conteúdo Vistoria Veicular
+  if (body.natureza === "Vistoria Veicular") {
+    result.push({
+      type: "header",
+      content: "I - OBJETIVO"
+    });
 
-  result.push({
-    type: "paragraph",
-    content:
-      "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando a constatação de danos e verificação de sistemas de segurança."
-  });
-  result.push({
-    type: "header",
-    content: "II - DO VEÍCULO E DOS EXAMES"
-  });
-  result.push({
-    type: "paragraph",
-    content:
-      "Nas condições em que foi apresentado à perícia" +
-      (body.isLocalIC
-        ? " na sede da Equipe de Perícias Criminalísticas de São Sebastião"
-        : "") +
-      ", foi examinado um veículo do tipo " +
-      body.tipoVeiculo +
-      ", da marca " +
-      body.marcaVeiculo +
-      ", modelo " +
-      body.modeloVeiculo +
-      ", da cor " +
-      body.corVeiculo +
-      ", de placas " +
-      body.placa +
-      ", e que quando da realização dos exames apresentava: "
-  });
-  result.push({
-    type: "bullet",
-    content: body.danosVeiculo.map(dano => {
-      return (
-        "Vestígios de" +
-        (dano.amolgamentoVeiculo &&
-        dano.atritamentoVeiculo &&
-        dano.fraturaVeiculo
-          ? " amolgamento, atritamento e fratura"
-          : dano.amolgamentoVeiculo && dano.atritamentoVeiculo
-          ? " amolgamento e atritamento"
-          : dano.amolgamentoVeiculo && dano.fraturaVeiculo
-          ? " amolgamento e fratura"
-          : dano.atritamentoVeiculo && dano.fraturaVeiculo
-          ? " atritamento e fratura"
-          : dano.amolgamentoVeiculo
-          ? " amolgamento"
-          : dano.atritamentoVeiculo
-          ? " atritamento"
-          : dano.fraturaVeiculo
-          ? " fratura"
+    result.push({
+      type: "paragraph",
+      content:
+        "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando a constatação de danos e verificação de sistemas de segurança."
+    });
+    result.push({
+      type: "header",
+      content: "II - DO VEÍCULO E DOS EXAMES"
+    });
+    result.push({
+      type: "paragraph",
+      content:
+        "Nas condições em que foi apresentado à perícia" +
+        (body.isLocalIC
+          ? " na sede da Equipe de Perícias Criminalísticas de São Sebastião"
           : "") +
-        " de aspecto(s) " +
-        dano.aspectoDano +
-        "(s)" +
-        " localizados no(a) " +
-        dano.localizacaoDanos +
-        " e orientados da " +
-        dano.orientacaoDanosLateral +
-        " e de " +
-        dano.orientacaoDanosLongitudinal +
+        ", foi examinado um veículo do tipo " +
+        body.tipoVeiculo +
+        ", da marca " +
+        body.marcaVeiculo +
+        ", modelo " +
+        body.modeloVeiculo +
+        ", da cor " +
+        body.corVeiculo +
+        ", de placas " +
+        body.placa +
+        ", e que quando da realização dos exames apresentava: "
+    });
+    result.push({
+      type: "bullet",
+      content: body.danosVeiculo.map(dano => {
+        return (
+          "Vestígios de" +
+          (dano.amolgamentoVeiculo &&
+          dano.atritamentoVeiculo &&
+          dano.fraturaVeiculo
+            ? " amolgamento, atritamento e fratura"
+            : dano.amolgamentoVeiculo && dano.atritamentoVeiculo
+            ? " amolgamento e atritamento"
+            : dano.amolgamentoVeiculo && dano.fraturaVeiculo
+            ? " amolgamento e fratura"
+            : dano.atritamentoVeiculo && dano.fraturaVeiculo
+            ? " atritamento e fratura"
+            : dano.amolgamentoVeiculo
+            ? " amolgamento"
+            : dano.atritamentoVeiculo
+            ? " atritamento"
+            : dano.fraturaVeiculo
+            ? " fratura"
+            : "") +
+          " de aspecto(s) " +
+          dano.aspectoDano +
+          "(s)" +
+          " localizados no(a) " +
+          dano.localizacaoDanos +
+          " e orientados da " +
+          dano.orientacaoDanosLateral +
+          " e de " +
+          dano.orientacaoDanosLongitudinal +
+          "."
+        );
+      })
+    });
+    result.push({
+      type: "paragraph",
+      content: body.isPneuOk
+        ? "Todos os pneumáticos do veículo se encontravam em bom estado de conservação no momento da realização dos exames."
+        : "Foi verificado que os pneumáticos do veículo se encontravam nas seguintes condições no momento da realização do exame:"
+    });
+    if (body.isPneuOk !== true && body.tipoVeiculo === "automóvel") {
+      result.push({
+        type: "bullet",
+        content: [
+          "Pneumático dianteiro direito " + body.pneuDianteiroDireito + ".",
+          "Pneumático dianteiro esquerdo " + body.pneuDianteiroEsquerdo + ".",
+          "Pneumático traseiro direito " + body.pneuTraseiroDireito + ".",
+          "Pneumático traseiro esquerdo " + body.pneuTraseiroEsquerdo + "."
+        ]
+      });
+    }
+    if (body.isPneuOk !== true && body.tipoVeiculo === "motocicleta") {
+      result.push({
+        type: "bullet",
+        content: [
+          "Pneumático dianteiro " + body.pneuDianteiro + ".",
+          "Pneumático traseiro " + body.pneuTraseiro + "."
+        ]
+      });
+    }
+    result.push({
+      type: "paragraph",
+      content:
+        "Através da realização de exame estático, foi verificado que seus sistemas de segurança para tráfego se encontravam nas seguintes condições:"
+    });
+    result.push({
+      type: "bullet",
+      content: [
+        "Freios: " + body.freios + ". " + body.motivoFreio,
+        "Direção: " + body.direcao + ". " + body.motivoDirecao,
+        "Parte Elétrica: " +
+          body.parteEletrica +
+          (body.parteEletrica === "funcionando parcialmente"
+            ? ". " + body.motivoParteEletrica
+            : body.parteEletrica === "não foi possível verificar"
+            ? " em razão da " + body.motivoParteEletrica + "."
+            : ".")
+      ]
+    });
+    result.push({
+      type: "header",
+      content: "III - CONSIDERAÇÕES FINAIS"
+    });
+    result.push({
+      type: "paragraph",
+      content: "Era o que havia a relatar."
+    });
+  }
+
+  // Conteúdo Crime Ambiental (Indireto)
+  if (body.natureza === "Crime Ambiental (Indireto)") {
+    result.push({
+      type: "header",
+      content: "I - OBJETIVO"
+    });
+
+    result.push({
+      type: "paragraph",
+      content:
+        "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando a constatação de crime ambiental."
+    });
+    result.push({
+      type: "header",
+      content: "II - DO LOCAL E DOS EXAMES"
+    });
+    result.push({
+      type: "paragraph",
+      content:
+        "Trata-se de uma área situada " +
+        body.endereco +
+        " " +
+        body.enderecoNumero +
+        ", no Bairro " +
+        body.enderecoBairro +
+        ", no município de " +
+        body.enderecoCidade +
         "."
-      );
-    })
-  });
-  result.push({
-    type: "paragraph",
-    content: body.isPneuOk
-      ? "Todos os pneumáticos do veículo se encontravam em bom estado de conservação no momento da realização dos exames."
-      : "Foi verificado que os pneumáticos do veículo se encontravam nas seguintes condições no momento da realização do exame:"
-  });
-  if (body.isPneuOk !== true && body.tipoVeiculo === "automóvel") {
+    });
     result.push({
-      type: "bullet",
-      content: [
-        "Pneumático dianteiro direito " + body.pneuDianteiroDireito + ".",
-        "Pneumático dianteiro esquerdo " + body.pneuDianteiroEsquerdo + ".",
-        "Pneumático traseiro direito " + body.pneuTraseiroDireito + ".",
-        "Pneumático traseiro esquerdo " + body.pneuTraseiroEsquerdo + "."
-      ]
+      type: "paragraph",
+      content:
+        "Conforme o Boletim de Ocorrência Ambiental de nº " +
+        body.BOPamb +
+        " de " +
+        body.dataBOPamb +
+        ", a referida área corresponde" +
+        body.tamanhoArea +
+        " ha, é caracterizada como de especial preservação, do bioma Mata Atlântica, a qual está situada " +
+        body.areaProtecaoAmbiental +
+        " e fora de Unidade de Conservação (U.C.) ou Zona de Amortecimento (Z.A.), na qual, quando da referida autuação, foi constatada degradação ambiental mediante " +
+        body.medianteAmbiental +
+        " de vegetação nativa típica de " +
+        body.vegetacaoTipica +
+        " " +
+        body.ordemAmbiental +
+        " em estágio " +
+        body.estagioRecuperacao +
+        " de regeneração, sem a devida licença ou autorização do órgão ambiental competente."
+    });
+
+    result.push({
+      type: "header",
+      content: "III - CONSIDERAÇÕES FINAIS"
+    });
+    result.push({
+      type: "paragraph",
+      content:
+        "Cumpre consignar que por ter sido solicitado e realizado em data posterior aos fatos, este exame se trata de um levantamento indireto de local, o qual foi baseado no Boletim de Ocorrência Ambiental de nº " +
+        body.BOPamb +
+        " de " +
+        body.dataBOPamb.substring(8, 10) +
+        " de " +
+        meses[body.dataBOPamb.substring(5, 7)] +
+        " de " +
+        body.dataAtendimento.substring(0, 4) +
+        "."
+    });
+    result.push({
+      type: "paragraph",
+      content: "Era o que havia a relatar."
     });
   }
-  if (body.isPneuOk !== true && body.tipoVeiculo === "motocicleta") {
-    result.push({
-      type: "bullet",
-      content: [
-        "Pneumático dianteiro " + body.pneuDianteiro + ".",
-        "Pneumático traseiro " + body.pneuTraseiro + "."
-      ]
-    });
-  }
-  result.push({
-    type: "paragraph",
-    content:
-      "Através da realização de exame estático, foi verificado que seus sistemas de segurança para tráfego se encontravam nas seguintes condições:"
-  });
-  result.push({
-    type: "bullet",
-    content: [
-      "Freios: " + body.freios + ". " + body.motivoFreio,
-      "Direção: " + body.direcao + ". " + body.motivoDirecao,
-      "Parte Elétrica: " +
-        body.parteEletrica +
-        (body.parteEletrica === "funcionando parcialmente"
-          ? ". " + body.motivoParteEletrica
-          : body.parteEletrica === "não foi possível verificar"
-          ? " em razão da " + body.motivoParteEletrica + "."
-          : ".")
-    ]
-  });
-  result.push({
-    type: "header",
-    content: "III - CONSIDERAÇÕES FINAIS"
-  });
-  result.push({
-    type: "paragraph",
-    content: "Era o que havia a relatar."
-  });
+  return result;
 }
 export function generateDoc(body) {
   // Create document
@@ -176,20 +268,7 @@ export function generateDoc(body) {
   // Cabeçalho
   const diaAtendimento = body.dataAtendimento.substring(8, 10);
   const mesAtendimentoNumero = body.dataAtendimento.substring(5, 7);
-  const meses = {
-    "01": "janeiro",
-    "02": "fevereiro",
-    "03": "março",
-    "04": "abril",
-    "05": "maio",
-    "06": "junho",
-    "07": "julho",
-    "08": "agosto",
-    "09": "setembro",
-    "10": "outubro",
-    "11": "novembro",
-    "12": "dezembro"
-  };
+
   const mesAtendimentoNome = meses[mesAtendimentoNumero];
   const anoAtendimento = body.dataAtendimento.substring(0, 4);
 
@@ -289,7 +368,8 @@ export function generateDoc(body) {
   doc.addParagraph(idPeritoParagraph);
 
   // Used to export the file into a .docx file
-  const nomeArquivo = "Laudo - Req. " + body.requisicao + ".docx";
+  const nomeArquivo =
+    "Laudo - Req. " + body.requisicao + body.natureza + ".docx";
   var packer = new docx.Packer();
   packer.toBuffer(doc).then(buffer => {
     fs.writeFileSync(nomeArquivo, buffer);

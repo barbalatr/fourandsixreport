@@ -63,7 +63,12 @@ export function Select({ label, value, onChange, values }) {
   return (
     <Form.Group>
       <Form.Label>{label}</Form.Label>
-      <Form.Control as="select" value={value} onChange={onChange}>
+      <Form.Control
+        as="select"
+        value={value}
+        values={values}
+        onChange={onChange}
+      >
         <option />
         {values.map(v => (
           <option>{v}</option>

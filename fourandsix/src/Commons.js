@@ -63,11 +63,12 @@ export const CrimeAmbiental = {
 // Natureza do Crime
 export const Homicidio = "Homicídio";
 export const MorteSuspeita = "Morte Suspeita";
+export const CrimeAmbientalIndireto = "Crime Ambiental (Indireto)";
 export const Vistoria = "Vistoria Veicular";
 export const DanoPatrimonial = "Dano Patrimonial";
 export const Furto = "Furto";
 export const FurtoQualificado = "Furto Qualificado";
-export const Natureza = [Vistoria];
+export const Natureza = [Vistoria, CrimeAmbientalIndireto];
 
 // Delegacias do Litoral Norte
 //TODO adicionar DDM em todos
@@ -307,7 +308,7 @@ export const MotivoNaoFoiPossivel = {
 export const ForaApp = "fora de app";
 export const DentroApp10 = "dentro de app largura inferior a 10 metros";
 export const DentroApp1050 = "dentro de app largura entre 10 e 50 metros";
-export const AreaDeProtecaoAmbiental = [ForaApp, DentroApp10, DentroApp1050];
+export const AreaProtecaoAmbiental = [ForaApp, DentroApp10, DentroApp1050];
 
 export const EstagioRecuperacaoInicial = "inicial";
 export const EstagioRecuperacaoMedio = "médio";
@@ -316,7 +317,35 @@ export const EstagioRecuperacao = [
   EstagioRecuperacaoMedio
 ];
 
-export const MedianteAmbiental = ["destruição"];
+export const Destruicao = "destruição";
+export const Supressao = "supressão de vegetação";
+export const Desmatamento = "desmatamento";
+export const Desrespeito = "desrespeito ao embargo administrativo imposto";
+export const Impedimento = "impedimento da regeneração natural";
+export const MedianteAmbiental = [
+  Destruicao,
+  Supressao,
+  Desmatamento,
+  Desrespeito,
+  Impedimento
+];
+
+export const FlorestaAltaRestinga = "floresta alta de restinga";
+export const FlorestaBaixaRestinga = "floresta baixa de restinga";
+export const FlorestaTransicaoRestinga = "floresta de transicão de restinga";
+export const FlorestaOmbrofilaDensa = "floresta ombrófila densa";
+export const VegetacaoTipica = [
+  FlorestaAltaRestinga,
+  FlorestaBaixaRestinga,
+  FlorestaTransicaoRestinga,
+  FlorestaOmbrofilaDensa
+];
+
+export const Primaria = "primária";
+export const Secundaria = "secundária";
+export const Terciaria = "terciária";
+export const OrdemAmbiental = [Primaria, Secundaria, Terciaria];
+
 export const MediantePatrimonial = [
   "mediante patrimonial A",
   "mediante patrimonial B"

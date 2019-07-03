@@ -7,6 +7,7 @@ import Sucesso from "./Sucesso";
 import Vistoria from "./Vistoria";
 import DanosVeiculo from "./DanosVeiculo";
 import Homicidio from "./Homicidio";
+import CrimeAmbientalIndireto from "./CrimeAmbientalIndireto";
 import Municipios from "../../Commons";
 
 const initialState = {
@@ -14,7 +15,7 @@ const initialState = {
   requisicao: "",
   laudo: "",
   boletim: "",
-  natureza: "Vistoria Veicular",
+  natureza: "",
   isPreservado: false,
   encarregado: "",
   reEncarregado: "",
@@ -22,6 +23,7 @@ const initialState = {
   delegacia: "",
   delegado: "",
   endereco: "",
+  enderecoBairro: "",
   enderecoNumero: "",
   enderecoCidade: "",
   isLocalIC: false,
@@ -90,7 +92,14 @@ const initialState = {
   motivoFreio: "",
   motivoDirecao: "",
   motivoParteEletrica: "",
-  BOPamb: ""
+  BOPamb: "",
+  dataBOPamb: "",
+  tamanhoArea: "",
+  areaProtecaoAmbiental: "",
+  medianteAmbiental: "",
+  vegetacaoTipica: "",
+  ordemAmbiental: "",
+  estagioRecuperacao: ""
 };
 
 export default class ExamForm extends React.Component {
@@ -105,6 +114,9 @@ export default class ExamForm extends React.Component {
       return "Requisicao";
     }
     if (view === "Vistoria Veicular") {
+      return "Local";
+    }
+    if (view === "Crime Ambiental (Indireto)") {
       return "Local";
     }
     if (view === "DanosVeiculo") {
@@ -144,6 +156,9 @@ export default class ExamForm extends React.Component {
     if (view === "Local" && natureza === "Vistoria Veicular") {
       return "Vistoria Veicular";
     }
+    if (view === "Local" && natureza === "Crime Ambiental (Indireto)") {
+      return "Crime Ambiental (Indireto)";
+    }
     if (view === "Local" && natureza === "Homicídio") {
       return "Homicídio";
     }
@@ -151,6 +166,9 @@ export default class ExamForm extends React.Component {
       return "DanosVeiculo";
     }
     if (view === "DanosVeiculo") {
+      return "Confirmar";
+    }
+    if (view === "Crime Ambiental (Indireto)") {
       return "Confirmar";
     }
     if (view === "Homicídio") {
@@ -330,6 +348,7 @@ export default class ExamForm extends React.Component {
       delegacia,
       delegado,
       endereco,
+      enderecoBairro,
       enderecoCidade,
       isLocalIC,
       enderecoNumero,
@@ -360,7 +379,14 @@ export default class ExamForm extends React.Component {
       motivoFreio,
       motivoDirecao,
       motivoParteEletrica,
-      BOPamb
+      BOPamb,
+      dataBOPamb,
+      tamanhoArea,
+      areaProtecaoAmbiental,
+      medianteAmbiental,
+      vegetacaoTipica,
+      ordemAmbiental,
+      estagioRecuperacao
     } = this.state;
     const values = {
       requisicao,
@@ -374,6 +400,7 @@ export default class ExamForm extends React.Component {
       delegacia,
       delegado,
       endereco,
+      enderecoBairro,
       enderecoCidade,
       isLocalIC,
       enderecoNumero,
@@ -404,7 +431,14 @@ export default class ExamForm extends React.Component {
       motivoFreio,
       motivoDirecao,
       motivoParteEletrica,
-      BOPamb
+      BOPamb,
+      dataBOPamb,
+      tamanhoArea,
+      areaProtecaoAmbiental,
+      medianteAmbiental,
+      vegetacaoTipica,
+      ordemAmbiental,
+      estagioRecuperacao
     };
 
     // Conditionally renders views
@@ -426,6 +460,18 @@ export default class ExamForm extends React.Component {
           handleChange={this.handleChange}
           handleCheck={this.handleCheck}
           handleCheckEndereco={this.handleCheckEndereco}
+          values={values}
+        />
+      );
+    }
+    if (view === "Crime Ambiental (Indireto)") {
+      return (
+        <CrimeAmbientalIndireto
+          nextView={this.nextView}
+          prevView={this.prevView}
+          handleChange={this.handleChange}
+          handleCheck={this.handleCheck}
+          handleRadio={this.handleRadio}
           values={values}
         />
       );
