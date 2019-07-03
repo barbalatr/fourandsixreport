@@ -77,7 +77,7 @@ const initialState = {
     }
   ],
   isVidrosVeiculoOk: "",
-  detalhesVidroAutomovel: "",
+  detalhesVidrosVeiculo: "",
   isPneuOk: "",
   pneuDianteiroDireito: "",
   pneuDianteiroEsquerdo: "",
@@ -136,6 +136,9 @@ export default class ExamForm extends React.Component {
     }
     if (view === "Confirmar" && natureza === "Homicídio") {
       return "Homicídio";
+    }
+    if (view === "Confirmar" && natureza === "Crime Ambiental (Indireto)") {
+      return "Crime Ambiental (Indireto)";
     }
   };
   // Back to previous view
@@ -216,13 +219,15 @@ export default class ExamForm extends React.Component {
           isLocalIC: true,
           endereco: "Alameda das Corvinas",
           enderecoNumero: 60,
-          enderecoCidade: "São Sebastião"
+          enderecoCidade: "São Sebastião",
+          enderecoBairro: "Arrastão"
         }
       : {
           isLocalIC: false,
           endereco: "",
           enderecoNumero: "",
-          enderecoCidade: ""
+          enderecoCidade: "",
+          enderecoBairro: ""
         };
     this.setState(newState);
   };

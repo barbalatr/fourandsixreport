@@ -249,13 +249,13 @@ export default class Vistoria extends React.Component {
                           onChange={asdf(index, "portaTraseira")}
                         />
                         <CheckBoxInput
-                          label="parlama dianteiro"
+                          label="paralama dianteiro"
                           value={dano.paralamaDianteiro}
                           checked={dano.paralamaDianteiro}
                           onChange={asdf(index, "paralamaDianteiro")}
                         />
                         <CheckBoxInput
-                          label="parlama traseiro"
+                          label="paralama traseiro"
                           value={dano.paralamaTraseiro}
                           checked={dano.paralamaTraseiro}
                           onChange={asdf(index, "paralamaTraseiro")}
@@ -426,20 +426,20 @@ export default class Vistoria extends React.Component {
                     <Container>
                       <p>Lateral</p>
                       <RadioInput
-                        label="esquerda para a direita"
-                        value="esquerda para a direita"
+                        label="da esquerda para a direita"
+                        value="da esquerda para a direita"
                         checked={
                           dano.orientacaoDanosLateral ===
-                          "esquerda para a direita"
+                          "da esquerda para a direita"
                         }
                         onChange={qwer(index, "orientacaoDanosLateral")}
                       />
                       <RadioInput
-                        label="direita para a esquerda"
-                        value="direita para a esquerda"
+                        label="da direita para a esquerda"
+                        value="da direita para a esquerda"
                         checked={
                           dano.orientacaoDanosLateral ===
-                          "direita para a esquerda"
+                          "da direita para a esquerda"
                         }
                         onChange={qwer(index, "orientacaoDanosLateral")}
                       />
@@ -447,20 +447,20 @@ export default class Vistoria extends React.Component {
                       <br />
                       <p>Longitudinal</p>
                       <RadioInput
-                        label="frente para trás"
-                        value="frente para trás"
+                        label="da frente para trás"
+                        value="da frente para trás"
                         checked={
                           dano.orientacaoDanosLongitudinal ===
-                          "frente para trás"
+                          "da frente para trás"
                         }
                         onChange={qwer(index, "orientacaoDanosLongitudinal")}
                       />
                       <RadioInput
-                        label="trás para frente"
-                        value="trás para frente"
+                        label="de trás para frente"
+                        value="de trás para frente"
                         checked={
                           dano.orientacaoDanosLongitudinal ===
-                          "trás para frente"
+                          "de trás para frente"
                         }
                         onChange={qwer(index, "orientacaoDanosLongitudinal")}
                       />

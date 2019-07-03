@@ -28,7 +28,7 @@ export function bodyToSections(body) {
     result.push({
       type: "paragraph",
       content:
-        "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando a constatação de danos e verificação de sistemas de segurança."
+        "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando a constatação de danos e verificação de sistemas de segurança para o tráfego."
     });
     result.push({
       type: "header",
@@ -80,13 +80,47 @@ export function bodyToSections(body) {
           "(s)" +
           " localizados no(a) " +
           dano.localizacaoDanos +
-          " e orientados da " +
-          dano.orientacaoDanosLateral +
-          " e de " +
+          " e orientados " +
+          (dano.orientacaoDanosLateral !== ""
+            ? dano.orientacaoDanosLateral + " e "
+            : "") +
           dano.orientacaoDanosLongitudinal +
-          "."
-        );
+          dano.orientacaoDanosVertical +
+          " envolvendo principalmente: " +
+          (dano.farolDireito ? " farol direito," : "") +
+          (dano.capo ? " capô," : "") +
+          (dano.paraChoques ? " para-choque," : "") +
+          (dano.lanternaEsquerda ? " lanterna esquerda," : "") +
+          (dano.lanternaDireita ? " lanterna direita," : "") +
+          (dano.portalMalas ? " portal malas," : "") +
+          (dano.portaDianteira ? " porta dianteira," : "") +
+          (dano.portaTraseira ? " porta traseira," : "") +
+          (dano.paralamaDianteiro ? " paralama dianteiro," : "") +
+          (dano.paralamaTraseiro ? " paralama traseiro," : "") +
+          (dano.farol ? " farol," : "") +
+          (dano.painel ? " painel," : "") +
+          (dano.guidao ? " guidão," : "") +
+          (dano.paralama ? " paralama," : "") +
+          (dano.bengala ? " bengala," : "") +
+          (dano.seta ? " seta," : "") +
+          (dano.tanqueCombunstivel ? " tanque combunstivel," : "") +
+          (dano.espelhoRetrovisor ? " espelho retrovisor," : "") +
+          (dano.tanqueCombunstivel ? " tanque de combunstivel," : "") +
+          (dano.motor ? " motor," : "") +
+          (dano.radiador ? " radiador," : "") +
+          (dano.sistemaTransmissao ? " sistema de transmissao," : "") +
+          (dano.carenagem ? " carenagem," : "") +
+          (dano.escapamento ? " escapamento," : "") +
+          (dano.luzFreio ? " luz freio" : "")
+        ).replace(/.$/, ".");
       })
+    });
+
+    result.push({
+      type: "paragraph",
+      content: body.isVidrosVeiculoOk
+        ? "Todos os vidros do veículo se encontravam sem avarias no momento da realização dos exames."
+        : body.detalhesVidrosVeiculo
     });
     result.push({
       type: "paragraph",
@@ -218,6 +252,7 @@ export function bodyToSections(body) {
   }
   return result;
 }
+
 export function generateDoc(body) {
   // Create document
   var doc = new docx.Document();

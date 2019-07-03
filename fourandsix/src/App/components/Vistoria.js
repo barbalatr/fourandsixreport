@@ -153,8 +153,8 @@ export default class Vistoria extends React.Component {
                 {values.isVidrosVeiculoOk === "Danificados" && (
                   <TextInput
                     placeholder="Dê mais detalhes..."
-                    value={values.detalhesVidroAutomovel}
-                    onChange={handleChange("detalhesVidroAutomovel")}
+                    value={values.detalhesVidrosVeiculo}
+                    onChange={handleChange("detalhesVidrosVeiculo")}
                   />
                 )}
               </Container>
