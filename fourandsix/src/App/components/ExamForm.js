@@ -16,6 +16,7 @@ const initialState = {
   laudo: "",
   boletim: "",
   natureza: "",
+  objetivo: "",
   isPreservado: false,
   encarregado: "",
   reEncarregado: "",
@@ -99,7 +100,10 @@ const initialState = {
   medianteAmbiental: "",
   vegetacaoTipica: "",
   ordemAmbiental: "",
-  estagioRecuperacao: ""
+  estagioRecuperacao: "",
+  usoImovel: "",
+  AlinhamentoImovel: "",
+  NivelImovel: ""
 };
 
 export default class ExamForm extends React.Component {
@@ -346,6 +350,7 @@ export default class ExamForm extends React.Component {
       laudo,
       boletim,
       natureza,
+      objetivo,
       isPreservado,
       encarregado,
       reEncarregado,
@@ -391,13 +396,17 @@ export default class ExamForm extends React.Component {
       medianteAmbiental,
       vegetacaoTipica,
       ordemAmbiental,
-      estagioRecuperacao
+      estagioRecuperacao,
+      usoImovel,
+      AlinhamentoImovel,
+      NivelImovel
     } = this.state;
     const values = {
       requisicao,
       laudo,
       boletim,
       natureza,
+      objetivo,
       isPreservado,
       encarregado,
       reEncarregado,
@@ -443,7 +452,10 @@ export default class ExamForm extends React.Component {
       medianteAmbiental,
       vegetacaoTipica,
       ordemAmbiental,
-      estagioRecuperacao
+      estagioRecuperacao,
+      usoImovel,
+      AlinhamentoImovel,
+      NivelImovel
     };
 
     // Conditionally renders views
@@ -472,6 +484,18 @@ export default class ExamForm extends React.Component {
     if (view === "Crime Ambiental (Indireto)") {
       return (
         <CrimeAmbientalIndireto
+          nextView={this.nextView}
+          prevView={this.prevView}
+          handleChange={this.handleChange}
+          handleCheck={this.handleCheck}
+          handleRadio={this.handleRadio}
+          values={values}
+        />
+      );
+    }
+    if (view === "Furto Qualificado") {
+      return (
+        <FurtoQualificado
           nextView={this.nextView}
           prevView={this.prevView}
           handleChange={this.handleChange}

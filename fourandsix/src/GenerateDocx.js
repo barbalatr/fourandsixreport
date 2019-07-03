@@ -250,6 +250,93 @@ export function bodyToSections(body) {
       content: "Era o que havia a relatar."
     });
   }
+
+  // Conteúdo Furto Qualificado
+  if (body.natureza === "Furto Qualificado") {
+    result.push({
+      type: "header",
+      content: "I - OBJETIVO"
+    });
+    result.push({
+      type: "paragraph",
+      content:
+        "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, a " +
+        body.objetivo +
+        "."
+    });
+    result.push({
+      type: "header",
+      content: "II - DO LOCAL E DOS EXAMES"
+    });
+    result.push({
+      type: "paragraph",
+      content:
+        "Trata-se de um imóvel de uso " +
+        body.usoImovel +
+        " localizado na" +
+        body.endereco +
+        " " +
+        body.enderecoNumero +
+        ", no Bairro " +
+        body.enderecoBairro +
+        ", no município de " +
+        body.enderecoCidade +
+        "."
+    });
+    result.push({
+      type: "paragraph",
+      content:
+        "A edificação existente no local apresentava as seguintes características: construída em " +
+        body.materialConstrucao +
+        " de " +
+        body.dataBOPamb +
+        ", a referida área corresponde" +
+        body.tamanhoArea +
+        " ha, é caracterizada como de especial preservação, do bioma Mata Atlântica, a qual está situada " +
+        body.areaProtecaoAmbiental +
+        " e fora de Unidade de Conservação (U.C.) ou Zona de Amortecimento (Z.A.), na qual, quando da referida autuação, foi constatada degradação ambiental mediante " +
+        body.medianteAmbiental +
+        " de vegetação nativa típica de " +
+        body.vegetacaoTipica +
+        " " +
+        body.ordemAmbiental +
+        " em estágio " +
+        body.estagioRecuperacao +
+        " de regeneração, sem a devida licença ou autorização do órgão ambiental competente."
+    });
+    result.push({
+      type: "header",
+      content: "III - DO PROVÁVEL ACESSO DELITUOSO"
+    });
+    result.push({
+      type: "paragraph",
+      content:
+        "Os exames periciais foram acompanhados Escolher um item., os quais prestaram maiores esclarecimentos sobre a ocorrência. Cumpre consignar que por ter sido solicitado e realizado em data posterior aos fatos, este exame se trata de um levantamento indireto de local."
+    });
+    result.push({
+      type: "header",
+      content:
+        "IV - DOS VESTÍGIOS DE DANOS E/OU REPAROS PRESENTES NO MOMENTO DOS EXAMES PERICIAIS"
+    });
+    result.push({
+      type: "paragraph",
+      content:
+        "Os exames periciais foram acompanhados Escolher um item., os quais prestaram maiores esclarecimentos sobre a ocorrência. Cumpre consignar que por ter sido solicitado e realizado em data posterior aos fatos, este exame se trata de um levantamento indireto de local."
+    });
+    result.push({
+      type: "header",
+      content: "V - CONSIDERAÇÕES FINAIS"
+    });
+    result.push({
+      type: "paragraph",
+      content:
+        "Os exames periciais foram acompanhados Escolher um item., os quais prestaram maiores esclarecimentos sobre a ocorrência. Cumpre consignar que por ter sido solicitado e realizado em data posterior aos fatos, este exame se trata de um levantamento indireto de local."
+    });
+    result.push({
+      type: "paragraph",
+      content: "Era o que havia a relatar."
+    });
+  }
   return result;
 }
 

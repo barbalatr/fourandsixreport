@@ -121,11 +121,22 @@ export const Fotografos = [
 
 export const Residencial = "residencial";
 export const Comercial = "comercial";
-export const TipoLocal = [Residencial, Comercial];
+export const Publico = "público";
+export const Misto = "misto";
+export const UsoImovel = [Residencial, Comercial, Publico, Misto];
 
-export const ComRecuo = "com recuo";
-export const SemRecuo = "sem recuo";
-export const AlinhamentoDeLocal = [ComRecuo, SemRecuo];
+export const ComRecuo = "com recúo";
+export const SemRecuo = "sem recúo";
+export const AlinhamentoImovel = [ComRecuo, SemRecuo];
+
+export const Abaixo = "abaixo do nível";
+export const Acima = "acima do nível";
+export const MesmoNivel = "no mesmo nível";
+export const NivelImovel = [Abaixo, Acima, MesmoNivel];
+
+export const Alvenaria = "alvenaria";
+export const Madeira = "madeira";
+export const MaterialConstrucao = [Alvenaria, Madeira];
 
 export const Automovel = "automóvel";
 export const Caminhao = "caminhão";
@@ -265,11 +276,6 @@ export const MarcaVeiculo = {
   caminhão: MarcaCaminhao,
   motocicleta: MarcaMoto
 };
-
-export const Fratura = "Fratura";
-export const Amolgamento = "Amolgamento";
-export const Atritamento = "Atritamento Metálico";
-export const TipoDanoVeiculo = [Fratura, Amolgamento, Atritamento];
 
 export const Recente = "Recente";
 export const NaoRecente = "Não Recente";
