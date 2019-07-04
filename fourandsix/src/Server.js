@@ -5,9 +5,7 @@ const path = require("path");
 const { Client } = require("pg");
 const sgMail = require("@sendgrid/mail");
 
-sgMail.setApiKey(
-  "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"
-);
+sgMail.setApiKey();
 const msg = {
   to: "barbalatr@gmail.com",
   from: "no-reply@46report.com",
