@@ -99,7 +99,8 @@ export default class Local extends React.Component {
             </Row>
 
             {values.natureza !== "Vistoria Veicular" &&
-              values.natureza !== "Crime Ambiental (Indireto)" && (
+              values.natureza !== "Crime Ambiental (Indireto)" &&
+              values.natureza !== "Furto Qualificado" && (
                 <div>
                   <Select
                     label="Fotógrafo/Desenhista"

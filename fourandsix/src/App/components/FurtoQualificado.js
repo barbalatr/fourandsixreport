@@ -26,7 +26,15 @@ import {
   Pavimentos,
   VizinhancaImovel,
   PassagemImovel,
-  PrecedidoImovel
+  PrecedidoImovel,
+  VedacaoTerreno,
+  VedacaoFrontalTerreno,
+  InterrompidoPor,
+  AcessoTerreno,
+  EscaladaVedacao,
+  ObjetoVedacao,
+  MedianteAcessoTerreno,
+  isApartamento
 } from "../../Commons";
 
 export default class FurtoQualificado extends React.Component {
@@ -51,6 +59,16 @@ export default class FurtoQualificado extends React.Component {
           <h4 align="center">Do Imóvel</h4>
 
           <Form>
+            <TextInput
+              label="Nome"
+              value={values.nomeAcompanhante}
+              onChange={handleChange("nomeAcompanhante")}
+            />
+            <TextInput
+              label="RG"
+              value={values.RGAcompanhante}
+              onChange={handleChange("RGAcompanhante")}
+            />
             <Select
               label="Tipo de Uso"
               value={values.usoImovel}
@@ -70,11 +88,33 @@ export default class FurtoQualificado extends React.Component {
               values={Pavimentos}
             />
             {values.pavimentos === "mais de um pavimento" && (
-              <TextInput
-                label="Número de Pavimentos"
-                value={values.numeroPavimentos}
-                onChange={handleChange("numeroPavimentos")}
-              />
+              <Container>
+                <TextInput
+                  label="Número de Pavimentos"
+                  value={values.numeroPavimentos}
+                  onChange={handleChange("numeroPavimentos")}
+                />
+                <Select
+                  label="É apartamento?"
+                  value={values.isApartamento}
+                  onChange={handleChange("isApartamento")}
+                  values={isApartamento}
+                />
+                {values.isApartamento === "Sim" && (
+                  <Container>
+                    <TextInput
+                      label="Número do Apartamento"
+                      value={values.numeroApartamento}
+                      onChange={handleChange("numeroApartamento")}
+                    />
+                    <TextInput
+                      label="Pavimento de interesse"
+                      value={values.pavimentoInteresse}
+                      onChange={handleChange("pavimentoInteresse")}
+                    />
+                  </Container>
+                )}
+              </Container>
             )}
             <Select
               label="Vizinhança"
@@ -94,18 +134,82 @@ export default class FurtoQualificado extends React.Component {
               onChange={handleChange("alinhamentoImovel")}
               values={AlinhamentoImovel}
             />
+            {values.isApartamento !== "Sim" && (
+              <Container>
+                <Select
+                  label="Corredores Externos"
+                  value={values.passagemImovel}
+                  onChange={handleChange("passagemImovel")}
+                  values={PassagemImovel}
+                />
+                <Select
+                  label="Precedido"
+                  value={values.precedidoImovel}
+                  onChange={handleChange("precedidoImovel")}
+                  values={PrecedidoImovel}
+                />
+              </Container>
+            )}
 
             <Select
-              label="Corredores Externos"
-              value={values.passagemImovel}
-              onChange={handleChange("passagemImovel")}
-              values={PassagemImovel}
+              label="Vedação Terreno"
+              value={values.vedacaoTerreno}
+              onChange={handleChange("vedacaoTerreno")}
+              values={VedacaoTerreno}
             />
             <Select
-              label="Precedido"
-              value={values.precedidoImovel}
-              onChange={handleChange("precedidoImovel")}
-              values={PrecedidoImovel}
+              label="Vedação Frontal Terreno"
+              value={values.vedacaoFrontalTerreno}
+              onChange={handleChange("vedacaoFrontalTerreno")}
+              values={VedacaoFrontalTerreno}
+            />
+            <Select
+              label="Vedação Frontal Interrompida por..."
+              value={values.interrompidoPor}
+              onChange={handleChange("interrompidoPor")}
+              values={InterrompidoPor}
+            />
+            <Select
+              label="Acesso ao Terreno"
+              value={values.acessoTerreno}
+              onChange={handleChange("acessoTerreno")}
+              values={AcessoTerreno}
+            />
+            {values.acessoTerreno === "escalada" && (
+              <Container>
+                <Select
+                  label="Escalada Vedação"
+                  value={values.escaladaVedacao}
+                  onChange={handleChange("escaladaVedacao")}
+                  values={EscaladaVedacao}
+                />
+                <TextInput
+                  label="Altura Escalada"
+                  value={values.alturaEscalada}
+                  onChange={handleChange("alturaEscalada")}
+                />
+              </Container>
+            )}
+            {values.acessoTerreno === "rompimento de obstáculo" && (
+              <Container>
+                <Select
+                  label="Objeto Vedação"
+                  value={values.objetoVedacao}
+                  onChange={handleChange("objetoVedacao")}
+                  values={ObjetoVedacao}
+                />
+                <Select
+                  label="Acesso ao terreno mediante..."
+                  value={values.medianteAcessoTerreno}
+                  onChange={handleChange("medianteAcessoTerreno")}
+                  values={MedianteAcessoTerreno}
+                />
+              </Container>
+            )}
+            <TextInput
+              label="Acesso ao interior mediante..."
+              value={values.medianteAcessoImovel}
+              onChange={handleChange("medianteAcessoImovel")}
             />
           </Form>
         </Container>

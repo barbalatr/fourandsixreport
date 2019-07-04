@@ -68,7 +68,7 @@ export const Vistoria = "Vistoria Veicular";
 export const DanoPatrimonial = "Dano Patrimonial";
 export const Furto = "Furto";
 export const FurtoQualificado = "Furto Qualificado";
-export const Natureza = [FurtoQualificado, CrimeAmbientalIndireto, Vistoria];
+export const Natureza = [CrimeAmbientalIndireto, FurtoQualificado, Vistoria];
 
 // Delegacias do Litoral Norte
 //TODO adicionar DDM em todos
@@ -125,14 +125,14 @@ export const Publico = "público";
 export const Misto = "misto";
 export const UsoImovel = [Residencial, Comercial, Publico, Misto];
 
-export const ComRecuo = "com recúo";
-export const SemRecuo = "sem recúo";
+export const ComRecuo = "recuada do alinhamento geral do passeio";
+export const SemRecuo = "no alinhamento geral do passeio";
 export const AlinhamentoImovel = [SemRecuo, ComRecuo];
 
 export const Abaixo = "abaixo do nível da rua";
 export const Acima = "acima do nível da rua";
 export const MesmoNivel = "no mesmo nível da rua";
-export const NivelImovel = [Abaixo, Acima, MesmoNivel];
+export const NivelImovel = [MesmoNivel, Abaixo, Acima];
 
 export const Alvenaria = "alvenaria";
 export const Madeira = "madeira";
@@ -143,8 +143,8 @@ export const NaoTerrea = "mais de um pavimento";
 export const Pavimentos = [Terrea, NaoTerrea];
 
 export const Isolada = "isolada";
-export const UnidoDireita = "unido a direita com imóvel vizinho";
-export const UnidoEsquerda = "unido a esquerda com imóvel vizinho";
+export const UnidoDireita = "unido à direita com imóvel vizinho";
+export const UnidoEsquerda = "unido à esquerda com imóvel vizinho";
 export const VizinhancaContinua = "com vizinhança contínua";
 export const VizinhancaImovel = [
   Isolada,
@@ -157,17 +157,84 @@ export const PassagemDireita = "com passagem lateral à direita";
 export const PassagemEsquerda = "com passagem lateral à esquerda";
 export const PassagemEsquerdaDireita =
   "com passagem lateral à esquerda e à direita";
+export const SemPassagem = "sem passagem lateral";
 export const PassagemImovel = [
   PassagemDireita,
   PassagemEsquerda,
-  PassagemEsquerdaDireita
+  PassagemEsquerdaDireita,
+  SemPassagem
 ];
 
-export const Jardim = "jardim";
 export const AreaLivre = "área livre";
 export const Garagem = "garagem";
 export const AreaLivreGaragem = "área livre e garagem";
-export const PrecedidoImovel = [Jardim, AreaLivre, Garagem, AreaLivreGaragem];
+export const PrecedidoImovel = [AreaLivre, Garagem, AreaLivreGaragem];
+
+export const MurosAlvenaria = "muros de alvenaria";
+export const Cercas = "cercas";
+export const CercasArame = "cercas de arame";
+export const CercasViva = "cercas de arame cobertas por vegetação";
+export const CercasMouroes =
+  "cercas de arame interrompidas por mourões de madeira";
+export const VedacaoTerreno = [
+  MurosAlvenaria,
+  CercasArame,
+  CercasViva,
+  CercasMouroes
+];
+
+export const VedacaoFrontalTerreno = [MurosAlvenaria, Cercas];
+
+export const PortaoGrade = "portão de grades metálicas";
+export const PortoesGrade = "portões de grades metálicas";
+export const PortaoChapa = "portão de chapas metálicas";
+export const PortoesChapa = "portões de chapas metálicas";
+export const PortaoMadeira = "portão de madeira";
+export const PortoesMadeiras = "portões de madeira";
+export const InterrompidoPor = [
+  PortaoGrade,
+  PortoesGrade,
+  PortaoChapa,
+  PortoesChapa,
+  PortaoMadeira,
+  PortoesMadeiras
+];
+
+export const Escalada = "escalada";
+export const RompimentoObstaculo = "rompimento de obstáculo";
+export const AcessoTerreno = [Escalada, RompimentoObstaculo];
+
+export const MuroVedacaoFrontal = "muro de vedação frontal";
+export const MuroVedacaoLateralDireito = "muro de vedação lateral direito";
+export const MuroVedacaoLateralEsquerdo = "muro de vedação lateral esquerdo";
+export const MuroVedacaoFundos = "muro de vedação dos fundos";
+export const PortaoFrontal = "portão frontal";
+export const EscaladaVedacao = [
+  MuroVedacaoFrontal,
+  MuroVedacaoLateralDireito,
+  MuroVedacaoLateralEsquerdo,
+  MuroVedacaoFundos,
+  PortaoFrontal
+];
+
+export const Cadeado = "cadeado";
+export const Corrente = "corrente";
+export const Tranca = "tranca";
+export const ObjetoVedacao = [Cadeado, Corrente, Tranca];
+
+export const InstrumentoDesconhecido =
+  "instrumento desconhecido aplicado à guisa de alavanca aliado a esforço muscular";
+export const EsforcoMuscular = "esforço muscular";
+export const ObjetoContundente = "objeto contundente";
+export const ChavaFalsa = "chave falsa";
+export const ChaveMixa = "chave mixa";
+export const MedianteAcessoTerreno = [
+  InstrumentoDesconhecido,
+  EsforcoMuscular,
+  ObjetoContundente,
+  ChavaFalsa,
+  ChaveMixa
+];
 
 export const Automovel = "automóvel";
 export const Caminhao = "caminhão";
@@ -317,6 +384,8 @@ export const Nao = "Não";
 export const NaoDanos = "Não, em função dos danos";
 export const isPreservado = [Sim, Nao];
 export const isFuncionando = [Sim, Nao, NaoDanos];
+export const isApartamento = [Sim, Nao];
+
 export const Atuando = "atuando a contento";
 export const NaoAtuando = "não atuando a contento";
 export const NaoFoiPossivel = "não foi possível verificar";

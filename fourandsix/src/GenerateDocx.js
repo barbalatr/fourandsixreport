@@ -187,7 +187,9 @@ export function bodyToSections(body) {
     result.push({
       type: "paragraph",
       content:
-        "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando a constatação de crime ambiental."
+        "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, efetuar exames periciais objetivando: " +
+        body.objetivo +
+        "."
     });
     result.push({
       type: "header",
@@ -260,7 +262,7 @@ export function bodyToSections(body) {
     result.push({
       type: "paragraph",
       content:
-        "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial, a " +
+        "Visa o presente trabalho, conforme se depreende da requisição de exames elaborada pela Autoridade Policial:  " +
         body.objetivo +
         "."
     });
@@ -268,6 +270,7 @@ export function bodyToSections(body) {
       type: "header",
       content: "II - DO LOCAL E DOS EXAMES"
     });
+
     result.push({
       type: "paragraph",
       content:
@@ -281,56 +284,79 @@ export function bodyToSections(body) {
         body.enderecoBairro +
         ", no município de " +
         body.enderecoCidade +
-        "."
-    });
-    result.push({
-      type: "paragraph",
-      content:
+        ". " +
         "A edificação existente no local apresentava as seguintes características: construída em " +
         body.materialConstrucao +
-        ",  " +
+        ", vedada por " +
+        body.vedacaoTerreno +
+        ", " +
         (body.pavimentos === "térrea"
           ? "térrea, "
-          : "com " + body.numeroPavimentos + " pavimento(s), ") +
+          : "com " + body.numeroPavimentos + " pavimentos, ") +
         body.vizinhancaImovel +
         ", " +
         body.nivelImovel +
         ", " +
         body.alinhamentoImovel +
         ", " +
-        body.passagemImovel +
-        ", " +
-        body.precedidoImovel +
+        (body.isApartamento !== "Sim"
+          ? body.passagemImovel + ", precedida por " + body.precedidoImovel
+          : "") +
+        " e vedada em sua região frontal por " +
+        body.vedacaoFrontalTerreno +
+        " interrompidos por " +
+        body.interrompidoPor +
+        "."
+    });
+    {
+      body.isApartamento === "Sim" &&
+        result.push({
+          type: "paragraph",
+          content:
+            "Ofereceu interesse pericial o apartamento de número " +
+            body.numeroApartamento +
+            " localizado no " +
+            body.pavimentoInteresse +
+            "º pavimento. "
+        });
+    }
+
+    result.push({
+      type: "header",
+      content: "III - DO PROVÁVEL ACESSO DELITUOSO"
+    });
+    result.push({
+      type: "paragraph",
+      content:
+        "Quando da ocasião dos fatos, tudo indica que o acesso delituoso ao interior do imóvel tenha ocorrido através de " +
+        body.acessoTerreno +
+        " do " +
+        (body.acessoTerreno === "escalada"
+          ? body.escaladaVedacao +
+            ", o qual media aproximadamente " +
+            body.alturaEscalada +
+            " m de altura"
+          : ", mais precisamente do " +
+            body.objetoVedacao +
+            " pelo emprego de " +
+            body.medianteAcessoTerreno) +
+        ", seguido de rompimento de obstáculo mediante " +
+        body.medianteAcessoImovel +
         "."
     });
 
     result.push({
       type: "header",
-      content:
-        "III - DOS VESTÍGIOS DE DANOS E/OU REPAROS PRESENTES NO MOMENTO DOS EXAMES PERICIAIS"
+      content: "IV - CONSIDERAÇÕES FINAIS"
     });
     result.push({
       type: "paragraph",
       content:
-        "Os exames periciais foram acompanhados Escolher um item., os quais prestaram maiores esclarecimentos sobre a ocorrência. Cumpre consignar que por ter sido solicitado e realizado em data posterior aos fatos, este exame se trata de um levantamento indireto de local."
-    });
-    result.push({
-      type: "header",
-      content: "IV - DO PROVÁVEL ACESSO DELITUOSO"
-    });
-    result.push({
-      type: "paragraph",
-      content:
-        "Os exames periciais foram acompanhados Escolher um item., os quais prestaram maiores esclarecimentos sobre a ocorrência. Cumpre consignar que por ter sido solicitado e realizado em data posterior aos fatos, este exame se trata de um levantamento indireto de local."
-    });
-    result.push({
-      type: "header",
-      content: "V - CONSIDERAÇÕES FINAIS"
-    });
-    result.push({
-      type: "paragraph",
-      content:
-        "Os exames periciais foram acompanhados Escolher um item., os quais prestaram maiores esclarecimentos sobre a ocorrência. Cumpre consignar que por ter sido solicitado e realizado em data posterior aos fatos, este exame se trata de um levantamento indireto de local."
+        "Os exames periciais foram acompanhados por " +
+        body.nomeAcompanhante +
+        ", RG: " +
+        body.RGAcompanhante +
+        ". Cumpre consignar que por ter sido solicitado e realizado em data posterior aos fatos, este exame se trata de um levantamento indireto de local."
     });
     result.push({
       type: "paragraph",
@@ -427,7 +453,7 @@ export function generateDoc(body) {
       doc.addParagraph(heading);
       doc.addParagraph(emptyBreak);
     } else if (type === "paragraph") {
-      var paragraphParagraph = new docx.Paragraph().justified();
+      var paragraphParagraph = new docx.Paragraph().justified().indent(100, 0);
       var paragraphParagraphText = new docx.TextRun(content)
         .size(24)
         .font("Spranq eco sans");

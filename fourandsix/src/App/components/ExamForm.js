@@ -109,9 +109,23 @@ const initialState = {
   materialConstrucao: "",
   pavimentos: "",
   numeroPavimentos: "",
+  isApartamento: "",
+  pavimentoInteresse: "",
+  numeroApartamento: "",
   vizinhancaImovel: "",
   passagemImovel: "",
-  precedidoImovel: ""
+  precedidoImovel: "",
+  vedacaoTerreno: "",
+  vedacaoFrontalTerreno: "",
+  interrompidoPor: "",
+  acessoTerreno: "",
+  escaladaVedacao: "",
+  alturaEscalada: "",
+  objetoVedacao: "",
+  medianteAcessoTerreno: "",
+  medianteAcessoImovel: "",
+  nomeAcompanhante: "",
+  RGAcompanhante: ""
 };
 
 export default class ExamForm extends React.Component {
@@ -420,9 +434,23 @@ export default class ExamForm extends React.Component {
       materialConstrucao,
       pavimentos,
       numeroPavimentos,
+      isApartamento,
+      pavimentoInteresse,
+      numeroApartamento,
       vizinhancaImovel,
       passagemImovel,
-      precedidoImovel
+      precedidoImovel,
+      vedacaoTerreno,
+      vedacaoFrontalTerreno,
+      interrompidoPor,
+      acessoTerreno,
+      escaladaVedacao,
+      alturaEscalada,
+      objetoVedacao,
+      medianteAcessoTerreno,
+      medianteAcessoImovel,
+      nomeAcompanhante,
+      RGAcompanhante
     } = this.state;
     const values = {
       requisicao,
@@ -482,9 +510,23 @@ export default class ExamForm extends React.Component {
       materialConstrucao,
       pavimentos,
       numeroPavimentos,
+      isApartamento,
+      pavimentoInteresse,
+      numeroApartamento,
       vizinhancaImovel,
       passagemImovel,
-      precedidoImovel
+      precedidoImovel,
+      vedacaoTerreno,
+      vedacaoFrontalTerreno,
+      interrompidoPor,
+      acessoTerreno,
+      escaladaVedacao,
+      alturaEscalada,
+      objetoVedacao,
+      medianteAcessoTerreno,
+      medianteAcessoImovel,
+      nomeAcompanhante,
+      RGAcompanhante
     };
 
     // Conditionally renders views
