@@ -36,6 +36,11 @@ export default class Requisicao extends React.Component {
               onChange={handleChange("natureza")}
               values={Natureza}
             />
+            <TextInput
+              label="Objetivo"
+              value={values.objetivo}
+              onChange={handleChange("objetivo")}
+            />
             <Select
               label="Delegacia"
               value={values.delegacia}

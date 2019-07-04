@@ -288,25 +288,26 @@ export function bodyToSections(body) {
       content:
         "A edificação existente no local apresentava as seguintes características: construída em " +
         body.materialConstrucao +
-        " de " +
-        body.dataBOPamb +
-        ", a referida área corresponde" +
-        body.tamanhoArea +
-        " ha, é caracterizada como de especial preservação, do bioma Mata Atlântica, a qual está situada " +
-        body.areaProtecaoAmbiental +
-        " e fora de Unidade de Conservação (U.C.) ou Zona de Amortecimento (Z.A.), na qual, quando da referida autuação, foi constatada degradação ambiental mediante " +
-        body.medianteAmbiental +
-        " de vegetação nativa típica de " +
-        body.vegetacaoTipica +
-        " " +
-        body.ordemAmbiental +
-        " em estágio " +
-        body.estagioRecuperacao +
-        " de regeneração, sem a devida licença ou autorização do órgão ambiental competente."
+        ",  " +
+        (body.pavimentos === "térrea"
+          ? "térrea, "
+          : "com " + body.numeroPavimentos + " pavimento(s), ") +
+        body.vizinhancaImovel +
+        ", " +
+        body.nivelImovel +
+        ", " +
+        body.alinhamentoImovel +
+        ", " +
+        body.passagemImovel +
+        ", " +
+        body.precedidoImovel +
+        "."
     });
+
     result.push({
       type: "header",
-      content: "III - DO PROVÁVEL ACESSO DELITUOSO"
+      content:
+        "III - DOS VESTÍGIOS DE DANOS E/OU REPAROS PRESENTES NO MOMENTO DOS EXAMES PERICIAIS"
     });
     result.push({
       type: "paragraph",
@@ -315,8 +316,7 @@ export function bodyToSections(body) {
     });
     result.push({
       type: "header",
-      content:
-        "IV - DOS VESTÍGIOS DE DANOS E/OU REPAROS PRESENTES NO MOMENTO DOS EXAMES PERICIAIS"
+      content: "IV - DO PROVÁVEL ACESSO DELITUOSO"
     });
     result.push({
       type: "paragraph",
@@ -491,7 +491,7 @@ export function generateDoc(body) {
 
   // Used to export the file into a .docx file
   const nomeArquivo =
-    "Laudo - Req. " + body.requisicao + body.natureza + ".docx";
+    "Laudo - Req. " + body.requisicao + " " + body.natureza + ".docx";
   var packer = new docx.Packer();
   packer.toBuffer(doc).then(buffer => {
     fs.writeFileSync(nomeArquivo, buffer);

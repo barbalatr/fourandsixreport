@@ -80,7 +80,6 @@ export default class CrimeAmbientalIndireto extends React.Component {
             <Select
               label="Mediante"
               value={values.medianteAmbiental}
-              checked={values.medianteAmbiental}
               onChange={handleChange("medianteAmbiental")}
               values={MedianteAmbiental}
             />
@@ -88,7 +87,6 @@ export default class CrimeAmbientalIndireto extends React.Component {
             <Select
               label="Vegetação Típica"
               value={values.vegetacaoTipica}
-              checked={values.vegetacaoTipica}
               onChange={handleChange("vegetacaoTipica")}
               values={VegetacaoTipica}
             />
@@ -96,7 +94,6 @@ export default class CrimeAmbientalIndireto extends React.Component {
             <Select
               label="Ordem"
               value={values.ordemAmbiental}
-              checked={values.ordemAmbiental}
               onChange={handleChange("ordemAmbiental")}
               values={OrdemAmbiental}
             />
@@ -104,7 +101,6 @@ export default class CrimeAmbientalIndireto extends React.Component {
             <Select
               label="Estágio de Recuperação"
               value={values.estagioRecuperacao}
-              checked={values.estagioRecuperacao}
               onChange={handleChange("estagioRecuperacao")}
               values={EstagioRecuperacao}
             />

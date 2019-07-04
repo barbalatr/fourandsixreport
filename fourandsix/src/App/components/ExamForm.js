@@ -8,6 +8,8 @@ import Vistoria from "./Vistoria";
 import DanosVeiculo from "./DanosVeiculo";
 import Homicidio from "./Homicidio";
 import CrimeAmbientalIndireto from "./CrimeAmbientalIndireto";
+import FurtoQualificado from "./FurtoQualificado";
+
 import Municipios from "../../Commons";
 
 const initialState = {
@@ -102,8 +104,14 @@ const initialState = {
   ordemAmbiental: "",
   estagioRecuperacao: "",
   usoImovel: "",
-  AlinhamentoImovel: "",
-  NivelImovel: ""
+  alinhamentoImovel: "",
+  nivelImovel: "",
+  materialConstrucao: "",
+  pavimentos: "",
+  numeroPavimentos: "",
+  vizinhancaImovel: "",
+  passagemImovel: "",
+  precedidoImovel: ""
 };
 
 export default class ExamForm extends React.Component {
@@ -141,6 +149,9 @@ export default class ExamForm extends React.Component {
     if (view === "Confirmar" && natureza === "Homicídio") {
       return "Homicídio";
     }
+    if (view === "Crime Ambiental (Indireto)") {
+      return "Local";
+    }
     if (view === "Confirmar" && natureza === "Crime Ambiental (Indireto)") {
       return "Crime Ambiental (Indireto)";
     }
@@ -166,6 +177,9 @@ export default class ExamForm extends React.Component {
     if (view === "Local" && natureza === "Crime Ambiental (Indireto)") {
       return "Crime Ambiental (Indireto)";
     }
+    if (view === "Local" && natureza === "Furto Qualificado") {
+      return "Furto Qualificado";
+    }
     if (view === "Local" && natureza === "Homicídio") {
       return "Homicídio";
     }
@@ -176,6 +190,9 @@ export default class ExamForm extends React.Component {
       return "Confirmar";
     }
     if (view === "Crime Ambiental (Indireto)") {
+      return "Confirmar";
+    }
+    if (view === "Furto Qualificado") {
       return "Confirmar";
     }
     if (view === "Homicídio") {
@@ -399,7 +416,13 @@ export default class ExamForm extends React.Component {
       estagioRecuperacao,
       usoImovel,
       AlinhamentoImovel,
-      NivelImovel
+      NivelImovel,
+      materialConstrucao,
+      pavimentos,
+      numeroPavimentos,
+      vizinhancaImovel,
+      passagemImovel,
+      precedidoImovel
     } = this.state;
     const values = {
       requisicao,
@@ -455,7 +478,13 @@ export default class ExamForm extends React.Component {
       estagioRecuperacao,
       usoImovel,
       AlinhamentoImovel,
-      NivelImovel
+      NivelImovel,
+      materialConstrucao,
+      pavimentos,
+      numeroPavimentos,
+      vizinhancaImovel,
+      passagemImovel,
+      precedidoImovel
     };
 
     // Conditionally renders views

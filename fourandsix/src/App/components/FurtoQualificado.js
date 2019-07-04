@@ -22,10 +22,14 @@ import {
   UsoImovel,
   NivelImovel,
   AlinhamentoImovel,
-  MaterialConstrucao
+  MaterialConstrucao,
+  Pavimentos,
+  VizinhancaImovel,
+  PassagemImovel,
+  PrecedidoImovel
 } from "../../Commons";
 
-export default class CrimeAmbientalIndireto extends React.Component {
+export default class FurtoQualificado extends React.Component {
   render() {
     const {
       values,
@@ -40,62 +44,68 @@ export default class CrimeAmbientalIndireto extends React.Component {
     return (
       <React.Fragment>
         <Navbar bg="light" variant="dark" className="AppHeader">
-          <h1>Crime Ambiental (Indireto)</h1>
+          <h1>Furto Qualificado</h1>
         </Navbar>
 
         <Container>
+          <h4 align="center">Do Imóvel</h4>
+
           <Form>
-            <TextInput
-              label="BO PAmb"
-              value={values.BOPamb}
-              onChange={handleChange("BOPamb")}
-            />
-            <DateInput
-              label="Data do BO PAmb"
-              value={values.dataBOPamb}
-              onChange={handleChange("dataBOPamb")}
-            />
-            <TextInput
-              label="Tamanho da Área (ha)"
-              value={values.tamanhoArea}
-              onChange={handleChange("tamanhoArea")}
+            <Select
+              label="Tipo de Uso"
+              value={values.usoImovel}
+              onChange={handleChange("usoImovel")}
+              values={UsoImovel}
             />
             <Select
-              label="APP"
-              value={values.areaProtecaoAmbiental}
-              onChange={handleChange("areaProtecaoAmbiental")}
-              values={AreaProtecaoAmbiental}
+              label="Material Construção"
+              value={values.materialConstrucao}
+              onChange={handleChange("materialConstrucao")}
+              values={MaterialConstrucao}
             />
             <Select
-              label="Mediante"
-              value={values.medianteAmbiental}
-              checked={values.medianteAmbiental}
-              onChange={handleChange("medianteAmbiental")}
-              values={MedianteAmbiental}
+              label="Pavimentos"
+              value={values.pavimentos}
+              onChange={handleChange("pavimentos")}
+              values={Pavimentos}
+            />
+            {values.pavimentos === "mais de um pavimento" && (
+              <TextInput
+                label="Número de Pavimentos"
+                value={values.numeroPavimentos}
+                onChange={handleChange("numeroPavimentos")}
+              />
+            )}
+            <Select
+              label="Vizinhança"
+              value={values.vizinhancaImovel}
+              onChange={handleChange("vizinhancaImovel")}
+              values={VizinhancaImovel}
+            />
+            <Select
+              label="Nível"
+              value={values.nivelImovel}
+              onChange={handleChange("nivelImovel")}
+              values={NivelImovel}
+            />
+            <Select
+              label="Alinhamento"
+              value={values.alinhamentoImovel}
+              onChange={handleChange("alinhamentoImovel")}
+              values={AlinhamentoImovel}
             />
 
             <Select
-              label="Vegetação Típica"
-              value={values.vegetacaoTipica}
-              checked={values.vegetacaoTipica}
-              onChange={handleChange("vegetacaoTipica")}
-              values={VegetacaoTipica}
+              label="Corredores Externos"
+              value={values.passagemImovel}
+              onChange={handleChange("passagemImovel")}
+              values={PassagemImovel}
             />
-
             <Select
-              label="Ordem"
-              value={values.ordemAmbiental}
-              checked={values.ordemAmbiental}
-              onChange={handleChange("ordemAmbiental")}
-              values={OrdemAmbiental}
-            />
-
-            <Select
-              label="Estágio de Recuperação"
-              value={values.estagioRecuperacao}
-              checked={values.estagioRecuperacao}
-              onChange={handleChange("estagioRecuperacao")}
-              values={EstagioRecuperacao}
+              label="Precedido"
+              value={values.precedidoImovel}
+              onChange={handleChange("precedidoImovel")}
+              values={PrecedidoImovel}
             />
           </Form>
         </Container>

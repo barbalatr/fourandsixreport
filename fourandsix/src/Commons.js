@@ -68,7 +68,7 @@ export const Vistoria = "Vistoria Veicular";
 export const DanoPatrimonial = "Dano Patrimonial";
 export const Furto = "Furto";
 export const FurtoQualificado = "Furto Qualificado";
-export const Natureza = [Vistoria, CrimeAmbientalIndireto];
+export const Natureza = [FurtoQualificado, CrimeAmbientalIndireto, Vistoria];
 
 // Delegacias do Litoral Norte
 //TODO adicionar DDM em todos
@@ -127,16 +127,47 @@ export const UsoImovel = [Residencial, Comercial, Publico, Misto];
 
 export const ComRecuo = "com recúo";
 export const SemRecuo = "sem recúo";
-export const AlinhamentoImovel = [ComRecuo, SemRecuo];
+export const AlinhamentoImovel = [SemRecuo, ComRecuo];
 
-export const Abaixo = "abaixo do nível";
-export const Acima = "acima do nível";
-export const MesmoNivel = "no mesmo nível";
+export const Abaixo = "abaixo do nível da rua";
+export const Acima = "acima do nível da rua";
+export const MesmoNivel = "no mesmo nível da rua";
 export const NivelImovel = [Abaixo, Acima, MesmoNivel];
 
 export const Alvenaria = "alvenaria";
 export const Madeira = "madeira";
 export const MaterialConstrucao = [Alvenaria, Madeira];
+
+export const Terrea = "térrea";
+export const NaoTerrea = "mais de um pavimento";
+export const Pavimentos = [Terrea, NaoTerrea];
+
+export const Isolada = "isolada";
+export const UnidoDireita = "unido a direita com imóvel vizinho";
+export const UnidoEsquerda = "unido a esquerda com imóvel vizinho";
+export const VizinhancaContinua = "com vizinhança contínua";
+export const VizinhancaImovel = [
+  Isolada,
+  UnidoDireita,
+  UnidoEsquerda,
+  VizinhancaContinua
+];
+
+export const PassagemDireita = "com passagem lateral à direita";
+export const PassagemEsquerda = "com passagem lateral à esquerda";
+export const PassagemEsquerdaDireita =
+  "com passagem lateral à esquerda e à direita";
+export const PassagemImovel = [
+  PassagemDireita,
+  PassagemEsquerda,
+  PassagemEsquerdaDireita
+];
+
+export const Jardim = "jardim";
+export const AreaLivre = "área livre";
+export const Garagem = "garagem";
+export const AreaLivreGaragem = "área livre e garagem";
+export const PrecedidoImovel = [Jardim, AreaLivre, Garagem, AreaLivreGaragem];
 
 export const Automovel = "automóvel";
 export const Caminhao = "caminhão";
