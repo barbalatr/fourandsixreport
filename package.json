@@ -1,9 +1,56 @@
 {
-  "name": "46report",
+  "name": "fourandsix",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "@sendgrid/mail": "^6.4.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
+    "css-loader": "^2.1.1",
+    "docx": "^4.7.1",
     "express": "^4.16.4",
+    "iso-morphic-style-loader": "^2.0.1",
+    "node-sass": "^4.12.0",
+    "nodemailer": "^6.1.1",
+    "nodemon-webpack-plugin": "4.0.7",
+    "pg": "^7.10.0",
+    "prettier": "^1.17.0",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
-    "underscore": "^1.9.1"
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "scripts": {
+    "format": "prettier",
+    "dev": "webpack --config webpack.config.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
