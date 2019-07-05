@@ -1,3 +1,4 @@
+require("dotenv").config();
 import { generateDoc } from "./GenerateDocx";
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -26,18 +27,19 @@ const app = express()
     response.sendFile(rootPath("./tmp/Browser.js"));
   })
   .post("/", (request, response) => {
-    saveAtendimento(request.body)
-      .then(() => {
-        console.log(request.body);
-        response.json({ message: "ok" });
-      })
+    const { body } = request;
+    console.log("req " + JSON.stringify(body));
+    return saveAtendimento(request.body)
       .then(() => {
         generateDoc(request.body);
-        console.log("arquivo docx gerado");
-        sendEmail(msg);
-        console.log("email enviado");
+        return sendEmail(msg);
+      })
+      .then(() => {
+        console.log("suc");
+        response.json({ message: "ok" });
       })
       .catch(e => {
+        console.log("err " + String(e));
         console.log(e);
         response.json({ message: "error" });
       });
