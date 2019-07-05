@@ -1,5 +1,5 @@
-require("dotenv").config();
 import { generateDoc } from "./GenerateDocx";
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -7,9 +7,10 @@ const { Client } = require("pg");
 const sgMail = require("@sendgrid/mail");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 const msg = {
   to: "barbalatr@gmail.com",
-  from: "no-reply@46report.com",
+  from: "46report@46report.com",
   subject: "Laudo Pericial",
   text: "testando o envio de email",
   html: "<strong>testando o envio de email</strong>"
