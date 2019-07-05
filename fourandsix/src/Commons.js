@@ -217,9 +217,9 @@ export const EscaladaVedacao = [
   PortaoFrontal
 ];
 
-export const Cadeado = "cadeado";
-export const Corrente = "corrente";
-export const Tranca = "tranca";
+export const Cadeado = "cadeado do portão";
+export const Corrente = "corrente do portão";
+export const Tranca = "tranca do portão";
 export const ObjetoVedacao = [Cadeado, Corrente, Tranca];
 
 export const InstrumentoDesconhecido =

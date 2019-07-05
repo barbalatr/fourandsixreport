@@ -330,9 +330,9 @@ export function bodyToSections(body) {
       content:
         "Quando da ocasião dos fatos, tudo indica que o acesso delituoso ao interior do imóvel tenha ocorrido através de " +
         body.acessoTerreno +
-        " do " +
         (body.acessoTerreno === "escalada"
-          ? body.escaladaVedacao +
+          ? " do " +
+            body.escaladaVedacao +
             ", o qual media aproximadamente " +
             body.alturaEscalada +
             " m de altura"
@@ -385,6 +385,7 @@ export function generateDoc(body) {
   doc.Header.createParagraph(
     "EQUIPE DE PERÍCIAS CRIMINALÍSTICAS DE SÃO SEBASTIÃO"
   ).center();
+
   //Footer
   doc.Footer;
   doc.Footer.createParagraph("Laudo Pericial nº " + body.requisicao).center();
