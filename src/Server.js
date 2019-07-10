@@ -8,33 +8,47 @@ const sgMail = require("@sendgrid/mail");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const userMessage = {
-  to: "barbalatr@gmail.com",
-  from: "46report@46report.com",
-  subject: "Laudo Pericial",
-  text: "testando o envio de email",
-  html: "<strong>testando o envio de email</strong>",
-  attachments: [
-    {
-      content: "",
-      filename: "Laudo - Req. abcd Furto Qualificado.docx"
-    }
-  ]
-};
+function userMessage(encode64, emailInfo) {
+  return {
+    to: "barbalatr@gmail.com",
+    from: "46control@46report.com",
+    subject: "Laudo Pericial",
+    text: "testando o app",
+    html: "<strong>testando o app</strong>",
+    attachments: [
+      {
+        content: encode64,
+        filename:
+          "Laudo - Req." +
+          emailInfo.requisicao +
+          " " +
+          emailInfo.natureza +
+          ".docx"
+      }
+    ]
+  };
+}
 
-const controlMessage = {
-  to: "barbalatr@gmail.com",
-  from: "46control@46report.com",
-  subject: "controle",
-  text: "testando o envio de email",
-  html: "<strong>testando o envio de email</strong>",
-  attachments: [
-    {
-      content: "",
-      filename: "Laudo - Req.  Furto Qualificado.docx"
-    }
-  ]
-};
+function controlMessage(encode64, emailInfo) {
+  return {
+    to: "barbalatr@gmail.com",
+    from: "46control@46report.com",
+    subject: "controle",
+    text: "testando o envio de email",
+    html: "<strong>testando o envio de email</strong>",
+    attachments: [
+      {
+        content: encode64,
+        filename:
+          "Laudo - Req." +
+          emailInfo.Requisicao +
+          " " +
+          emailInfo.natureza +
+          ".docx"
+      }
+    ]
+  };
+}
 
 var PORT = process.env.PORT || 5000;
 const rootPath = url => path.join(process.cwd(), url);
@@ -53,9 +67,12 @@ const app = express()
     return saveAtendimento(request.body)
       .then(() => generateDoc(request.body))
       .then(base64 => {
-        controlMessage.attachments[0].content = base64;
-        userMessage.attachments[0].content = base64;
-        return Promise.all([sendEmail(userMessage)]);
+        //controlMessage.attachments[0].content = base64;
+        //userMessage.attachments[0].content = base64;
+        return Promise.all([
+          sendEmail(controlMessage(base64, request.body)),
+          sendEmail(userMessage(base64, request.body))
+        ]);
       })
       .then(() => {
         console.log("much success");

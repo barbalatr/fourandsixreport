@@ -509,8 +509,7 @@ export function generateDoc(body) {
   doc.addParagraph(idPeritoParagraph);
 
   // Used to export the file into a .docx file
-  const nomeArquivo =
-    "Laudo - Req. " + body.requisicao + " " + body.natureza + ".docx";
+
   var packer = new docx.Packer();
   return packer.toBase64String(doc);
 }
