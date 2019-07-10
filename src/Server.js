@@ -65,7 +65,7 @@ const app = express()
     const { body } = request;
     console.log("req " + JSON.stringify(body));
     //return saveAtendimento(request.body)
-    generateDoc(request.body)
+    return generateDoc(request.body)
       .then(base64 => {
         //controlMessage.attachments[0].content = base64;
         //userMessage.attachments[0].content = base64;
