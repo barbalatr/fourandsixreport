@@ -65,7 +65,7 @@ const app = express()
     const { body } = request;
     console.log("req " + JSON.stringify(body));
     //return saveAtendimento(request.body)
-    return generateDoc(request.body)
+    generateDoc(request.body)
       .then(base64 => {
         //controlMessage.attachments[0].content = base64;
         //userMessage.attachments[0].content = base64;
@@ -93,6 +93,7 @@ function sendEmail(msg) {
   sgMail.send(msg);
 }
 
+/*
 function saveAtendimento(body) {
   const client = new Client({
     host: "localhost",
@@ -135,4 +136,4 @@ function saveAtendimento(body) {
     .finally(() => {
       client.end();
     });
-}
+} */
