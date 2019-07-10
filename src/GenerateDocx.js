@@ -423,7 +423,7 @@ export function generateDoc(body) {
       mesAtendimentoNome +
       " de " +
       anoAtendimento +
-      ", no Instituto de Criminalística da Superintendência da Polícia Técnico-Científica da Secretaria da Segurança Pública do Estado de São Paulo, em conformidade com o disposto no artigo 178 do Decreto Lei nº 3.689, de 3 de outubro de 1941, o Diretor deste Instituto, Dr. Maurício da Silva Lazzarin, designou o Perito Criminal Dr. Rodrigo Barbalat Viana para proceder aos exames periciais em face da requisição de exame expedida pela autoridade competente do(a) " +
+      ", no Instituto de Criminalística da Superintendência da Polícia Técnico-Científica da Secretaria da Segurança Pública do Estado de São Paulo, em conformidade com o disposto no artigo 178 do Decreto Lei nº 3.689, de 3 de outubro de 1941, o Diretor deste Instituto, Dr. Maurício da Silva Lazzarin, designou o Perito Criminal Dr. Lucas Gabriel Leite Fernandez Pollito para proceder aos exames periciais em face da requisição de exame expedida pela autoridade competente do(a) " +
       body.delegacia +
       "."
   )
@@ -496,7 +496,7 @@ export function generateDoc(body) {
   // Id Perito
   doc.addParagraph(emptyBreak);
   var idPeritoParagraph = new docx.Paragraph().center();
-  const IdPeritoText = new docx.TextRun("RODRIGO BARBALAT VIANA")
+  const IdPeritoText = new docx.TextRun("Lucas Gabriel Leite Fernandez Pollito")
     .size(24)
     .font("Spranq eco sans");
   const peritoCriminal = new docx.TextRun("PERITO CRIMINAL")

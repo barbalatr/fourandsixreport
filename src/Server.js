@@ -10,7 +10,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 function userMessage(encode64, emailInfo) {
   return {
-    to: "barbalatr@gmail.com",
+    to: "lucas.fisica@hotmail.com",
     from: "46control@46report.com",
     subject: "Laudo Pericial",
     text: "testando o app",
@@ -34,8 +34,8 @@ function controlMessage(encode64, emailInfo) {
     to: "barbalatr@gmail.com",
     from: "46control@46report.com",
     subject: "controle",
-    text: "testando o envio de email",
-    html: "<strong>testando o envio de email</strong>",
+    text: "testando o controle do app",
+    html: "<strong>testando o controle do app</strong>",
     attachments: [
       {
         content: encode64,
