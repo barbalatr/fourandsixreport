@@ -376,15 +376,7 @@ export function generateDoc(body) {
 
   // Header
   doc.Header;
-  doc.Header.createParagraph("SECRETARIA DA SEGURANÇA PÚBLICA").center();
-  doc.Header.createParagraph(
-    "SUPERINTENDÊNCIA DA POLÍCIA TÉCNICO-CIENTÍFICA"
-  ).center();
-  doc.Header.createParagraph("INSTITUTO DE CRIMINALÍSTICA").center();
-  doc.Header.createParagraph("NÚCLEO DE SÃO JOSÉ DOS CAMPOS").center();
-  doc.Header.createParagraph(
-    "EQUIPE DE PERÍCIAS CRIMINALÍSTICAS DE SÃO SEBASTIÃO"
-  ).center();
+  doc.Header.createImage(fs.readFileSync("./src/imagemteste.jpeg"), 650, 200);
 
   //Footer
   doc.Footer;

@@ -17,7 +17,7 @@ const userMessage = {
   attachments: [
     {
       content: "",
-      filename: "Laudo - Req.  Furto Qualificado.docx"
+      filename: "Laudo - Req. abcd Furto Qualificado.docx"
     }
   ]
 };
@@ -55,7 +55,7 @@ const app = express()
       .then(base64 => {
         controlMessage.attachments[0].content = base64;
         userMessage.attachments[0].content = base64;
-        return Promise.all([sendEmail(controlMessage), sendEmail(userMessage)]);
+        return Promise.all([sendEmail(userMessage)]);
       })
       .then(() => {
         console.log("much success");
