@@ -8,12 +8,32 @@ const sgMail = require("@sendgrid/mail");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const msg = {
+const userMessage = {
   to: "barbalatr@gmail.com",
   from: "46report@46report.com",
   subject: "Laudo Pericial",
   text: "testando o envio de email",
-  html: "<strong>testando o envio de email</strong>"
+  html: "<strong>testando o envio de email</strong>",
+  attachments: [
+    {
+      content: "",
+      filename: "Laudo - Req.  Furto Qualificado.docx"
+    }
+  ]
+};
+
+const controlMessage = {
+  to: "barbalatr@gmail.com",
+  from: "46control@46report.com",
+  subject: "controle",
+  text: "testando o envio de email",
+  html: "<strong>testando o envio de email</strong>",
+  attachments: [
+    {
+      content: "",
+      filename: "Laudo - Req.  Furto Qualificado.docx"
+    }
+  ]
 };
 
 var PORT = process.env.PORT || 5000;
@@ -31,12 +51,14 @@ const app = express()
     const { body } = request;
     console.log("req " + JSON.stringify(body));
     return saveAtendimento(request.body)
-      .then(() => {
-        generateDoc(request.body);
-        return sendEmail(msg);
+      .then(() => generateDoc(request.body))
+      .then(base64 => {
+        controlMessage.attachments[0].content = base64;
+        userMessage.attachments[0].content = base64;
+        return Promise.all([sendEmail(controlMessage), sendEmail(userMessage)]);
       })
       .then(() => {
-        console.log("suc");
+        console.log("much success");
         response.json({ message: "ok" });
       })
       .catch(e => {

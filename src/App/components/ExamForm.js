@@ -166,8 +166,14 @@ export default class ExamForm extends React.Component {
     if (view === "Crime Ambiental (Indireto)") {
       return "Local";
     }
+    if (view === "Furto Qualificado") {
+      return "Local";
+    }
     if (view === "Confirmar" && natureza === "Crime Ambiental (Indireto)") {
       return "Crime Ambiental (Indireto)";
+    }
+    if (view === "Confirmar" && natureza === "Furto Qualificado") {
+      return "Furto Qualificado";
     }
   };
   // Back to previous view

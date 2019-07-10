@@ -520,7 +520,5 @@ export function generateDoc(body) {
   const nomeArquivo =
     "Laudo - Req. " + body.requisicao + " " + body.natureza + ".docx";
   var packer = new docx.Packer();
-  packer.toBuffer(doc).then(buffer => {
-    fs.writeFileSync(nomeArquivo, buffer);
-  });
+  return packer.toBase64String(doc);
 }
