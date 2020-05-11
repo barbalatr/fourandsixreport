@@ -17,7 +17,7 @@
 cd fourandsixreport
 yarn dev
 ```
-3. If everything went smoothly, the server should be listening port *5000*, [check here](localhost:5000). If not, see [Troubleshooting](#troubleshooting)
+3. If everything went smoothly, the server should be listening port *5000*, [check here](http://localhost:5000). If not, see [Troubleshooting](#troubleshooting)
 
 ### Troubleshooting
 TODO
